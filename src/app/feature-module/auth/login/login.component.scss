@@ -1,0 +1,21 @@
+.signup-with-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+  color: #ffffff;
+}
+
+.line {
+  flex-grow: 1;
+  height: 1px;
+
+  margin: 0 10px;
+}
+
+.signup-text {
+  // color: #ffffff;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}

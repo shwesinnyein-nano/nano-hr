@@ -1,0 +1,56 @@
+{
+  "data" : [
+      {
+        "id": "ES-001",
+        "name": "Cashier"
+
+      },
+      {
+        "id": "ES-002",
+        "name": "Sale"
+
+      },
+      {
+        "id": "ES-003",
+        "name": "Management"
+
+      },
+      {
+        "id": "ES-004",
+        "name": "Accountant"
+
+      },
+      {
+        "id": "ES-005",
+        "name": "Captain"
+
+      },
+      {
+        "id": "ES-006",
+        "name": "Head Chef"
+
+      },
+      {
+        "id": "ES-007",
+        "name": "Sous Chef"
+
+      },
+      {
+        "id": "ES-008",
+        "name": "Waiter/Waitress"
+
+      },
+      {
+        "id": "ES-009",
+        "name": "Bar Runner"
+
+      },
+      {
+        "id": "ES-010",
+        "name": "Dishwasher"
+
+      }
+
+    ],
+  "totalData": 10
+}

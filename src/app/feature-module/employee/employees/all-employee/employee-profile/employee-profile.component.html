@@ -1,0 +1,500 @@
+<!-- Page Content -->
+<div class="content container-fluid">
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="row">
+      <div class="col-sm-12">
+        <h3 class="page-title">{{"FORM.employee_profile" | translate}}  </h3>
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item"><a [routerLink]="routes.adminDashboard">{{"FORM.dashboard" | translate}}</a></li>
+          <li class="breadcrumb-item active">{{"FORM.profile" | translate}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- /Page Header -->
+  <form [formGroup]="addEmployeeForm">
+    <div class="card mb-0">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="profile-view">
+              <div class="profile-img-wrap">
+
+              </div>
+              <div class="profile-basic">
+                <div class="row">
+                  <div class="col-md-5">
+                    <div class="profile-info-left">
+
+                      <div class="profile-img-edit">
+                        <div class="profile-img-edit">
+                          <div class="profile-image-container d-flex align-items-center">
+                            <div class="image-frame">
+
+                              <img [src]="imageUrl" *ngIf="imageUrl; else defaultImage" alt="Profile Image" class="profile-img" />
+                              <ng-template #defaultImage>
+                                <div class="default-placeholder">
+                                  <i class="pi pi-user" style="font-size: 3rem;"></i>
+                                </div>
+                              </ng-template>
+                            </div>
+
+
+                            <button class="btn btn-outline-primary ms-3" (click)="fileInput.click()"
+                              style="border-color: #d1b07d; color: black; background-color: #d1b07d;">
+                              {{"FORM.upload_image" | translate}}
+                            </button>
+
+
+                            <input type="file" (change)="onFileSelected($event)" accept="image/*" class="d-none" #fileInput />
+                          </div>
+
+
+                          <div *ngIf="uploadProgress >= 0">
+                            <p>Upload Progress: {{ uploadProgress }}%</p>
+                          </div>
+                        </div>
+
+
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="col-md-7">
+                    <ul class="personal-info">
+                      <li>
+                        <div class="title"> {{"FORM.name" | translate}}:</div>
+                        <div class="text"><span style="color: #d1b07d;">{{name}}</span></div>
+                      </li>
+                      <li>
+                        <div class="title">{{"FORM.position" | translate}}:</div>
+                        <div class="text"><span style="color: #d1b07d;">{{position}}</span></div>
+                      </li>
+                      <li>
+                          <div class="title">{{"FORM.company" | translate}}:</div>
+                        <div class="text"><span style="color: #d1b07d;">{{company}}</span></div>
+                      </li>
+                      <li>
+                        <div class="title">{{"FORM.email" | translate}}:</div>
+                          <div class="text"><span style="color: #d1b07d;">{{email}}</span></div>
+                      </li>
+                      <li>
+                        <div class="title">{{"FORM.phone_number" | translate}}:</div>
+                          <div class="text"><span style="color: #d1b07d;">{{phone | slice:0:3}}-{{phone | slice:3:6}}-{{phone | slice:6:10}}</span></div>
+                      </li>
+                      <li>
+                        <div class="title">{{"FORM.join_date" | translate}}:</div>
+                          <div class="text"><span style="color: #d1b07d;">{{joinDate | date: 'dd MMMM yyyy'}}</span></div>
+                      </li>
+
+
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card tab-box">
+      <div class="row user-tabs">
+        <div class="col-lg-12 col-md-12 col-sm-12 line-tabs">
+          <ul class="nav nav-tabs nav-tabs-bottom">
+            <li class="nav-item"><a href="#emp_profile" data-bs-toggle="tab" class="nav-link active">{{"FORM.profile" | translate}}</a>
+            </li>
+            <li class="nav-item"><a href="#emp_documents" data-bs-toggle="tab" class="nav-link">{{"FORM.documents" | translate}}</a></li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content">
+
+
+      <div id="emp_profile" class="pro-overview tab-pane fade show active">
+        <div class="row">
+          <div class="col-md-6 d-flex">
+            <div class="card profile-box flex-fill">
+              <div class="card-body">
+                <h3 class="card-title">{{"FORM.personal_information" | translate}} </h3>
+
+                <ul class="personal-info">
+                  <li>
+                    <div class="title">{{"FORM.gender" | translate}}.</div>
+                    <mat-select class="select mat-cust-select custom-mat-select" [placeholder]="'FORM.select_gender' | translate"
+                      formControlName="gender">
+                      <mat-option value="Male">Male</mat-option>
+                      <mat-option value="Female">Female</mat-option>
+                      <mat-option value="Other">Other</mat-option>
+                    </mat-select>
+                    <!-- <mat-radio-group aria-label="Select an option" formControlName="gender" class="d-flex flex-row gap-2"
+                 >
+                    <mat-radio-button value="1">Male</mat-radio-button>
+                    <mat-radio-button value="2">Female</mat-radio-button>
+                    <mat-radio-button value="3">Other</mat-radio-button>
+                  </mat-radio-group> -->
+
+                  </li>
+                  <li>
+                    <div class="title">{{"FORM.date_of_birth" | translate}}.</div>
+                    <div class="cal-icon">
+                      <input class="form-control" formControlName="dateOfBirth"
+                        [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', showWeekNumbers: false }" bsDatepicker
+                        container=".date-input1" />
+
+
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="title">{{"FORM.nationality" | translate}}.</div>
+                    <mat-select class="select mat-cust-select custom-mat-select" [placeholder]="'FORM.select_nationality' | translate"
+                      formControlName="nationality">
+                      <mat-option *ngFor="let item of nationalityList"
+                        [value]="item.nationality">{{item.nationality}}</mat-option>
+                    </mat-select>
+                  </li>
+                  <li>
+                    <div class="title">{{"FORM.id_card" | translate}}.</div>
+                    <input type="text" class="form-control" formControlName="idCardNumber" name="idCardNumber"
+                      id="idCardNumber">
+                  </li>
+                  <li>
+                    <div class="title">{{"FORM.marital_status" | translate}}.</div>
+                    <mat-select class="select mat-cust-select custom-mat-select" [placeholder]="'FORM.select_marital_status' | translate"
+                      formControlName="maritalStatus">
+                      <mat-option value="Single">Single</mat-option>
+                      <mat-option value="Married">Married</mat-option>
+                      <mat-option value="Other">Other</mat-option>
+                    </mat-select>
+
+                  </li>
+                  <li>
+                    <div class="title">{{"FORM.id_address" | translate}}.</div>
+                    <input type="text" class="form-control" formControlName="idAddress" name="passportNo"
+                      id="idAddress">
+                  </li>
+                  <li>
+                    <div class="title">{{"FORM.district" | translate}}.</div>
+                    <input type="text" class="form-control" formControlName="district" name="district" id="district">
+                  </li>
+
+                  <li>
+                    <div class="title">{{"FORM.sub_district" | translate}}.</div>
+                    <input type="text" class="form-control" formControlName="subDistrict" name="subDistrict"
+                      id="subDistrict">
+                  </li>
+                  <li>
+                    <div class="title">{{"FORM.province" | translate}}.</div>
+                    <input type="text" class="form-control" formControlName="province" name="province" id="province">
+                  </li>
+                  <li>
+                    <div class="title">{{"FORM.postal_code" | translate}}.</div>
+                    <input type="text" class="form-control" formControlName="postalCode" name="postalCode"
+                      id="postalCode">
+                  </li>
+
+                  <li>
+                    <hr style="margin-top: 10px; margin-bottom: 10px;">
+                  </li>
+                  <hr style="margin-top: 10px; margin-bottom: 20px;">
+
+
+                  <li>
+                    <h4 class="section-title" style="margin-top: 10px;">{{"FORM.current_address" | translate}}</h4>
+                  </li>
+                  <li>
+                    <div class="title">{{"FORM.same_as_id_address" | translate}}</div>
+                    <input type="checkbox" class="form-check-input ms-2" (change)="onSameAsIdAddressChange($event)"
+                      style="border:1.5px solid black;font-size: 1.2rem;" formControlName="sameAsIdAddress"
+                      name="sameAsIdAddress">
+                  </li>
+                  <li style="margin-top: 10px;">
+                    <div class="title">{{"FORM.address" | translate}}.</div>
+                    <input type="text" class="form-control" formControlName="currentAddress" name="currentAddress"
+                      id="currentAddress">
+                  </li>
+                  <li>
+                    <div class="title">{{"FORM.district" | translate}}.</div>
+                    <input type="text" class="form-control" formControlName="currentDistrict" name="currentDistrict"
+                      id="currentDistrict">
+                  </li>
+
+                  <li>
+                    <div class="title">{{"FORM.sub_district" | translate}}.</div>
+                    <input type="text" class="form-control" formControlName="currentSubDistrict"
+                      name="currentSubDistrict" id="currentSubDistrict">
+                  </li>
+                  <li>
+                    <div class="title">{{"FORM.province" | translate}}.</div>
+                    <input type="text" class="form-control" formControlName="currentProvince" name="currentProvince"
+                      id="currentProvince">
+                  </li>
+                  <li>
+                    <div class="title">{{"FORM.postal_code" | translate}}.</div>
+                    <input type="text" class="form-control" formControlName="currentPostalCode" name="currentPostalCode"
+                      id="currentPostalCode">
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 d-flex">
+            <div class="card profile-box flex-fill">
+              <div class="card-body">
+                <h3 class="card-title">{{"FORM.emergency_contact" | translate}} </h3>
+
+                <ul class="personal-info">
+                  <li>
+                    <div class="title">{{"FORM.name" | translate}}</div>
+                    <input type="text" class="form-control" formControlName="emergencyContactName"
+                      name="emergencyContactName" id="emergencyContactName">
+                  </li>
+                  <li>
+                    <div class="title">{{"FORM.relationship" | translate}}</div>
+                    <mat-select class="select mat-cust-select custom-mat-select" [placeholder]="'FORM.select_relationship' | translate"
+                      formControlName="relationship">
+                      <mat-option value="hr">Spouse</mat-option>
+                      <mat-option value="it">Parent</mat-option>
+                      <mat-option value="transportation">Sibling</mat-option>
+                      <mat-option value="hr">Child</mat-option>
+                      <mat-option value="it">Relative</mat-option>
+                      <mat-option value="transportation">Friend</mat-option>
+                      <mat-option value="it">Partner</mat-option>
+                      <mat-option value="transportation">Other</mat-option>
+
+                    </mat-select>
+                  </li>
+                  <li>
+                    <div class="title">{{"FORM.phone_number" | translate}}</div>
+                    <!-- <input type="text" class="form-control" formControlName="emergencyContactPhoneNumber"
+                      name="emergencyContactPhoneNumber" id="emergencyContactPhoneNumber"> -->
+                    <input type="text" class="form-control" formControlName="emergencyContactPhoneNumber"
+                      name="emergencyContactPhoneNumber" id="emergencyContactPhoneNumber" mask="000 000 0000">
+
+                  </li>
+                  <li>
+                    <div class="title">{{"FORM.address" | translate}}</div>
+                    <input type="text" class="form-control" formControlName="emergencyContactAddress"
+                      name="emergencyContactAddress" id="emergencyContactAddress">
+                  </li>
+                </ul>
+                <hr>
+                <h3 class="card-title">{{"FORM.bank_information" | translate}} </h3>
+
+                <ul class="personal-info">
+                  <li>
+                    <div class="title">{{"FORM.bank_name" | translate}}</div>
+                    <mat-select class="select mat-cust-select custom-mat-select" [placeholder]="'FORM.select_bank' | translate"
+                      formControlName="bankName">
+                      <mat-option value="BBL">Bangkok Bank (BBL) – ธนาคารกรุงเทพ</mat-option>
+                      <mat-option value="KBank">Kasikorn Bank (KBank) – ธนาคารกสิกรไทย</mat-option>
+                      <mat-option value="SCB">Siam Commercial Bank (SCB) – ธนาคารไทยพาณิชย์</mat-option>
+                      <mat-option value="KTB">Krung Thai Bank (KTB) – ธนาคารกรุงไทย</mat-option>
+                      <mat-option value="Krungsri">Bank of Ayudhya (Krungsri) – ธนาคารกรุงศรีอยุธยา</mat-option>
+                      <mat-option value="TTB">TMBThanachart Bank (TTB) – ธนาคารทหารไทยธนชาต</mat-option>
+                      <mat-option value="GSB">Government Savings Bank (GSB) – ธนาคารออมสิน</mat-option>
+                      <mat-option value="EXIM">Export-Import Bank of Thailand (EXIM) –
+                        ธนาคารเพื่อการส่งออกและนำเข้าแห่งประเทศไทย</mat-option>
+                      <mat-option value="iBank">Islamic Bank of Thailand (iBank) –
+                        ธนาคารอิสลามแห่งประเทศไทย</mat-option>
+                      <mat-option value="KKP">Kiatnakin Phatra Bank (KKP) – ธนาคารเกียรตินาคินภัทร</mat-option>
+                      <mat-option value="CIMBT">CIMB Thai Bank (CIMBT) – ธนาคารซีไอเอ็มบีไทย</mat-option>
+                      <mat-option value="UOB">UOB Bank (United Overseas Bank) – ธนาคารยูโอบี</mat-option>
+
+                    </mat-select>
+                  </li>
+                  <li>
+                    <div class="title">{{"FORM.bank_account_number" | translate}}</div>
+                    <input type="text" class="form-control" formControlName="bankAccountNumber" name="bankAccountNumber"
+                      id="bankAccountNumber">
+                  </li>
+                  <li>
+                    <div class="title">{{"FORM.account_holder_name" | translate}}</div>
+                    <input type="text" class="form-control" formControlName="bankHolderName" name="bankHolderName"
+                      id="bankHolderName">
+                  </li>
+                </ul>
+
+
+                <div style="margin-top: 40px; margin-bottom: 20px;">
+                  <hr>
+                </div>
+
+
+                <h3 class="card-title">{{"FORM.health_information" | translate}}</h3>
+                <ul class="personal-info">
+                  <li>
+                    <div class="title">{{"FORM.blood_type" | translate}}</div>
+                    <mat-select class="select mat-cust-select custom-mat-select" [placeholder]="'FORM.select_blood_type' | translate"
+                      formControlName="bloodGroup">
+                      <mat-option value="A+">A+</mat-option>
+                      <mat-option value="A-">A-</mat-option>
+                      <mat-option value="B+">B+</mat-option>
+                      <mat-option value="B-">B-</mat-option>
+                      <mat-option value="AB+">AB+</mat-option>
+                      <mat-option value="AB-">AB-</mat-option>
+                      <mat-option value="O+">O+</mat-option>
+                      <mat-option value="O-">O-</mat-option>
+
+                    </mat-select>
+                  </li>
+                  <li>
+                    <div class="title">{{"FORM.allergies" | translate}}</div>
+                    <mat-select class="select mat-cust-select custom-mat-select" [placeholder]="'FORM.select_allergies_status' | translate" (selectionChange)="onAllergiesChange($event)"
+                      formControlName="allergies">
+                      <mat-option value="Yes">Yes</mat-option>
+                      <mat-option value="No">No</mat-option>
+                    </mat-select>
+                  </li>
+                  <li *ngIf="isAllergies">
+                    <div class="title">{{"FORM.details" | translate}}</div>
+                    <input type="text" class="form-control" formControlName="allergiesDescription" name="allergiesDescription"
+                      id="allergiesDescription">
+                  </li>
+                  <li>
+                    <div class="title">{{"FORM.vaccinations_status" | translate}}</div>
+                    <mat-select class="select mat-cust-select custom-mat-select"
+                      [placeholder]="'FORM.select_vaccinations_status' | translate" formControlName="vaccinationsStatus">
+
+                      <mat-option value="fully_vaccinated">Fully Vaccinated</mat-option>
+                      <mat-option value="partially_vaccinated">Partially Vaccinated</mat-option>
+                      <mat-option value="not_vaccinated">Not Vaccinated</mat-option>
+                    </mat-select>
+                  </li>
+                  <li>
+                    <div class="title">{{"FORM.disabilities" | translate}}</div>
+                    <mat-select class="select mat-cust-select custom-mat-select" [placeholder]="'FORM.select_disabilities' | translate" (selectionChange)="onDisabilitiesChange($event)"
+                      formControlName="disabilities">
+                      <mat-option value="Yes">Yes</mat-option>
+                      <mat-option value="No">No</mat-option>
+                    </mat-select>
+                  </li>
+                  <li *ngIf="isDisabilities">
+                    <div class="title">{{"FORM.details" | translate}}</div>
+                    <input type="text" class="form-control" formControlName="disabilitiesDescription" name="disabilitiesDescription"
+                      id="disabilitiesDescription">
+                  </li>
+                  <li>
+                    <div class="title">{{"FORM.congenital_diseases" | translate}}</div>
+                    <mat-select class="select mat-cust-select custom-mat-select"
+                      [placeholder]="'FORM.select_congenital_diseases' | translate" formControlName="congenitalDiseases" (selectionChange)="onCongenitalDiseasesChange($event)">
+                      <mat-option value="Yes">Yes</mat-option>
+                      <mat-option value="No">No</mat-option>
+                    </mat-select>
+
+                  </li>
+                  <li *ngIf="isCongenitalDiseases">
+                    <div class="title">{{"FORM.details" | translate}}</div>
+                    <input type="text" class="form-control" formControlName="congenitalDiseasesDescription"
+                      name="congenitalDiseasesDescription" id="congenitalDiseasesDescription">
+                  </li>
+
+
+                </ul>
+
+              </div>
+
+
+
+
+            </div>
+          </div>
+
+
+
+
+        </div>
+        <div class="submit-section" style="display: flex; justify-content: center;">
+
+          <button class="btn btn-secondary submit-btn" (click)="cancelUpdate()" style="margin-right: 10px;">{{"FORM.cancel" | translate}}</button>
+          <button class="btn btn-primary submit-btn" (click)="updateEmployee()">{{"FORM.submit" | translate}}</button>
+        </div>
+
+
+
+
+
+
+
+      </div>
+      <div id="emp_documents" class="pro-overview tab-pane fade">
+
+        <div class="row">
+          <div class="col-md-12 d-flex">
+            <div class="card profile-box flex-fill">
+              <div class="card-body">
+                <h3 class="card-title">{{ "FORM.documents" | translate }}</h3>
+                <div class="dropzone-box">
+                  <div class="input-block mb-3">
+                    <label class="col-form-label">{{ "FORM.upload_documents" | translate }}</label>
+                    <div class="custom-file-upload">
+                      <input
+                        type="file"
+                        class="custom-file-input"
+                        id="document-upload"
+                        multiple
+                        (change)="onFileSelectedFiles($event)"
+                      />
+                      <label class="custom-file-label" for="document-upload">
+                        <i class="fa fa-cloud-upload"></i> {{ "FORM.choose_files" | translate }}
+                      </label>
+                    </div>
+                    <small class="form-text text-muted">{{ "FORM.allowed_file_types" | translate }}</small>
+                  </div>
+                </div>
+
+                <div class="uploaded-docs">
+                  <h4 class="mb-3">{{ "FORM.upload_documents" | translate }}</h4>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>{{ "FORM.document_name" | translate }}</th>
+                          <th>{{ "FORM.date_uploaded" | translate }}</th>
+                          <th>{{ "FORM.action" | translate }}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let document of uploadedDocuments; let i = index">
+                          <td>{{ document.name }}</td>
+                          <td>{{ document.dateUploaded }}</td>
+                          <td>
+                            <a
+                              href="javascript:void(0);"
+                              class="btn btn-sm btn-primary me-2"
+                              (click)="downloadDocument(document)"
+                            >
+                              <i class="fa fa-download"></i>
+                            </a>
+                            <a
+                              href="javascript:void(0);"
+                              class="btn btn-sm btn-danger"
+                              (click)="removeDocument(i)"
+                            >
+                              <i class="fa fa-trash"></i>
+                            </a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </form>
+
+

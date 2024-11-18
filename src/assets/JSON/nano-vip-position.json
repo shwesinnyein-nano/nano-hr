@@ -1,0 +1,37 @@
+{
+  "data" : [
+      {
+
+        "id": "NV-001",
+        "name": "Management"
+
+      },
+      {
+        "id": "NV-002",
+        "name": "Accountant"
+
+      },
+      {
+        "id": "NV-003",
+        "name": "Content Writer"
+
+      },
+      {
+        "id": "NV-004",
+        "name": "Programmer"
+
+      },
+      {
+        "id": "NV-005",
+        "name": "Driver"
+
+      },
+      {
+        "id": "NV-006",
+        "name": "Operator"
+
+      }
+
+    ],
+  "totalData": 6
+}

@@ -1,0 +1,37 @@
+{
+  "data" : [
+      {
+        "id": "B-002",
+        "name": "002 Thepharak",
+        "location": "Bangkok"
+      },
+      {
+        "id": "B-003",
+        "name": "003 Vacharaphol",
+        "location": "Bangkok"
+      },
+      {
+        "id": "B-004",
+        "name": "004 Nawamin",
+        "location": "Bangkok"
+      },
+      {
+        "id": "B-005",
+        "name": "005 Srinagarindra",
+        "location": "Bangkok"
+      },
+      {
+        "id": "B-006",
+        "name": "006 Ratchadaphisek",
+        "location": "Bangkok"
+      },
+      {
+        "id": "B-007",
+        "name": "007 Bang Phli",
+        "location": "Bangkok"
+      }
+
+
+    ],
+    "totalData":6
+}

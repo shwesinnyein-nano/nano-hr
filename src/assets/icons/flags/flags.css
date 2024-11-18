@@ -1,0 +1,14 @@
+.flag {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-block;
+    background: no-repeat center/100% 100%;
+    vertical-align: bottom;
+    font-style: normal;
+}
+
+
+.flag-us {
+    background-image: url("flags/us.png");
+}
+

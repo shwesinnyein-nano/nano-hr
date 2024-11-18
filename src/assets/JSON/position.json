@@ -1,0 +1,1202 @@
+{
+  "data": [
+
+    {
+      "parentId": "",
+      "companyId": "nano-vip",
+      "locationId": "nano-vip-phuket",
+      "id": "nano-vip-management",
+      "name": "Management"
+    },
+    {
+      "parentId": "",
+      "companyId": "nano-vip",
+      "locationId": "nano-vip-phuket",
+      "id": "nano-vip-accountant",
+      "name": "Accountant"
+    },
+    {
+      "parentId": "",
+      "companyId": "nano-vip",
+      "locationId": "nano-vip-phuket",
+      "id": "nano-vip-content-writer",
+      "name": "Content Writer"
+    },
+    {
+      "parentId": "",
+      "companyId": "nano-vip",
+      "locationId": "nano-vip-phuket",
+      "id": "nano-vip-programmer",
+      "name": "Programmer"
+    },
+    {
+      "parentId": "",
+      "companyId": "nano-vip",
+      "locationId": "nano-vip-phuket",
+      "id": "nano-vip-driver",
+      "name": "Driver"
+    },
+    {
+      "parentId": "",
+      "companyId": "nano-vip",
+      "locationId": "nano-vip-phuket",
+      "id": "nano-vip-operator",
+      "name": "Operator"
+    },
+
+    {
+      "parentId": "",
+      "companyId": "nano-vip",
+      "locationId": "nano-vip-bangkok",
+      "id": "nano-vip-bangkok-management",
+      "name": "Management"
+    },
+    {
+      "parentId": "",
+      "companyId": "nano-vip",
+      "locationId": "nano-vip-bangkok",
+      "id": "nano-vip-bangkok-accountant",
+      "name": "Accountant"
+    },
+    {
+      "parentId": "",
+      "companyId": "nano-vip",
+      "locationId": "nano-vip-bangkok",
+      "id": "nano-vip-bangkok-content-writer",
+      "name": "Content Writer"
+    },
+    {
+      "parentId": "",
+      "companyId": "nano-vip",
+      "locationId": "nano-vip-bangkok",
+      "id": "nano-vip-bangkok-programmer",
+      "name": "Programmer"
+    },
+    {
+      "parentId": "",
+      "companyId": "nano-vip",
+      "locationId": "nano-vip-bangkok",
+      "id": "nano-vip-bangkok-driver",
+      "name": "Driver"
+    },
+    {
+      "parentId": "",
+      "companyId": "nano-vip",
+      "locationId": "nano-vip-bangkok",
+      "id": "nano-vip-bangkok-operator",
+      "name": "Operator"
+    },
+
+
+
+    {
+      "parentId": "chalong",
+      "companyId": "nano-store",
+      "locationId": "nano-store-phuket",
+      "id": "nano-store-chalong-hr",
+      "name": "HR"
+    },
+
+    {
+      "parentId": "chalong",
+      "companyId": "nano-store",
+      "locationId": "nano-store-phuket",
+      "id": "nano-store-chalong-manager",
+      "name": "Manager"
+
+    },
+    {
+      "parentId": "chalong",
+      "companyId": "nano-store",
+      "locationId": "nano-store-phuket",
+      "id": "nano-store-chalong-accountant",
+      "name": "Accountant"
+
+    },
+    {
+      "parentId": "chalong",
+      "companyId": "nano-store",
+      "locationId": "nano-store-phuket",
+      "id": "nano-store-chalong-programmer",
+      "name": "Programmer"
+
+    },
+    {
+      "parentId": "chalong",
+      "companyId": "nano-store",
+      "locationId": "nano-store-phuket",
+      "id": "nano-store-chalong-salesman",
+      "name": "Salesman"
+
+    },
+    {
+      "parentId": "chalong",
+      "companyId": "nano-store",
+      "locationId": "nano-store-phuket",
+      "id": "nano-store-chalong-purchase",
+      "name": "Purchase"
+
+    },
+    {
+      "parentId": "chalong",
+      "companyId": "nano-store",
+      "locationId": "nano-store-phuket",
+      "id": "nano-store-chalong-security",
+      "name": "Security"
+
+    },
+    {
+      "parentId": "chalong",
+      "companyId": "nano-store",
+      "locationId": "nano-store-phuket",
+      "id": "nano-store-chalong-housekeeper",
+      "name": "Housekeeper"
+
+    },
+    {
+      "parentId": "chalong",
+      "companyId": "nano-store",
+      "locationId": "nano-store-phuket",
+      "id": "nano-store-chalong-shipper",
+      "name": "Shipper"
+
+    },
+    {
+      "parentId": "chalong",
+      "companyId": "nano-store",
+      "locationId": "nano-store-phuket",
+      "id": "nano-store-chalong-management",
+      "name": "Management"
+
+    },
+    {
+      "parentId": "chalong",
+      "companyId": "nano-store",
+      "locationId": "nano-store-phuket",
+      "id": "nano-store-chalong-warehouse-worker",
+      "name": "Warehouse Worker"
+
+    },
+    {
+      "parentId": "chalong",
+      "companyId": "nano-store",
+      "locationId": "nano-store-phuket",
+      "id": "nano-store-chalong-surveyor",
+      "name": "Surveyor"
+
+    },
+
+
+
+
+
+
+
+
+    {
+      "parentId": "thepharak",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-thepharak-hr",
+      "name": "HR"
+    },
+
+    {
+      "parentId": "thepharak",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-thepharak-manager",
+      "name": "Manager"
+
+    },
+    {
+      "parentId": "thepharak",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-thepharak-accountant",
+      "name": "Accountant"
+
+    },
+    {
+      "parentId": "thepharak",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-thepharak-programmer",
+      "name": "Programmer"
+
+    },
+    {
+      "parentId": "thepharak",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-thepharak-salesman",
+      "name": "Salesman"
+
+    },
+    {
+      "parentId": "thepharak",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-thepharak-purchase",
+      "name": "Purchase"
+
+    },
+    {
+      "parentId": "thepharak",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-thepharak-security",
+      "name": "Security"
+
+    },
+    {
+      "parentId": "thepharak",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-thepharak-housekeeper",
+      "name": "Housekeeper"
+
+    },
+    {
+      "parentId": "thepharak",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-thepharak-shipper",
+      "name": "Shipper"
+
+    },
+    {
+      "parentId": "thepharak",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-thepharak-management",
+      "name": "Management"
+
+    },
+    {
+      "parentId": "thepharak",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-thepharak-warehouse-worker",
+      "name": "Warehouse Worker"
+
+    },
+    {
+      "parentId": "thepharak",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-thepharak-surveyor",
+      "name": "Surveyor"
+
+    },
+
+
+
+
+
+
+    {
+      "parentId": "vacharaphol",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-vacharaphol-hr",
+      "name": "HR"
+    },
+
+    {
+      "parentId": "vacharaphol",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-vacharaphol-manager",
+      "name": "Manager"
+
+    },
+    {
+      "parentId": "vacharaphol",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-vacharaphol-accountant",
+      "name": "Accountant"
+
+    },
+    {
+      "parentId": "vacharaphol",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-vacharaphol-programmer",
+      "name": "Programmer"
+
+    },
+    {
+      "parentId": "vacharaphol",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-vacharaphol-salesman",
+      "name": "Salesman"
+
+    },
+    {
+      "parentId": "vacharaphol",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-vacharaphol-purchase",
+      "name": "Purchase"
+
+    },
+    {
+      "parentId": "vacharaphol",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-vacharaphol-security",
+      "name": "Security"
+
+    },
+    {
+      "parentId": "vacharaphol",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-vacharaphol-housekeeper",
+      "name": "Housekeeper"
+
+    },
+    {
+      "parentId": "vacharaphol",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-vacharaphol-shipper",
+      "name": "Shipper"
+
+    },
+    {
+      "parentId": "vacharaphol",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-vacharaphol-management",
+      "name": "Management"
+
+    },
+    {
+      "parentId": "vacharaphol",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-vacharaphol-warehouse-worker",
+      "name": "Warehouse Worker"
+
+    },
+    {
+      "parentId": "vacharaphol",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-vacharaphol-surveyor",
+      "name": "Surveyor"
+
+    },
+
+
+    {
+      "parentId": "nawamin",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-nawamin-hr",
+      "name": "HR"
+    },
+
+    {
+      "parentId": "nawamin",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-nawamin-manager",
+      "name": "Manager"
+
+    },
+    {
+      "parentId": "nawamin",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-nawamin-accountant",
+      "name": "Accountant"
+
+    },
+    {
+      "parentId": "nawamin",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-nawamin-programmer",
+      "name": "Programmer"
+
+    },
+    {
+      "parentId": "nawamin",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-nawamin-salesman",
+      "name": "Salesman"
+
+    },
+    {
+      "parentId": "nawamin",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-nawamin-purchase",
+      "name": "Purchase"
+
+    },
+    {
+      "parentId": "nawamin",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-nawamin-security",
+      "name": "Security"
+
+    },
+    {
+      "parentId": "nawamin",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-nawamin-housekeeper",
+      "name": "Housekeeper"
+
+    },
+    {
+      "parentId": "nawamin",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-nawamin-shipper",
+      "name": "Shipper"
+
+    },
+    {
+      "parentId": "nawamin",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-nawamin-management",
+      "name": "Management"
+
+    },
+    {
+      "parentId": "nawamin",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-nawamin-warehouse-worker",
+      "name": "Warehouse Worker"
+
+    },
+    {
+      "parentId": "nawamin",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-nawamin-surveyor",
+      "name": "Surveyor"
+
+    },
+
+
+    {
+      "parentId": "srinagarindra",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-srinagarindra-hr",
+      "name": "HR"
+    },
+
+    {
+      "parentId": "srinagarindra",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-srinagarindra-manager",
+      "name": "Manager"
+
+    },
+    {
+      "parentId": "srinagarindra",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-srinagarindra-accountant",
+      "name": "Accountant"
+
+    },
+    {
+      "parentId": "srinagarindra",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-srinagarindra-programmer",
+      "name": "Programmer"
+
+    },
+    {
+      "parentId": "srinagarindra",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-srinagarindra-salesman",
+      "name": "Salesman"
+
+    },
+    {
+      "parentId": "srinagarindra",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-srinagarindra-purchase",
+      "name": "Purchase"
+
+    },
+    {
+      "parentId": "srinagarindra",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-srinagarindra-security",
+      "name": "Security"
+
+    },
+    {
+      "parentId": "srinagarindra",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-srinagarindra-housekeeper",
+      "name": "Housekeeper"
+
+    },
+    {
+      "parentId": "srinagarindra",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-srinagarindra-shipper",
+      "name": "Shipper"
+
+    },
+    {
+      "parentId": "srinagarindra",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-srinagarindra-management",
+      "name": "Management"
+
+    },
+    {
+      "parentId": "srinagarindra",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-srinagarindra-warehouse-worker",
+      "name": "Warehouse Worker"
+
+    },
+    {
+      "parentId": "srinagarindra",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-srinagarindra-surveyor",
+      "name": "Surveyor"
+
+    },
+
+
+
+
+
+
+
+
+
+
+    {
+      "parentId": "bangphli",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-bangphli-hr",
+      "name": "HR"
+    },
+
+    {
+      "parentId": "bangphli",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-bangphli-manager",
+      "name": "Manager"
+
+    },
+    {
+      "parentId": "bangphli",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-bangphli-accountant",
+      "name": "Accountant"
+
+    },
+    {
+      "parentId": "bangphli",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-bangphli-programmer",
+      "name": "Programmer"
+
+    },
+    {
+      "parentId": "bangphli",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-bangphli-salesman",
+      "name": "Salesman"
+
+    },
+    {
+      "parentId": "bangphli",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-bangphli-purchase",
+      "name": "Purchase"
+
+    },
+    {
+      "parentId": "bangphli",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-bangphli-security",
+      "name": "Security"
+
+    },
+    {
+      "parentId": "bangphli",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-bangphli-housekeeper",
+      "name": "Housekeeper"
+
+    },
+    {
+      "parentId": "bangphli",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-bangphli-shipper",
+      "name": "Shipper"
+
+    },
+    {
+      "parentId": "bangphli",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-bangphli-management",
+      "name": "Management"
+
+    },
+    {
+      "parentId": "bangphli",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-bangphli-warehouse-worker",
+      "name": "Warehouse Worker"
+
+    },
+    {
+      "parentId": "bangphli",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-bangphli-surveyor",
+      "name": "Surveyor"
+
+    },
+
+
+
+
+    {
+      "parentId": "ratchadaphisek",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-ratchadaphisek-hr",
+      "name": "HR"
+    },
+
+    {
+      "parentId": "ratchadaphisek",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-ratchadaphisek-manager",
+      "name": "Manager"
+
+    },
+    {
+      "parentId": "ratchadaphisek",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-ratchadaphisek-accountant",
+      "name": "Accountant"
+
+    },
+    {
+      "parentId": "ratchadaphisek",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-ratchadaphisek-programmer",
+      "name": "Programmer"
+
+    },
+    {
+      "parentId": "ratchadaphisek",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-ratchadaphisek-salesman",
+      "name": "Salesman"
+
+    },
+    {
+      "parentId": "ratchadaphisek",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-ratchadaphisek-purchase",
+      "name": "Purchase"
+
+    },
+    {
+      "parentId": "ratchadaphisek",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-ratchadaphisek-security",
+      "name": "Security"
+
+    },
+    {
+      "parentId": "ratchadaphisek",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-ratchadaphisek-housekeeper",
+      "name": "Housekeeper"
+
+    },
+    {
+      "parentId": "ratchadaphisek",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-ratchadaphisek-shipper",
+      "name": "Shipper"
+
+    },
+    {
+      "parentId": "ratchadaphisek",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-ratchadaphisek-management",
+      "name": "Management"
+
+    },
+    {
+      "parentId": "ratchadaphisek",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-ratchadaphisek-warehouse-worker",
+      "name": "Warehouse Worker"
+
+    },
+    {
+      "parentId": "ratchadaphisek",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-ratchadaphisek-surveyor",
+      "name": "Surveyor"
+
+    },
+
+
+
+
+
+
+
+    {
+      "parentId": "bangphli",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-bangphli-hr",
+      "name": "HR"
+    },
+
+    {
+      "parentId": "bangphli",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-bangphli-manager",
+      "name": "Manager"
+
+    },
+    {
+      "parentId": "bangphli",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-bangphli-accountant",
+      "name": "Accountant"
+
+    },
+    {
+      "parentId": "bangphli",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-bangphli-programmer",
+      "name": "Programmer"
+
+    },
+    {
+      "parentId": "bangphli",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-bangphli-salesman",
+      "name": "Salesman"
+
+    },
+    {
+      "parentId": "bangphli",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-bangphli-purchase",
+      "name": "Purchase"
+
+    },
+    {
+      "parentId": "bangphli",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-bangphli-security",
+      "name": "Security"
+
+    },
+    {
+      "parentId": "bangphli",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-bangphli-housekeeper",
+      "name": "Housekeeper"
+
+    },
+    {
+      "parentId": "bangphli",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-bangphli-shipper",
+      "name": "Shipper"
+
+    },
+    {
+      "parentId": "bangphli",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-bangphli-management",
+      "name": "Management"
+
+    },
+    {
+      "parentId": "bangphli",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-bangphli-warehouse-worker",
+      "name": "Warehouse Worker"
+
+    },
+    {
+      "parentId": "bangphli",
+      "companyId": "nano-store",
+      "locationId": "nano-store-bangkok",
+      "id": "nano-store-bangphli-surveyor",
+      "name": "Surveyor"
+
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {
+      "parentId": "sugar-daddy",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-cashier",
+      "name": "Cashier"
+    },
+
+    {
+      "parentId": "sugar-daddy",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-sale",
+      "name": "Sale"
+
+    },
+    {
+      "parentId": "sugar-daddy",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-management",
+      "name": "Management"
+
+    },
+    {
+      "parentId": "sugar-daddy",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-accountant",
+      "name": "Accountant"
+
+    },
+    {
+      "parentId": "sugar-daddy",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-captain",
+      "name": "Captain"
+
+    },
+    {
+      "parentId": "sugar-daddy",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-head-chef",
+      "name": "Head Chef"
+
+    },
+    {
+      "parentId": "sugar-daddy",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-sous-chef",
+      "name": "Sous Chef"
+
+    },
+    {
+      "parentId": "sugar-daddy",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-waiter-waitress",
+      "name": "Waiter/Waitress"
+
+    },
+    {
+      "parentId": "sugar-daddy",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-bar-runner",
+      "name": "Bar Runner"
+
+    },
+    {
+      "parentId": "sugar-daddy",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-dishwasher",
+      "name": "Dishwasher"
+
+    },
+
+
+    {
+      "parentId": "huapan",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-cashier",
+      "name": "Cashier"
+
+
+    },
+    {
+      "parentId": "huapan",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-receptionist",
+      "name": "Receptionist"
+
+    },
+    {
+      "parentId": "huapan",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-management",
+      "name": "Management"
+
+    },
+    {
+      "parentId": "huapan",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-accountant",
+      "name": "Accountant"
+
+    },
+    {
+      "parentId": "huapan",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-captain",
+      "name": "Captain"
+
+    },
+    {
+      "parentId": "huapan",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-manager",
+      "name": "Manager"
+
+    },
+    {
+      "parentId": "huapan",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-assistant-manager",
+      "name": "Assistant Manager"
+
+    },
+    {
+      "parentId": "huapan",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-bartender",
+      "name": "Bartender"
+
+    },
+    {
+      "parentId": "huapan",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-waiter-waitress",
+      "name": "Waiter/Waitress"
+
+    },
+    {
+      "parentId": "huapan",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-purchasing",
+      "name": "Purchasing"
+
+    },
+    {
+      "parentId": "huapan",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-bar-runner",
+      "name": "Bar Runner"
+
+    },
+    {
+      "parentId": "huapan",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-food-runner",
+      "name": "Food Runner"
+
+    },
+    {
+      "parentId": "huapan",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-housekeeper",
+      "name": "Housekeeper"
+
+    },
+    {
+      "parentId": "huapan",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-singer",
+      "name": "Singer"
+
+    },
+    {
+      "parentId": "huapan",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-bassist",
+      "name": "Bassist"
+
+    },
+    {
+      "parentId": "huapan",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-guitarist",
+      "name": "Guitarist"
+
+    },
+    {
+      "parentId": "huapan",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-keyboardist",
+      "name": "Keyboardist"
+
+    },
+    {
+      "parentId": "huapan",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-drummer",
+      "name": "Drummer"
+
+    },
+    {
+      "parentId": "huapan",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-sound-engineer",
+      "name": "Sound Engineer"
+
+    },
+    {
+      "parentId": "huapan",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-musician",
+      "name": "Musician"
+
+    },
+    {
+      "parentId": "huapan",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-dj",
+      "name": "DJ"
+
+    },
+    {
+      "parentId": "huapan",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-mc",
+      "name": "MC"
+
+    },
+    {
+      "parentId": "huapan",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-lightmen",
+      "name": "Lightmen"
+
+    },
+    {
+      "parentId": "huapan",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-photographer",
+      "name": "Photographer"
+
+    },
+    {
+      "parentId": "huapan",
+      "companyId": "nano-entertainment",
+      "locationId": "nano-entertainment-phuket",
+      "id": "nano-entertainment-phuket-bodyguard",
+      "name": "Bodyguard"
+
+    }
+
+
+
+
+
+  ],
+  "totalData": 10
+}

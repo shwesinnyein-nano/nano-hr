@@ -1,0 +1,40 @@
+hr{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.image-frame {
+  width: 150px; /* Change to desired width */
+  height: 150px; /* Change to desired height */
+  border: 5px solid #d1b07d; /* Frame color */
+  border-radius: 50%; /* Circular frame */
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.required-asterisk{
+  color: red;
+}
+.image-frame img {
+  width: 100%; /* Scale image to fit frame */
+  height: 100%;
+  object-fit: cover; /* Maintain aspect ratio */
+}
+.profile-image-container {
+  display: flex;
+  align-items: center;
+}
+
+.image-frame {
+  position: relative;
+}
+
+.ms-3 {
+  margin-left: 1rem; /* Adds space between the image and button */
+}
+.title{
+  font-weight: 600;
+  color: #d1b07d;
+}
+

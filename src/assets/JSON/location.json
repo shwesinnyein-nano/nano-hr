@@ -1,0 +1,38 @@
+{
+  "data" : [
+      {
+        "parentId": "nano-vip",
+        "id": "nano-vip-phuket",
+        "name": "Phuket"
+      },
+      {
+        "parentId": "nano-vip",
+
+        "id": "nano-vip-bangkok",
+        "name": "Bangkok"
+
+      },
+      {
+        "parentId": "nano-store",
+        "id": "nano-store-phuket",
+        "name": "Phuket"
+
+      },
+      {
+        "parentId": "nano-store",
+
+        "id": "nano-store-bangkok",
+        "name": "Bangkok"
+
+      },
+      {
+        "parentId": "nano-entertainment",
+        "id": "nano-entertainment-phuket",
+        "name": "Phuket"
+
+      }
+
+
+    ],
+  "totalData": 2
+}

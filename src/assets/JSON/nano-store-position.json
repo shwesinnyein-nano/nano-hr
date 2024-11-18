@@ -1,0 +1,68 @@
+{
+  "data" : [
+      {
+        "id": "NS-001",
+        "name": "HR"
+
+      },
+      {
+        "id": "NS-002",
+        "name": "Manager"
+
+      },
+      {
+        "id": "NS-003",
+        "name": "Accountant"
+
+      },
+      {
+        "id": "NS-004",
+        "name": "Programmer"
+
+      },
+      {
+        "id": "NS-005",
+        "name": "Salesman"
+
+      },
+      {
+        "id": "NS-006",
+        "name": "Purchase"
+
+      },
+      {
+        "id": "NS-007",
+        "name": "Security"
+
+      },
+      {
+        "id": "NS-008",
+        "name": "Housekeeper"
+
+      },
+      {
+        "id": "NS-009",
+        "name": "Shipper"
+
+      },
+      {
+        "id": "NS-010",
+        "name": "Management"
+
+      },
+      {
+        "id": "NS-011",
+        "name": "Warehouse Worker"
+
+      },
+      {
+        "id": "NS-012",
+        "name": "Surveyor"
+
+      }
+
+
+
+    ],
+  "totalData": 10
+}

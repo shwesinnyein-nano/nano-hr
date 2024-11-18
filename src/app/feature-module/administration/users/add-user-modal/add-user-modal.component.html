@@ -1,0 +1,444 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title">{{this.isEdit ? ('FORM.update_user' | translate) : ('FORM.add_user' | translate)}}</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="addUserForm">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="input-block mb-3">
+            <label class="col-form-label" for="">{{"FORM.company" | translate}} <span class="text-danger">*</span></label>
+            <mat-select class="select mat-cust-select custom-mat-select"  placeholder="Select Company" formControlName="company" (selectionChange)="onCompanyChange($event)">
+              <mat-option *ngFor="let company of companyList" [value]="company.id">
+                {{ company.name }}
+              </mat-option>
+            </mat-select>
+            @if (this.addUserForm.get('company')?.invalid && this.addUserForm.get('company')?.touched) {
+            <div>
+              @if (this.addUserForm.get('company')?.invalid && this.addUserForm.get('company')?.touched) {
+              <small class="text-danger"> *Company is required</small>
+              }
+            </div>
+            }
+          </div>
+
+        </div>
+        <div class="col-sm-6">
+          <div class="input-block mb-3">
+            <label class="col-form-label" for="">{{"FORM.location" | translate}} <span class="text-danger">*</span></label>
+            <mat-select formControlName="location" class="select mat-cust-select custom-mat-select" placeholder="Select Location" (selectionChange)="onLocationChange($event)">
+              <mat-option *ngFor="let location of locationList" [value]="location.id">
+                {{ location['name'] }}
+              </mat-option>
+            </mat-select>
+
+
+            @if (this.addUserForm.get('location')?.invalid && this.addUserForm.get('location')?.touched) {
+            <div>
+              @if (this.addUserForm.get('location')?.invalid && this.addUserForm.get('location')?.touched) {
+              <small class="text-danger"> *Location is required</small>
+              }
+            </div>
+            }
+          </div>
+        </div>
+
+        <div class="col-sm-6" *ngIf="isNanoStore || isNanoEntertainment">
+          <div class="input-block mb-3">
+            <label class="col-form-label" for="">{{"FORM.branch" | translate}} <span class="text-danger">*</span></label>
+            <mat-select class="select mat-cust-select custom-mat-select" placeholder="Select Branch" formControlName="branch" (selectionChange)="onBranchChange($event)">
+
+              <mat-option *ngFor="let branch of branchList" [value]="branch.id">
+                {{ branch.name }}
+              </mat-option>
+
+            </mat-select>
+
+            @if (this.addUserForm.get('branch')?.invalid && this.addUserForm.get('branch')?.touched) {
+            <div>
+              @if (this.addUserForm.get('branch')?.invalid && this.addUserForm.get('branch')?.touched) {
+              <small class="text-danger"> *Branch is required</small>
+              }
+            </div>
+            }
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="input-block mb-3">
+            <label class="col-form-label" for="">{{"FORM.position" | translate}} <span class="text-danger">*</span></label>
+            <mat-select formControlName="position"  class="select mat-cust-select custom-mat-select" placeholder="Select Position" (selectionChange)="onPositionChange($event)">
+              <mat-option *ngFor="let position of positionList" [value]="position.id">
+                {{ position.name }}
+              </mat-option>
+
+            </mat-select>
+
+            @if (this.addUserForm.get('position')?.invalid && this.addUserForm.get('position')?.touched) {
+            <div>
+              @if (this.addUserForm.get('position')?.invalid && this.addUserForm.get('position')?.touched) {
+              <small class="text-danger"> *Position is required</small>
+              }
+            </div>
+            }
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="input-block mb-3">
+            <label class="col-form-label" for="">{{"FORM.role" | translate}} <span class="text-danger">*</span></label>
+            <mat-select  class="select mat-cust-select custom-mat-select" placeholder="Select Role" formControlName="role">
+              <mat-option value="admin">Admin</mat-option>
+
+              <mat-option value="employee" selected>Employee</mat-option>
+            </mat-select>
+            @if (this.addUserForm.get('role')?.invalid && this.addUserForm.get('role')?.touched) {
+            <div>
+              @if (this.addUserForm.get('role')?.invalid && this.addUserForm.get('role')?.touched) {
+              <small class="text-danger"> *Role is required</small>
+              }
+            </div>
+            }
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="input-block mb-3">
+            <label class="col-form-label" for="">{{"FORM.first_name" | translate}} <span class="text-danger">*</span></label>
+            <input class="form-control" type="text" formControlName="firstName"
+              [class.invalid]="this.addUserForm.get('firstName')?.invalid && this.addUserForm.get('firstName')?.touched">
+              @if (this.addUserForm.get('firstName')?.invalid && this.addUserForm.get('firstName')?.touched) {
+                <div>
+                  @if (this.addUserForm.get('firstName')?.invalid && this.addUserForm.get('firstName')?.touched) {
+                  <small class="text-danger"> *First name is required</small>
+                  }
+                </div>
+              }
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="input-block mb-3">
+            <label class="col-form-label" for="">{{"FORM.last_name" | translate}} <span class="text-danger">*</span></label>
+              <input class="form-control" type="text" formControlName="lastName"
+              [class.invalid]="this.addUserForm.get('lastName')?.invalid && this.addUserForm.get('lastName')?.touched">
+              @if (this.addUserForm.get('lastName')?.invalid && this.addUserForm.get('lastName')?.touched) {
+                <div>
+                  @if (this.addUserForm.get('lastName')?.invalid && this.addUserForm.get('lastName')?.touched) {
+                  <small class="text-danger"> *Last name is required</small>
+                  }
+                </div>
+              }
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="input-block mb-3">
+            <label class="col-form-label" for="email">{{"FORM.email" | translate}} <span class="text-danger">*</span></label>
+            <input class="form-control" type="email" id="email"
+                   [class.invalid]="this.addUserForm.get('email')?.invalid && this.addUserForm.get('email')?.touched"
+                   formControlName="email">
+
+            <div *ngIf="this.addUserForm.get('email')?.invalid && this.addUserForm.get('email')?.touched">
+              <small *ngIf="this.addUserForm.get('email')?.errors?.['required']" class="text-danger">*Email is required</small>
+              <small *ngIf="this.addUserForm.get('email')?.errors?.['email']" class="text-danger">*Invalid email format</small>
+              <small *ngIf="this.addUserForm.get('email')?.errors?.['emailExists']" class="text-danger">*Email is already registered</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="col-sm-6">
+          <div class="input-block mb-3">
+            <label class="col-form-label" for="">Email <span class="text-danger">*</span></label>
+            <input class="form-control" type="email"
+              [class.invalid]="this.addUserForm.get('email')?.invalid && this.addUserForm.get('email')?.touched"
+              formControlName="email">
+            @if (this.addUserForm.get('email')?.invalid && this.addUserForm.get('email')?.touched) {
+            <div>
+              @if (this.addUserForm.get('email')?.invalid && this.addUserForm.get('email')?.touched) {
+              <small class="text-danger"> *Email is required</small>
+              }
+            </div>
+            }
+          </div>
+        </div> -->
+        <div class="col-sm-6">
+          <div class="input-block mb-3">
+            <label class="col-form-label" for="phoneNumber">{{"FORM.phone_number" | translate}} <span class="text-danger">*</span></label>
+            <input class="form-control" type="tel" id="phoneNumber"
+                   [class.invalid]="this.addUserForm.get('phone')?.invalid && this.addUserForm.get('phone')?.touched"
+                   formControlName="phone">
+
+              <div *ngIf="this.addUserForm.get('phone')?.invalid && this.addUserForm.get('phone')?.touched">
+              <small *ngIf="this.addUserForm.get('phone')?.errors?.['required']" class="text-danger">*Phone number is required</small>
+              <small *ngIf="this.addUserForm.get('phone')?.errors?.['pattern']" class="text-danger">*Invalid phone number format</small>
+              <small *ngIf="this.addUserForm.get('phone')?.errors?.['phoneExists']" class="text-danger">*Phone number is already registered</small>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- <div class="col-sm-6">
+          <div class="input-block mb-3">
+            <label class="col-form-label" for="">Password <span class="text-danger">*</span></label>
+            <input class="form-control" type="password"
+              [class.invalid]="this.addUserForm.get('password')?.invalid && this.addUserForm.get('password')?.touched"
+              formControlName="password">
+            @if (this.addUserForm.get('password')?.invalid && this.addUserForm.get('password')?.touched) {
+            <div>
+              @if (this.addUserForm.get('password')?.invalid && this.addUserForm.get('password')?.touched) {
+              <small class="text-danger"> *Password is required</small>
+              }
+            </div>
+            }
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="input-block mb-3">
+            <label class="col-form-label" for="">Confirm Password <span class="text-danger">*</span></label>
+            <input class="form-control" type="password"
+              [class.invalid]="this.addUserForm.get('confirmPassword')?.invalid && this.addUserForm.get('confirmPassword')?.touched"
+              formControlName="confirmPassword">
+            @if (this.addUserForm.get('confirmPassword')?.invalid && this.addUserForm.get('confirmPassword')?.touched) {
+            <div>
+              @if (this.addUserForm.get('confirmPassword')?.invalid && this.addUserForm.get('confirmPassword')?.touched) {
+              <small class="text-danger"> *Confirm password is required</small>
+              }
+            </div>
+            }
+          </div>
+        </div> -->
+        <div class="col-sm-6">
+          <div class="input-block mb-3">
+            <label class="col-form-label" for="password">{{"FORM.password" | translate}} <span class="text-danger">*</span></label>
+            <input class="form-control" type="password" id="password"
+                   [class.invalid]="this.addUserForm.get('password')?.invalid && this.addUserForm.get('password')?.touched"
+                   formControlName="password">
+            <div *ngIf="this.addUserForm.get('password')?.invalid && this.addUserForm.get('password')?.touched">
+              <small *ngIf="this.addUserForm.get('password')?.errors?.['required']" class="text-danger">*Password is required</small>
+              <small *ngIf="this.addUserForm.get('password')?.errors?.['passwordStrength']" class="text-danger">
+                *Password must be at least 6 characters long, contain an uppercase letter, a lowercase letter, and a number.
+              </small>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="input-block mb-3">
+            <label class="col-form-label" for="">{{ "FORM.join_date" | translate }}</label>
+            <div class="cal-icon">
+              <input
+                class="form-control"
+                formControlName="joinDate"
+                [class.invalid]="addUserForm.get('joinDate')?.invalid && addUserForm.get('joinDate')?.touched"
+                [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', showWeekNumbers: false }"
+                bsDatepicker
+                container=".date-input1"
+              />
+            </div>
+            <!-- Corrected error message display -->
+            <div *ngIf="addUserForm.get('joinDate')?.invalid && addUserForm.get('joinDate')?.touched">
+              <small class="text-danger">*Join date is required</small>
+            </div>
+          </div>
+
+          <!-- <div class="input-block mb-3">
+            <label class="col-form-label" for="">{{"FORM.join_date" | translate}} <span class="text-danger">*</span></label>
+            <div class="cal-icon">
+              <input class="form-control" formControlName="joinDate"  [class.invalid]="this.addUserForm.get('joinDate')?.invalid && this.addUserForm.get('joinDate')?.touched"
+                [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', showWeekNumbers: false }" bsDatepicker
+                container=".date-input1" />
+            </div>
+            @if (this.addUserForm.get('joinDate')?.invalid && this.addUserForm.get('joinDate')?.touched) {
+            <div>
+              @if (this.addUserForm.get('joinDate')?.invalid && this.addUserForm.get('joinDate')?.touched) {
+              <small class="text-danger"> *Join date is required</small>
+              }
+            </div>
+            }
+          </div> -->
+        </div>
+
+
+      </div>
+      <!-- <div class="table-responsive m-t-15">
+        <table class="table table-striped custom-table">
+          <thead>
+            <tr>
+              <th>Module Permission</th>
+              <th class="text-center">Read</th>
+              <th class="text-center">Write</th>
+              <th class="text-center">Create</th>
+              <th class="text-center">Delete</th>
+              <th class="text-center">Import</th>
+              <th class="text-center">Export</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Employee</td>
+              <td class="text-center">
+                <label class="custom_check">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+              <td class="text-center">
+                <label class="custom_check">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+              <td class="text-center">
+                <label class="custom_check">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+              <td class="text-center">
+                <label class="custom_check">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+              <td class="text-center">
+                <label class="custom_check">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+              <td class="text-center">
+                <label class="custom_check">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>Holidays</td>
+              <td class="text-center">
+                <label class="custom_check">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+              <td class="text-center">
+                <label class="custom_check">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+              <td class="text-center">
+                <label class="custom_check">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+              <td class="text-center">
+                <label class="custom_check">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+              <td class="text-center">
+                <label class="custom_check">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+              <td class="text-center">
+                <label class="custom_check">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>Leaves</td>
+              <td class="text-center">
+                <label class="custom_check">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+              <td class="text-center">
+                <label class="custom_check">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+              <td class="text-center">
+                <label class="custom_check">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+              <td class="text-center">
+                <label class="custom_check">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+              <td class="text-center">
+                <label class="custom_check">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+              <td class="text-center">
+                <label class="custom_check">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td>Events</td>
+              <td class="text-center">
+                <label class="custom_check">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+              <td class="text-center">
+                <label class="custom_check">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+              <td class="text-center">
+                <label class="custom_check">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+              <td class="text-center">
+                <label class="custom_check">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+              <td class="text-center">
+                <label class="custom_check">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+              <td class="text-center">
+                <label class="custom_check">
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                </label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div> -->
+
+      <div class="submit-section" *ngIf="!this.isView">
+
+        <button class="btn btn-primary submit-btn" (click)="submitAddUser()">{{this.isEdit ? ('FORM.update' | translate) : ('FORM.submit' | translate)}}</button>
+      </div>
+
+    </form>
+  </div>
+</div>
