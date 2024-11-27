@@ -77,9 +77,9 @@ export class UserRoleService {
   }
 
   getUserByUid(uid?: string): Observable<any> {
-    if(uid){
+    if (uid) {
       return this.firestore.collection('users').doc(uid).valueChanges();
-    }else{
+    } else {
       return this.firestore.collection('users').valueChanges();
     }
   }
@@ -108,4 +108,22 @@ export class UserRoleService {
       return [];
     }
   }
+  updateUserMenuAccess(uid: string, menuAccess: any,isUpdate:boolean=false) {
+    return from(
+      isUpdate 
+        ? this.firestore.collection('permissions').doc(uid).update({ menuAccess })
+        : this.firestore.collection('permissions').doc(uid).set({ menuAccess })
+    ).pipe(map(() => ({
+      success: true,
+      message: isUpdate ? 'Updated Permission successfully' : 'Created Permission successfully',
+      data: {
+        uid: uid,
+        menuAccess
+      }
+    })))
+  }
+  getMenuAccess(uid: string){
+    return this.firestore.collection('permissions').doc(uid).valueChanges();
+  }
+
 }

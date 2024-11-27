@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Sort } from '@angular/material/sort';
-import { AuthService, DataService, apiResultFormat, getUsers, routes } from 'src/app/core/core.index';
+import { AuthService, DataService, SideBar, apiResultFormat, getUsers, routes } from 'src/app/core/core.index';
 import {
   FormBuilder,
   FormGroup,
@@ -42,16 +42,19 @@ export class UserViewComponent implements OnInit {
   //** / pagination variables
 
 
-  positionListNanoVipList: any;
-  positionListNanoStore: any;
-  positionListNanoEntertainmentSugarDaddy: any;
-  positionListNanoEntertainmentHu: any;
+  // positionListNanoVipList: any;
+  // positionListNanoStore: any;
+  // positionListNanoEntertainmentSugarDaddy: any;
+  // positionListNanoEntertainmentHu: any;
   locationList: any;
-  storeBranchPhuketList: any;
-  storeBranchBangkokList: any;
-  entertainmentBranchList: any;
+  positionList: any;
   companyList: any;
-  constructor(private formBuilder: FormBuilder,private data: DataService, private modalService: NgbModal, private authService: AuthService, private userService: UserRoleService, private employeeService: EmployeeService     ) {
+  branchList: any;
+  // storeBranchPhuketList: any;
+  // storeBranchBangkokList: any;
+  // entertainmentBranchList: any;
+  positionObj:any
+  constructor(private formBuilder: FormBuilder, private data: DataService, private modalService: NgbModal, private authService: AuthService, private userService: UserRoleService, private employeeService: EmployeeService) {
 
   }
 
@@ -61,67 +64,79 @@ export class UserViewComponent implements OnInit {
 
 
 
-
   }
+
   fetchAllData(): void {
-    this.data.fetchAllData().subscribe(
+    this.data.fetchAllList().subscribe(
       (data) => {
-        this.positionListNanoVipList = data.nanoVipPosition.data;
-        this.positionListNanoStore = data.nanoStorePosition.data;
-        this.positionListNanoEntertainmentSugarDaddy = data.nanoEntertainmentSugarDaddyPosition.data;
-        this.positionListNanoEntertainmentHu = data.nanoEntertainmentHuPosition.data;
-        this.locationList = data.location.data;
-        this.storeBranchPhuketList = data.storeBranchPhuket.data;
-        this.storeBranchBangkokList = data.storeBranchBangkok.data;
-        this.entertainmentBranchList = data.entertainmentBranch.data;
+       
+        this.positionList = data.positionList.data;
+        this.locationList = data.locationList.data;
         this.companyList = data.companyList.data;
-        console.log('Data fetched successfully', data);
+        this.branchList = data.branchList.data; 
+        this.positionObj = this.positionList.reduce((acc: any, position: any) => {
+          acc[position.name] = position.name_th;
+          return acc;
+        }, {});
+        
+      
 
       },
       (error) => {
         console.error('Error fetching data', error);
       }
     );
-  }
-
-
-  addUser(){
-    console.log("addUser", this.addUsers.value);
-  }
-
-  openAddUserModal(){
-    console.log("openAddUserModal");
-   const modalRef = this.modalService.open(AddUserModalComponent, { size: 'lg', centered: true })
-
-   modalRef.result.then((result: any) => {
-    console.log("result", result);
-    if(result.data){
-      this.authService.registerUser(result.data.email, result.data.password, result.data).subscribe((res: any) => {
-        console.log("res", res);
-        if(res.success){
-          this.getTableData();
-        }
-      })
-    }
-   })
-
+    
 
   }
 
-  searchUser(){
-    console.log("searchUser", this.searchName, this.searchCompany);
+
+ 
+
+  openAddUserModal() {
+    const email = this.authService.decrypt(localStorage.getItem('currentUserEmail') || '');
+    const password = this.authService.decrypt(localStorage.getItem('currentUserPassword') || '');
+   
+    const modalRef = this.modalService.open(AddUserModalComponent, { size: 'lg', centered: true })
+
+    modalRef.result.then((result: any) => {
+      
+      if (result.data) {
+        this.authService.registerUser(result.data.email, result.data.password, result.data).subscribe((res: any) => {
+         
+          if (result.menuAccess) {
+            this.userService.updateUserMenuAccess(res.data.uid, result.menuAccess, false).subscribe((menuRes: any) => {
+            
+              if (res.success) {
+                this.authService.loginWithEmail(email, password)
+                  .then(() => {
+                    this.getTableData();
+                  })
+              }
+            })
+          }
+
+        })
+      }
+    })
+
+
+  }
+
+  searchUser() {
+   
     this.userService.searchUsers(this.searchName, this.searchCompany).then((res: any) => {
-      console.log("res", res);
+    
       this.users = res;
     });
   }
-  cancelSearch(){
+  cancelSearch() {
     this.searchName = '';
     this.searchCompany = '';
     this.getTableData();
   }
 
-  disabledUser(user: any){
+  disabledUser(user: any) {
 
   }
 
@@ -131,15 +146,24 @@ export class UserViewComponent implements OnInit {
 
     this.userService.getUsers().subscribe((res: any) => {
 
-      this.users = res.data
+      // this.users = res.data
 
 
 
-      console.log("users", this.users);
+     
       this.totalData = res.data.length
+      res.data.map((res: getUsers, index: number) => {
+        const serialNumber = index + 1;
+        if (index >= this.skip && serialNumber <= this.limit) {
+          res.id = serialNumber;
+         
+          this.users.push(res);
+          this.serialNumberArray.push(serialNumber);
+        }
+      });
       this.calculateTotalPages(this.totalData, this.pageSize);
-      this.serialNumberArray = Array.from({ length: this.totalData }, (_, i) => i + 1);
-      console.log("data", this.users)
+      // this.serialNumberArray = Array.from({ length: this.totalData }, (_, i) => i + 1);
+      // console.log("data", this.users)
     })
   }
 
@@ -150,7 +174,7 @@ export class UserViewComponent implements OnInit {
 
   //   return company ;
   // }
-  openEditUserModal(user: any){
+  openEditUserModal(user: any) {
     console.log("openEditUserModal", user);
     const modalRef = this.modalService.open(AddUserModalComponent, { size: 'lg', centered: true });
     modalRef.componentInstance.data = user;
@@ -158,11 +182,16 @@ export class UserViewComponent implements OnInit {
 
     modalRef.result.then((result: any) => {
       console.log("edit result", result);
-      if(result.data) {
+      if (result.data) {
         this.userService.updateUserData(result.data.uid, result.data).subscribe((res: any) => {
           console.log("res", res);
-          if(res.success){
-            this.getTableData();
+          if (result.menuAccess) {
+            this.userService.updateUserMenuAccess(result.data.uid, result.menuAccess, true).subscribe((menuRes: any) => {
+              console.log("menuRes", menuRes);
+              if (res.success) {
+                this.getTableData();
+              }
+            })
           }
         })
       }
@@ -170,7 +199,7 @@ export class UserViewComponent implements OnInit {
 
   }
 
-  openViewUserModal(user: any){
+  openViewUserModal(user: any) {
     console.log("openViewUserModal", user);
     const modalRef = this.modalService.open(AddUserModalComponent, { size: 'lg', centered: true });
     modalRef.componentInstance.data = user;

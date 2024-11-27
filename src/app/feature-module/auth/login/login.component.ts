@@ -383,6 +383,7 @@ export class LoginComponent {
 
       this.authService.loginWithEmail(email, password)
         .then(() => {
+          localStorage.setItem('currentUserEmail', this.authService.encrypt(email));
           localStorage.setItem('currentUserPassword', this.authService.encrypt(password));
           this.router.navigate([routes.adminDashboard]);
         })

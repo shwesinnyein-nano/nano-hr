@@ -1,6 +1,6 @@
-<div class="settings-icon"> 
+<!-- <div class="settings-icon"> 
     <span data-bs-toggle="offcanvas" data-bs-target="#theme-settings-offcanvas" aria-controls="theme-settings-offcanvas"><i class="las la-cog"></i></span> 
-</div> 
+</div>  -->
 <div class="offcanvas offcanvas-end border-0 " tabindex="-1" id="theme-settings-offcanvas"> 
     <div class="sidebar-headerset">
         <div class="sidebar-headersets">
@@ -8,7 +8,9 @@
             <h3>Customize your overview Page layout</h3>
         </div>
         <div class="sidebar-headerclose">
-            <a data-bs-dismiss="offcanvas" aria-label="Close"><img src="assets/img/close.png" alt="Close Icon"></a>
+            <a data-bs-dismiss="offcanvas" aria-label="Close">
+                <!-- <img src="../../../../../assets/images/close.png" alt="Close Icon"> -->
+            </a>
         </div>
     </div>
     <div class="offcanvas-body p-0"> 
@@ -23,7 +25,7 @@
                         <div class="form-check card-radio p-0"> 
                             <input id="customizer-layout01" name="data-layout" type="radio" value="vertical" class="form-check-input"> 
                             <label class="form-check-label avatar-md w-100" for="customizer-layout01" [class.active]="layoutMode === 'default_mode'"> 
-                                <img src="assets/img/vertical.png" alt="Layout Image">
+                                <!-- <img src="assets/img/vertical.png" alt="Layout Image"> -->
                             </label> 
                         </div> 
                         <h5 class="fs-13 text-center mt-2">Vertical</h5> 
@@ -32,7 +34,7 @@
                         <div class="form-check card-radio p-0"> 
                         <input id="customizer-layout02" name="data-layout" type="radio" value="horizontal" class="form-check-input"> 
                             <label class="form-check-label  avatar-md w-100" for="customizer-layout02" [class.active]="layoutMode === 'horizontal_mode'"> 
-                                <img src="assets/img/horizontal.png" alt="Layout Image">
+                                <!-- <img src="assets/img/horizontal.png" alt="Layout Image"> -->
                             </label> 
                         </div> 
                         <h5 class="fs-13 text-center mt-2">Horizontal</h5> 
@@ -41,7 +43,7 @@
                         <div class="form-check card-radio p-0"> 
                             <input id="customizer-layout03" name="data-layout" type="radio" value="twocolumn" class="form-check-input"> 
                             <label class="form-check-label  avatar-md w-100" for="customizer-layout03" [class.active]="layoutMode === 'twocolumn'"> 
-                                <img src="assets/img/two-col.png" alt="Layout Image">
+                                <!-- <img src="assets/img/two-col.png" alt="Layout Image"> -->
                             </label> 
                         </div> 
                         <h5 class="fs-13 text-center mt-2">Two Column</h5> 
@@ -57,7 +59,7 @@
                                 <div class="form-check card-radio p-0"> 
                                     <input class="form-check-input" type="radio" name="data-layout-mode" id="layout-mode-orange" value="orange"> 
                                     <label class="form-check-label  avatar-md w-100 " for="layout-mode-orange" [class.active]="colorScheme === 'orange_color_scheme'"> 
-                                        <img src="assets/img/vertical.png" alt="Layout Image">
+                                        <!-- <img src="assets/img/vertical.png" alt="Layout Image"> -->
                                 </label> 
                             </div> 
                             <h5 class="fs-13 text-center mt-2">Orange</h5> 
@@ -66,7 +68,7 @@
                             <div class="form-check card-radio p-0"> 
                                 <input class="form-check-input" type="radio" name="data-layout-mode" id="layout-mode-light" value="light"> 
                                 <label class="form-check-label  avatar-md w-100" for="layout-mode-light" [class.active]="colorScheme === 'light_color_scheme'"> 
-                                    <img src="assets/img/vertical.png" alt="Layout Image">
+                                    <!-- <img src="assets/img/vertical.png" alt="Layout Image"> -->
                                 </label> 
                             </div> 
                             <h5 class="fs-13 text-center mt-2">Light</h5> 
@@ -75,7 +77,7 @@
                             <div class="form-check card-radio dark  p-0 "> 
                                 <input class="form-check-input" type="radio" name="data-layout-mode" id="layout-mode-dark" value="dark"> 
                                 <label class="form-check-label avatar-md w-100 " for="layout-mode-dark" [class.active]="colorScheme === 'dark_color_scheme'"> 
-                                    <img src="assets/img/vertical.png" alt="Layout Image">
+                                    <!-- <img src="assets/img/vertical.png" alt="Layout Image"> -->
                                 </label> 
                             </div> 
                             <h5 class="fs-13 text-center mt-2">Dark</h5> 
@@ -84,7 +86,7 @@
                             <div class="form-check card-radio blue  p-0 "> 
                                 <input class="form-check-input" type="radio" name="data-layout-mode" id="layout-mode-blue" value="blue"> 
                                 <label class="form-check-label  avatar-md w-100" for="layout-mode-blue" [class.active]="colorScheme === 'blue_color_scheme'"> 
-                                    <img src="assets/img/vertical.png" alt="Layout Image">
+                                    <!-- <img src="assets/img/vertical.png" alt="Layout Image"> -->
                                 </label> 
                             </div> 
                             <h5 class="fs-13 text-center mt-2">Blue</h5> 
@@ -93,7 +95,7 @@
                             <div class="form-check card-radio maroon p-0"> 
                                 <input class="form-check-input" type="radio" name="data-layout-mode" id="layout-mode-maroon" value="maroon"> 
                                 <label class="form-check-label  avatar-md w-100 " for="layout-mode-maroon" [class.active]="colorScheme === 'maroon_color_scheme'"> 
-                                    <img src="assets/img/vertical.png" alt="Layout Image">
+                                    <!-- <img src="assets/img/vertical.png" alt="Layout Image"> -->
                                 </label> 
                             </div> 
                             <h5 class="fs-13 text-center mt-2">Maroon</h5> 
@@ -102,7 +104,7 @@
                             <div class="form-check card-radio purple p-0"> 
                                 <input class="form-check-input" type="radio" name="data-layout-mode" id="layout-mode-purple" value="purple"> 
                                 <label class="form-check-label  avatar-md w-100 " for="layout-mode-purple" [class.active]="colorScheme === 'purple_color_scheme'"> 
-                                    <img src="assets/img/vertical.png" alt="Layout Image">
+                                    <!-- <img src="assets/img/vertical.png" alt="Layout Image"> -->
                                 </label> 
                             </div> 
                             <h5 class="fs-13 text-center mt-2">Purple</h5> 
@@ -120,7 +122,7 @@
                             <div class="form-check card-radio p-0"> 
                                 <input class="form-check-input" type="radio" name="data-layout-width" id="layout-width-fluid" value="fluid"> 
                                 <label class="form-check-label avatar-md w-100" for="layout-width-fluid" [class.active]="layoutWidth === 'fluid_width_layout'"> 
-                                    <img src="assets/img/vertical.png" alt="Layout Image">
+                                    <!-- <img src="assets/img/vertical.png" alt="Layout Image"> -->
                                 </label> 
                             </div> 
                             <h5 class="fs-13 text-center mt-2">Fluid</h5> 
@@ -129,7 +131,7 @@
                             <div class="form-check card-radio p-0 "> 
                                 <input class="form-check-input" type="radio" name="data-layout-width" id="layout-width-boxed" value="boxed"> 
                                 <label class="form-check-label avatar-md w-100 px-2" for="layout-width-boxed"  [class.active]="layoutWidth === 'boxed_width_layout'"> 
-                                    <img src="assets/img/boxed.png" alt="Layout Image"> 
+                                    <!-- <img src="assets/img/boxed.png" alt="Layout Image">  -->
                                 </label> 
                             </div> 
                             <h5 class="fs-13 text-center mt-2">Boxed</h5> 
@@ -159,7 +161,7 @@
                         <div class="form-check card-radio  p-0"> 
                             <input class="form-check-input" type="radio" name="data-topbar" id="topbar-color-light" value="light"> 
                             <label class="form-check-label avatar-md w-100" for="topbar-color-light" [class.active]="topbarColor === 'light_color_topbar'"> 
-                                <img src="assets/img/vertical.png" alt="Layout Image">
+                                <!-- <img src="assets/img/vertical.png" alt="Layout Image"> -->
                             </label> 
                         </div> 
                         <h5 class="fs-13 text-center mt-2">Light</h5> 
@@ -168,7 +170,7 @@
                         <div class="form-check card-radio p-0"> 
                             <input class="form-check-input" type="radio" name="data-topbar" id="topbar-color-dark" value="dark"> 
                             <label class="form-check-label  avatar-md w-100" for="topbar-color-dark" [class.active]="topbarColor === 'dark_color_topbar'"> 
-                                <img src="assets/img/dark.png" alt="Layout Image">
+                                <!-- <img src="assets/img/dark.png" alt="Layout Image"> -->
                             </label> 
                         </div> 
                         <h5 class="fs-13 text-center mt-2">Dark</h5> 
@@ -185,7 +187,7 @@
                             <div class="form-check sidebar-setting card-radio  p-0 "> 
                                 <input class="form-check-input" type="radio" name="data-sidebar-size" id="sidebar-size-default" value="lg" > 
                                 <label class="form-check-label avatar-md w-100" for="sidebar-size-default" [class.active]="sidebarSize === 'default_sidebar_size'"> 
-                                    <img src="assets/img/vertical.png" alt="Layout Image">
+                                    <!-- <img src="assets/img/vertical.png" alt="Layout Image"> -->
                                 </label> 
                             </div> 
                             <h5 class="fs-13 text-center mt-2">Default</h5> 
@@ -195,7 +197,7 @@
                             <div class="form-check sidebar-setting card-radio p-0"> 
                                 <input class="form-check-input" type="radio" name="data-sidebar-size" id="sidebar-size-compact" value="md"> 
                                 <label class="form-check-label  avatar-md w-100" for="sidebar-size-compact" [class.active]="sidebarSize === 'compact_sidebar_size'"> 
-                                    <img src="assets/img/compact.png" alt="Layout Image">
+                                    <!-- <img src="assets/img/compact.png" alt="Layout Image"> -->
                                 </label> 
                             </div> 
                             <h5 class="fs-13 text-center mt-2">Compact</h5> 
@@ -205,7 +207,7 @@
                             <div class="form-check sidebar-setting card-radio p-0 "> 
                                 <input class="form-check-input" type="radio" name="data-sidebar-size" id="sidebar-size-small-hover" value="sm-hover" > 
                                 <label class="form-check-label avatar-md w-100" for="sidebar-size-small-hover" [class.active]="sidebarSize === 'sm_hover_sidebar_size'"> 
-                                    <img src="assets/img/small-hover.png" alt="Layout Image">
+                                    <!-- <img src="assets/img/small-hover.png" alt="Layout Image"> -->
                                 </label> 
                             </div> 
                             <h5 class="fs-13 text-center mt-2">Small Hover View</h5> 
@@ -223,7 +225,7 @@
                             <div class="form-check sidebar-setting card-radio  p-0"> 
                                 <input class="form-check-input" type="radio" name="data-layout-style" id="sidebar-view-default" value="default"> 
                                 <label class="form-check-label avatar-md w-100" for="sidebar-view-default"  [class.active]="sidebarView === 'default_sidebar_view'"> 
-                                    <img src="assets/img/compact.png" alt="Layout Image">
+                                    <!-- <img src="assets/img/compact.png" alt="Layout Image"> -->
                                 </label>
                                 </div> 
                             <h5 class="fs-13 text-center mt-2">Default</h5> 
@@ -232,7 +234,7 @@
                             <div class="form-check sidebar-setting card-radio p-0"> 
                                 <input class="form-check-input" type="radio" name="data-layout-style" id="sidebar-view-detached" value="detached"> 
                                 <label class="form-check-label  avatar-md w-100" for="sidebar-view-detached" [class.active]="sidebarView === 'detached_sidebar_view'"> 
-                                    <img src="assets/img/detached.png" alt="Layout Image">
+                                    <!-- <img src="assets/img/detached.png" alt="Layout Image"> -->
                                 </label> 
                             </div> 
                             <h5 class="fs-13 text-center mt-2">Detached</h5> 

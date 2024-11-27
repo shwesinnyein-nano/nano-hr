@@ -103,7 +103,7 @@
               </td>
 
               <td>{{user.companyName }}</td>
-              <td>{{user.positionName }}</td>
+              <td>{{user.positionName | dyn_translate:positionObj[user.positionName] }}</td>
               <td>
                 <span
                   [ngClass]="{'bg-inverse-info':user.role === 'client','bg-inverse-warning':user.role === 'admin','bg-inverse-success':user.role === 'employee'}"

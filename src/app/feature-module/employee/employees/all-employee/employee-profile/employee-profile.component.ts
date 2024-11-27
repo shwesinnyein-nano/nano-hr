@@ -132,6 +132,7 @@ export class EmployeeProfileComponent implements OnInit {
   loadFormData(data?: any) {
     console.log("data", data);
     this.imageUrl = data?.profileImage || null;
+   
     this.addEmployeeForm = this.formBuilder.group({
       uid: new FormControl(data?.uid || null),
       gender: new FormControl(data?.gender || null),
@@ -170,6 +171,15 @@ export class EmployeeProfileComponent implements OnInit {
     if(data) {
      if(data.sameAsIdAddress === true) {
       this.disableCurrentAddress();
+     }
+     if(data.allergies === 'Yes') {
+      this.isAllergies = true;
+     }
+     if(data.disabilities === 'Yes') {
+      this.isDisabilities = true;
+     }
+     if(data.congenitalDiseases === 'Yes') {
+      this.isCongenitalDiseases = true;
      }
     }
   }
@@ -303,105 +313,4 @@ export class EmployeeProfileComponent implements OnInit {
     this.uploadedDocuments.splice(index, 1); // Remove the document at the specified index
   }
 
-  selectedList1: data[] = [
-    { value: 'Select PF contribution' },
-    { value: 'Yes' },
-    { value: 'No' },
-  ];
-  selectedList2: data[] = [
-    { value: 'Select PF contribution' },
-    { value: 'Yes' },
-    { value: 'No' },
-  ];
-  selectedList3: data[] = [
-    { value: 'Select PF contribution' },
-    { value: 'Yes' },
-    { value: 'No' },
-  ];
-  selectedList4: data[] = [
-    { value: 'Select additional rate' },
-    { value: '0%' },
-    { value: '1%' },
-    { value: '2%' },
-    { value: '3%' },
-    { value: '4%' },
-    { value: '5%' },
-    { value: '6%' },
-    { value: '7%' },
-    { value: '8%' },
-    { value: '9%' },
-    { value: '10%' },
-  ];
-  selectedList5: data[] = [
-    { value: 'Select PF contribution' },
-    { value: 'Yes' },
-    { value: 'No' },
-  ];
-  selectedList6: data[] = [
-    { value: 'Select additional rate' },
-    { value: '0%' },
-    { value: '1%' },
-    { value: '2%' },
-    { value: '3%' },
-    { value: '4%' },
-    { value: '5%' },
-    { value: '6%' },
-    { value: '7%' },
-    { value: '8%' },
-    { value: '9%' },
-    { value: '10%' },
-  ];
-  selectedList7: data[] = [
-    { value: 'Select ESI contribution' },
-    { value: 'Yes' },
-    { value: 'No' },
-  ];
-  selectedList8: data[] = [
-    { value: 'Select ESI contribution' },
-    { value: 'Yes' },
-    { value: 'No' },
-  ];
-  selectedList9: data[] = [
-    { value: 'Select ESI contribution' },
-    { value: 'Yes' },
-    { value: 'No' },
-  ];
-  selectedList10: data[] = [
-    { value: 'Select additional rate' },
-    { value: '0%' },
-    { value: '1%' },
-    { value: '2%' },
-    { value: '3%' },
-    { value: '4%' },
-    { value: '5%' },
-    { value: '6%' },
-    { value: '7%' },
-    { value: '8%' },
-    { value: '9%' },
-    { value: '10%' },
-  ];
-  selectedList11: data[] = [{ value: 'Male' }, { value: 'Female' }];
-  selectedList12: data[] = [
-    { value: 'Select Department' },
-    { value: 'Web Development' },
-    { value: 'IT Management' },
-    { value: 'Marketing' },
-  ];
-  selectedList13: data[] = [
-    { value: 'Select Designation' },
-    { value: 'Web Designer' },
-    { value: 'Web Developer' },
-    { value: 'Android Developer' },
-  ];
-  selectedList14: data[] = [
-    { value: '-' },
-    { value: 'Wilmer Deluna' },
-    { value: 'Lesley Grauer' },
-    { value: 'Jeffery Lalor' },
-  ];
-  selectedList15: data[] = [
-    { value: '-' },
-    { value: 'Single' },
-    { value: 'Married' },
-  ];
 }

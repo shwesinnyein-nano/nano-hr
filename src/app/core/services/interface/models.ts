@@ -18,6 +18,12 @@ export interface SideBarMenu {
   page?: string;
   last2?: string;
   materialicons: string;
+  permissions?: {
+    read: boolean;
+    write: boolean;
+    create: boolean;
+    delete: boolean;
+  };
   subMenus?: SubMenu[];
   dot?: boolean;
   changeLogVersion?: boolean;
@@ -39,6 +45,12 @@ export interface SubMenu {
   base6?: string;
   base7?: string;
   base8?: string;
+  permissions?: {
+    read: boolean;
+    write: boolean;
+    create: boolean;
+    delete: boolean;
+  };
   currentActive?: boolean;
   hasSubRoute?: boolean;
   showSubRoute?: boolean;
@@ -70,6 +82,12 @@ export interface SideBar {
   separateRoute: boolean;
   materialicons?: string;
   menu: SideBarMenu[];
+  permissions?: {
+    read: boolean;
+    write: boolean;
+    create: boolean;
+    delete: boolean;
+  };
   hasSubRoute?: boolean;
 
 }
@@ -108,16 +126,21 @@ export interface getUsers {
   updatedDate: string;
   createdDate: string;
 }
-export interface getCompany {
+export interface getCarList {
   id: number;
-  company: string;
-  location: string;
-  branch: string;
-  branchCode: string;
-  createdDate: string;
-  updatedDate: string;
+  brand: string;
+  brandName: string;
+  model: string;
+  modelName: string;
+  color: string;
+  car_number: string;
+  expire_date_for_tax: string;
+  expire_date_for_insurance: string;
+  maintain_date: string;
+  current_mile: string;
   uid: string;
-  address: string;
+  created_date: string;
+  updated_date: string;
 }
 
 export interface getTrainType {
@@ -882,19 +905,21 @@ export interface getCategories {
 }
 export interface getBudgets {
   id: number;
-  budgettitle: string;
-  budgettype: string;
-  startdate: string;
-  enddate: string;
-  totalrevenue: string;
-  totalexpenses: string;
-  taxamount: string;
-  budgetamount: string;
-  notes: string;
-  categoryname: string;
-  subcategoryname: string;
+  expense_type: string;
+  expense_source: string;
+  creditor_name: string;
   amount: string;
-  revenuedate: string;
+  expense_date: string;
+  status: string;
+}
+export interface getTransactionHistory {
+  id: number;
+  expense_type: string;
+  expense_source: string;
+  creditor_name: string;
+  amount: string;
+  expense_date: string;
+  status: string;
 }
 export interface projectContent {
   project: string;

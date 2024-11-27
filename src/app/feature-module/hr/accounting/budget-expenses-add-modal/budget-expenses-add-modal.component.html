@@ -1,0 +1,259 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title">Add Expenses</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="addRevenueForm">
+      <div class="input-block mb-3 form-row">
+        <label for="" class="col-lg-12 control-label col-form-label">Expense Type <span
+            class="text-danger">*</span></label>
+        <div class="col-lg-12">
+          <mat-select name="expense_type" class="custom-mat-select"
+            [class.invalid]="addRevenueForm.get('expense_type')?.invalid && addRevenueForm.get('expense_type')?.touched"
+            id="expense_type" placeholder="Choose Type" formControlName="expense_type">
+            <mat-option value="salary">Salary</mat-option>
+            <mat-option value="utilities">Utilities</mat-option>
+            <mat-option value="advertising">Advertising </mat-option>
+            <mat-option value="fuel">Fuel</mat-option>
+            <mat-option value="compliance-legal">Compliance and Legal</mat-option>
+            <mat-option value="employee-welfare">Employee Welfare</mat-option>
+            <mat-option value="taxes-financial-obligations">Taxes and Financial Obligations</mat-option>
+            <mat-option value="travel-miscellaneous">Travel and Miscellaneous</mat-option>
+            <mat-option value="other">Other</mat-option>
+          </mat-select>
+          @if (
+          addRevenueForm.get('expense_type')?.invalid &&
+          addRevenueForm.get('expense_type')?.touched
+          ) {
+          <div>
+            <small class="text-danger">
+              *Expense Type required</small>
+          </div>
+          }
+        </div>
+      </div>
+      <div class="input-block mb-3 form-row">
+        <label for="" class="col-lg-12 control-label col-form-label">Expense Source <span
+            class="text-danger">*</span></label>
+        <div class="col-lg-12 ">
+          <input class="form-control" type="text" name="expense_source" [class.invalid]="
+                addRevenueForm.get('expense_source')?.invalid &&
+              addRevenueForm.get('expense_source')?.touched
+            " formControlName="expense_source" />
+        </div>
+        @if (
+        addRevenueForm.get('expense_source')?.invalid &&
+        addRevenueForm.get('expense_source')?.touched
+        ) {
+        <div>
+          @if (
+          addRevenueForm.get('expense_source')?.invalid &&
+          addRevenueForm.get('expense_source')?.touched
+          ) {
+          <small class="text-danger">
+            *Expense Source required</small>
+          }
+        </div>
+        }
+      </div>
+      <div class="input-block mb-3 form-row">
+        <label for="" class="col-lg-12 control-label col-form-label">Creditor Name <span
+            class="text-danger">*</span></label>
+        <div class="col-lg-12" >
+          <input class=" form-control" type="text"  formControlName="creditor_name"
+             name="creditor_name" [class.invalid]="
+                addRevenueForm.get('creditor_name')?.invalid &&
+              addRevenueForm.get('creditor_name')?.touched
+            "  />
+        </div>
+        @if (
+        addRevenueForm.get('creditor_name')?.invalid &&
+        addRevenueForm.get('creditor_name')?.touched
+        ) {
+        <div>
+          @if (
+          addRevenueForm.get('creditor_name')?.invalid &&
+          addRevenueForm.get('creditor_name')?.touched
+          ) {
+          <small class="text-danger">
+            *Creditor Name required</small>
+          }
+        </div>
+        }
+      </div>
+      <div class="input-block mb-3 form-row">
+        <label for="" class="col-lg-12 control-label col-form-label">Invoice Number <span
+            class="text-danger">*</span></label>
+        <div class="col-lg-12">
+          <input class="form-control" type="text"name="invoice_number" formControlName="invoice_number" [class.invalid]="
+                addRevenueForm.get('invoice_number')?.invalid &&
+              addRevenueForm.get('invoice_number')?.touched
+            "  />
+        </div>
+        @if (
+        addRevenueForm.get('invoice_number')?.invalid &&
+        addRevenueForm.get('invoice_number')?.touched
+        ) {
+        <div>
+          @if (
+          addRevenueForm.get('invoice_number')?.invalid &&
+          addRevenueForm.get('invoice_number')?.touched
+          ) {
+          <small class="text-danger">
+            *Invoice Number required</small>
+          }
+        </div>
+        }
+      </div>
+      <div class="input-block mb-3 form-row">
+        <label for="" class="col-lg-6 control-label col-form-label">Expense Date <span
+            class="text-danger">*</span></label>
+        <div class="col-lg-12 date-input">
+          <div class="cal-icon">
+            <input class="form-control" formControlName="expense_date"
+              [class.invalid]="addRevenueForm.get('expense_date')?.invalid && addRevenueForm.get('expense_date')?.touched"
+              [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', showWeekNumbers: false }" bsDatepicker
+              container=".date-input1" />
+          </div>
+        </div>
+        @if (
+        addRevenueForm.get('expense_date')?.invalid &&
+        addRevenueForm.get('expense_date')?.touched
+        ) {
+        <div>
+          @if (
+          addRevenueForm.get('expense_date')?.invalid &&
+          addRevenueForm.get('expense_date')?.touched
+          ) {
+          <small class="text-danger">
+            *Expense Date required</small>
+          }
+        </div>
+        }
+      </div>
+      <div class="input-block mb-3 form-row">
+        <label for="" class="col-lg-12 control-label col-form-label">Due Date <span class="text-danger">*</span></label>
+        <div class="col-lg-12 date-input">
+          <div class="cal-icon">
+            <!-- Set minimum date to today to prevent selecting past dates -->
+            <!-- <input
+              class="form-control" 
+              formControlName="due_date"
+              [min]="today"
+              [class.invalid]="addRevenueForm.get('due_date')?.invalid && addRevenueForm.get('due_date')?.touched"
+              [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', showWeekNumbers: false, minDate: today }"
+              bsDatepicker
+              container=".date-input1"
+            /> -->
+            <input class="form-control" formControlName="due_date"
+              [class.invalid]="addRevenueForm.get('due_date')?.invalid && addRevenueForm.get('due_date')?.touched"
+              [bsConfig]="bsConfig" bsDatepicker container=".date-input1" />
+
+            <!-- <input
+              class="form-control"
+              formControlName="due_date" 
+              [class.invalid]="addRevenueForm.get('due_date')?.invalid && addRevenueForm.get('due_date')?.touched"
+              [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', showWeekNumbers: false }"
+              bsDatepicker
+              container=".date-input1"
+            /> -->
+            <!-- <div *ngIf="addRevenueForm.get('due_date')?.errors?.invalidDate && addRevenueForm.get('due_date')?.touched">
+              Please select a valid date.
+            </div> -->
+            
+          </div>
+        </div>
+        @if (
+        addRevenueForm.get('due_date')?.invalid &&
+        addRevenueForm.get('due_date')?.touched
+        ) {
+        <div>
+          @if (
+          addRevenueForm.get('due_date')?.invalid &&
+          addRevenueForm.get('due_date')?.touched
+          ) {
+          <small class="text-danger">
+            *Expense Date required</small>
+          }
+        </div>
+        }
+      </div>
+      <div class="input-block mb-3 form-row">
+        <label for="" class="col-lg-12 control-label col-form-label">Tax </label>
+        <div class="col-lg-12 ">
+          <input class="form-control" type="text"  name="expense_tax" />
+        </div>
+
+      </div>
+
+
+      <div class="input-block mb-3 form-row row">
+        <label for="" class="col-lg-12 control-label col-form-label">Amount <span class="text-danger">*</span></label>
+        <div class="col-lg-6 p-0 mb-3 pe-lg-3 pe-0">
+          <input type="text" class="form-control" placeholder="800.00" formControlName="expense_amount" [class.invalid]="
+              addRevenueForm.get('expense_amount')?.invalid &&
+              addRevenueForm.get('expense_amount')?.touched
+            " formControlName="expense_amount" />
+          @if (
+          addRevenueForm.get('expense_amount')?.invalid &&
+          addRevenueForm.get('expense_amount')?.touched
+          ) {
+          <div>
+            @if (
+            addRevenueForm.get('expense_amount')?.invalid &&
+            addRevenueForm.get('expense_amount')?.touched
+            ) {
+            <small class="text-danger">
+              *Amount required</small>
+            }
+          </div>
+          }
+        </div>
+        <div class="col-lg-6">
+          <mat-select name="currency_symbol" formControlName="expense_currency" class="custom-mat-select"
+            placeholder="Select Currency">
+            <mat-option value="$ - AUD">THB - Baht</mat-option>
+            <mat-option value="$ - AUD">USD - US Dollar</mat-option>
+
+
+
+
+          </mat-select>
+        </div>
+      </div>
+      <div class="input-block mb-3 form-row">
+        <label for="" class="col-lg-12 control-label col-form-label">Notes </label>
+        <div class="col-lg-12">
+          <textarea class="form-control ta" formControlName="expense_notes"></textarea>
+        </div>
+
+      </div>
+
+      <div class="input-block mb-3 form-row position-relative">
+        <label for="" class="col-lg-12 control-label col-form-label">Attach File</label>
+        <div class="col-lg-12">
+          <input
+            type="file"
+            class="form-control"
+            data-buttontext="Choose File"
+            data-icon="false"
+            data-classbutton="btn btn-default"
+            data-classinput="form-control inline input-s"
+            name="receipt"
+            (change)="onFileSelectedFiles($event)"
+            accept="image/*" 
+          />
+        </div>
+      </div>
+      <div class="preview mt-3" *ngIf="previewUrl">
+        <img [src]="previewUrl" alt="File Preview" class="img-fluid" style="max-width: 100%; height: auto;" />
+      </div>
+      <div class="submit-section">
+        <button class="btn btn-primary submit-btn" (click)="onSubmitExpense()">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

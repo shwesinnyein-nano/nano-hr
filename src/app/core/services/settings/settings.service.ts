@@ -9,7 +9,7 @@ import { routes } from '../../core.index';
 export class SettingsService {
   // Layout Mode
   public layoutMode: BehaviorSubject<string> = new BehaviorSubject<string>(
-    localStorage.getItem('layoutMode') || 'default_mode'
+    localStorage.getItem('layoutMode') || 'twocolumn'
   );
 
   // Header Color

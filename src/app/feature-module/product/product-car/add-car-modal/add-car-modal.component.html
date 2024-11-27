@@ -1,0 +1,157 @@
+<div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">{{this.isEdit ? ('FORM.edit_car' | translate) : ('FORM.add_car' | translate)}}</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="addCarForm">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="input-block mb-3">
+              <label class="col-form-label" for="">{{"FORM.brand" | translate}} <span class="text-danger">*</span></label>
+              <mat-select class="select mat-cust-select custom-mat-select"
+                placeholder="{{'FORM.select_brand' | translate}}" formControlName="brand"
+                (selectionChange)="onBrandChange($event)">
+                <mat-option *ngFor="let brand of carBrandList" [value]="brand.id">
+                  {{ brand.name }}
+                </mat-option>
+              </mat-select>
+              @if (this.addCarForm.get('brand')?.invalid && this.addCarForm.get('brand')?.touched) {
+              <div>
+                @if (this.addCarForm.get('brand')?.invalid && this.addCarForm.get('brand')?.touched) {
+                <small class="text-danger"> *Brand is required</small>
+                }
+              </div>
+              }
+            </div>
+  
+          </div>
+          <div class="col-sm-6">
+            <div class="input-block mb-3">
+              <label class="col-form-label" for="">{{"FORM.model" | translate}} <span class="text-danger">*</span></label>
+              <mat-select class="select mat-cust-select custom-mat-select" (selectionChange)="onModelChange($event)"
+                placeholder="{{'FORM.select_model' | translate}}" formControlName="model">
+                <mat-option *ngFor="let model of selectedBrandList" [value]="model.id">
+                  {{ model.name }}
+                </mat-option>
+              </mat-select>
+              @if (this.addCarForm.get('model')?.invalid && this.addCarForm.get('model')?.touched) {
+              <div>
+                @if (this.addCarForm.get('model')?.invalid && this.addCarForm.get('model')?.touched) {
+                <small class="text-danger"> *Model is required</small>
+                }
+              </div>
+              }
+            </div>
+          </div>
+  
+          <div class="col-sm-6">
+            <div class="input-block mb-3">
+              <label class="col-form-label" for="">{{"FORM.color" | translate}}<span class="text-danger">*</span></label>
+              <input class="form-control" type="text" formControlName="color"
+                [class.invalid]="this.addCarForm.get('color')?.invalid && this.addCarForm.get('color')?.touched">
+              @if (this.addCarForm.get('color')?.invalid && this.addCarForm.get('color')?.touched) {
+              <div>
+                @if (this.addCarForm.get('color')?.invalid && this.addCarForm.get('color')?.touched) {
+                <small class="text-danger"> *Color is required</small>
+                }
+              </div>
+              }
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="input-block mb-3">
+              <label class="col-form-label" for="">{{"FORM.car_number" | translate}}<span
+                  class="text-danger">*</span></label>
+              <input class="form-control" type="text" formControlName="car_number"
+                [class.invalid]="this.addCarForm.get('car_number')?.invalid && this.addCarForm.get('car_number')?.touched">
+              @if (this.addCarForm.get('car_number')?.invalid && this.addCarForm.get('car_number')?.touched) {
+              <div>
+                @if (this.addCarForm.get('car_number')?.invalid && this.addCarForm.get('car_number')?.touched) {
+                <small class="text-danger"> *Car Plate No is required</small>
+                }
+              </div>
+              }
+            </div>
+          </div>
+  
+          <div class="col-sm-6">
+            <div class="input-block mb-3">
+              <label class="col-form-label" for="">{{"FORM.expire_date_for_tax" | translate}} <span
+                  class="text-danger">*</span></label>
+  
+              <div class="cal-icon">
+                <input class="form-control" formControlName="expire_date_for_tax"
+                  [class.invalid]="addCarForm.get('expire_date_for_tax')?.invalid && addCarForm.get('expire_date_for_tax')?.touched"
+                  [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', showWeekNumbers: false }" bsDatepicker
+                  container=".date-input1" />
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="input-block mb-3">
+              <label class="col-form-label" for="">{{"FORM.expire_date_for_insurance" | translate}} <span
+                  class="text-danger">*</span></label>
+              
+              <div class="cal-icon">
+                <input class="form-control" formControlName="expire_date_for_insurance"
+                  [class.invalid]="addCarForm.get('expire_date_for_insurance')?.invalid && addCarForm.get('expire_date_for_insurance')?.touched"
+                  [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', showWeekNumbers: false }" bsDatepicker
+                  container=".date-input1" />
+              </div>
+  
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="input-block mb-3">
+              <label class="col-form-label" for="">{{"FORM.maintain_date" | translate}}<span
+                  class="text-danger">*</span></label>
+              
+              <div class="cal-icon">
+                <input class="form-control" formControlName="maintain_date"
+                  [class.invalid]="addCarForm.get('maintain_date')?.invalid && addCarForm.get('maintain_date')?.touched"
+                  [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', showWeekNumbers: false }" bsDatepicker
+                  container=".date-input1" />
+              </div>
+  
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="input-block mb-3">
+              <label class="col-form-label" for="">{{"FORM.current_mile" | translate}}<span
+                  class="text-danger">*</span></label>
+              <input class="form-control" type="text" formControlName="current_mile">
+  
+  
+            </div>
+          </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+        </div>
+  
+  
+        <div class="submit-section" *ngIf="!this.isView">
+  
+          <button class="btn btn-primary submit-btn" (click)="submitAddCar()">{{this.isEdit ? ("FORM.update" | translate)
+            : ('FORM.submit' | translate)}}</button>
+        </div>
+        <!-- <div class="submit-section gap-2" *ngIf="this.isView" style="display: flex; justify-content: space-evenly;">
+          <button class="col-md-4 btn btn-primary submit-btn" (click)="closeModal()">Close</button>
+          <button class="col-md-4 btn btn-primary submit-btn" (click)="disabledUser()">{{this.isDisabled ? 'Disabled' : 'Enabled'}}</button>
+        </div> -->
+      </form>
+    </div>
+  </div>

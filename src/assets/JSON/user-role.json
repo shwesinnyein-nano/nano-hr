@@ -1,0 +1,33 @@
+{
+    "data" : [
+        {
+          "id":"admin",
+          "name": "Admin"
+          
+        },
+        {
+          "id":"employee",
+          "name": "Employee"
+
+
+        },
+        {   
+          "id":"maker",
+          "name": "Maker"
+
+        },
+        {
+          "id":"verifier",
+          "name": "Verifier"
+
+        
+        },
+        {
+          "id":"approver",
+          "name": "Approver"
+        }
+        
+
+      ],
+        "totalData":5
+}

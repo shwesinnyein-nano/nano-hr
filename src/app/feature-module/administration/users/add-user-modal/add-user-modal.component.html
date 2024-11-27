@@ -11,7 +11,7 @@
         <div class="col-sm-6">
           <div class="input-block mb-3">
             <label class="col-form-label" for="">{{"FORM.company" | translate}} <span class="text-danger">*</span></label>
-            <mat-select class="select mat-cust-select custom-mat-select"  placeholder="Select Company" formControlName="company" (selectionChange)="onCompanyChange($event)">
+            <mat-select class="select mat-cust-select custom-mat-select"  placeholder="{{'FORM.select_company' | translate}}" formControlName="company" (selectionChange)="onCompanyChange($event)">
               <mat-option *ngFor="let company of companyList" [value]="company.id">
                 {{ company.name }}
               </mat-option>
@@ -29,9 +29,9 @@
         <div class="col-sm-6">
           <div class="input-block mb-3">
             <label class="col-form-label" for="">{{"FORM.location" | translate}} <span class="text-danger">*</span></label>
-            <mat-select formControlName="location" class="select mat-cust-select custom-mat-select" placeholder="Select Location" (selectionChange)="onLocationChange($event)">
-              <mat-option *ngFor="let location of locationList" [value]="location.id">
-                {{ location['name'] }}
+            <mat-select formControlName="location" class="select mat-cust-select custom-mat-select" placeholder="{{'FORM.select_location' | translate}}" (selectionChange)="onLocationChange($event)">
+              <mat-option *ngFor="let location of selectedLocationList" [value]="location.id">
+                {{ location['name'] | dyn_translate:location['name_th'] }}
               </mat-option>
             </mat-select>
 
@@ -49,10 +49,10 @@
         <div class="col-sm-6" *ngIf="isNanoStore || isNanoEntertainment">
           <div class="input-block mb-3">
             <label class="col-form-label" for="">{{"FORM.branch" | translate}} <span class="text-danger">*</span></label>
-            <mat-select class="select mat-cust-select custom-mat-select" placeholder="Select Branch" formControlName="branch" (selectionChange)="onBranchChange($event)">
+            <mat-select class="select mat-cust-select custom-mat-select" placeholder="{{'FORM.select_branch' | translate}}" formControlName="branch" (selectionChange)="onBranchChange($event)">
 
-              <mat-option *ngFor="let branch of branchList" [value]="branch.id">
-                {{ branch.name }}
+              <mat-option *ngFor="let branch of selectedBranchList" [value]="branch.id">
+                {{ branch.name | dyn_translate:branch['name_th'] }}
               </mat-option>
 
             </mat-select>
@@ -70,9 +70,9 @@
         <div class="col-sm-6">
           <div class="input-block mb-3">
             <label class="col-form-label" for="">{{"FORM.position" | translate}} <span class="text-danger">*</span></label>
-            <mat-select formControlName="position"  class="select mat-cust-select custom-mat-select" placeholder="Select Position" (selectionChange)="onPositionChange($event)">
-              <mat-option *ngFor="let position of positionList" [value]="position.id">
-                {{ position.name }}
+            <mat-select formControlName="position"  class="select mat-cust-select custom-mat-select" placeholder="{{'FORM.select_position' | translate}}" (selectionChange)="onPositionChange($event)">
+              <mat-option *ngFor="let position of selectedPositionList" [value]="position.id">
+                {{ position.name | dyn_translate:position['name_th'] }}
               </mat-option>
 
             </mat-select>
@@ -89,9 +89,12 @@
         <div class="col-sm-6">
           <div class="input-block mb-3">
             <label class="col-form-label" for="">{{"FORM.role" | translate}} <span class="text-danger">*</span></label>
-            <mat-select  class="select mat-cust-select custom-mat-select" placeholder="Select Role" formControlName="role">
+            <mat-select  class="select mat-cust-select custom-mat-select" placeholder="{{'FORM.select_role' | translate}}" formControlName="role">
               <mat-option value="admin">Admin</mat-option>
 
+              <mat-option value="employee" selected>Employee</mat-option>
+              <mat-option value="employee" selected>Employee</mat-option>
+              <mat-option value="employee" selected>Employee</mat-option>
               <mat-option value="employee" selected>Employee</mat-option>
             </mat-select>
             @if (this.addUserForm.get('role')?.invalid && this.addUserForm.get('role')?.touched) {
@@ -260,7 +263,7 @@
 
 
       </div>
-      <!-- <div class="table-responsive m-t-15">
+      <div class="table-responsive m-t-15">
         <table class="table table-striped custom-table">
           <thead>
             <tr>
@@ -269,170 +272,52 @@
               <th class="text-center">Write</th>
               <th class="text-center">Create</th>
               <th class="text-center">Delete</th>
-              <th class="text-center">Import</th>
-              <th class="text-center">Export</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Employee</td>
+            <tr *ngFor="let permission of side_bar_data">
+              <td>{{ permission.menuValue }}</td>
               <td class="text-center">
                 <label class="custom_check">
-                  <input type="checkbox" checked>
+                  <input 
+                    type="checkbox" 
+                    formControlName="{{ permission.menuValue }}_read" 
+                  />
                   <span class="checkmark"></span>
                 </label>
               </td>
               <td class="text-center">
                 <label class="custom_check">
-                  <input type="checkbox" checked>
+                  <input 
+                    type="checkbox" 
+                   formControlName="{{ permission.menuValue }}_write" 
+                  />
                   <span class="checkmark"></span>
                 </label>
               </td>
               <td class="text-center">
                 <label class="custom_check">
-                  <input type="checkbox" checked>
+                  <input 
+                    type="checkbox" 
+                   formControlName="{{ permission.menuValue }}_create" 
+                  />
                   <span class="checkmark"></span>
                 </label>
               </td>
               <td class="text-center">
                 <label class="custom_check">
-                  <input type="checkbox" checked>
-                  <span class="checkmark"></span>
-                </label>
-              </td>
-              <td class="text-center">
-                <label class="custom_check">
-                  <input type="checkbox" checked>
-                  <span class="checkmark"></span>
-                </label>
-              </td>
-              <td class="text-center">
-                <label class="custom_check">
-                  <input type="checkbox" checked>
-                  <span class="checkmark"></span>
-                </label>
-              </td>
-            </tr>
-            <tr>
-              <td>Holidays</td>
-              <td class="text-center">
-                <label class="custom_check">
-                  <input type="checkbox" checked>
-                  <span class="checkmark"></span>
-                </label>
-              </td>
-              <td class="text-center">
-                <label class="custom_check">
-                  <input type="checkbox" checked>
-                  <span class="checkmark"></span>
-                </label>
-              </td>
-              <td class="text-center">
-                <label class="custom_check">
-                  <input type="checkbox" checked>
-                  <span class="checkmark"></span>
-                </label>
-              </td>
-              <td class="text-center">
-                <label class="custom_check">
-                  <input type="checkbox" checked>
-                  <span class="checkmark"></span>
-                </label>
-              </td>
-              <td class="text-center">
-                <label class="custom_check">
-                  <input type="checkbox" checked>
-                  <span class="checkmark"></span>
-                </label>
-              </td>
-              <td class="text-center">
-                <label class="custom_check">
-                  <input type="checkbox" checked>
+                  <input 
+                    type="checkbox" 
+                   formControlName="{{ permission.menuValue }}_delete" 
+                  />
                   <span class="checkmark"></span>
                 </label>
               </td>
             </tr>
-            <tr>
-              <td>Leaves</td>
-              <td class="text-center">
-                <label class="custom_check">
-                  <input type="checkbox" checked>
-                  <span class="checkmark"></span>
-                </label>
-              </td>
-              <td class="text-center">
-                <label class="custom_check">
-                  <input type="checkbox" checked>
-                  <span class="checkmark"></span>
-                </label>
-              </td>
-              <td class="text-center">
-                <label class="custom_check">
-                  <input type="checkbox" checked>
-                  <span class="checkmark"></span>
-                </label>
-              </td>
-              <td class="text-center">
-                <label class="custom_check">
-                  <input type="checkbox" checked>
-                  <span class="checkmark"></span>
-                </label>
-              </td>
-              <td class="text-center">
-                <label class="custom_check">
-                  <input type="checkbox" checked>
-                  <span class="checkmark"></span>
-                </label>
-              </td>
-              <td class="text-center">
-                <label class="custom_check">
-                  <input type="checkbox" checked>
-                  <span class="checkmark"></span>
-                </label>
-              </td>
-            </tr>
-            <tr>
-              <td>Events</td>
-              <td class="text-center">
-                <label class="custom_check">
-                  <input type="checkbox" checked>
-                  <span class="checkmark"></span>
-                </label>
-              </td>
-              <td class="text-center">
-                <label class="custom_check">
-                  <input type="checkbox" checked>
-                  <span class="checkmark"></span>
-                </label>
-              </td>
-              <td class="text-center">
-                <label class="custom_check">
-                  <input type="checkbox" checked>
-                  <span class="checkmark"></span>
-                </label>
-              </td>
-              <td class="text-center">
-                <label class="custom_check">
-                  <input type="checkbox" checked>
-                  <span class="checkmark"></span>
-                </label>
-              </td>
-              <td class="text-center">
-                <label class="custom_check">
-                  <input type="checkbox" checked>
-                  <span class="checkmark"></span>
-                </label>
-              </td>
-              <td class="text-center">
-                <label class="custom_check">
-                  <input type="checkbox" checked>
-                  <span class="checkmark"></span>
-                </label>
-              </td>
-            </tr>
+           
           </tbody>
         </table>
-      </div> -->
+      </div>
 
       <div class="submit-section" *ngIf="!this.isView">
 

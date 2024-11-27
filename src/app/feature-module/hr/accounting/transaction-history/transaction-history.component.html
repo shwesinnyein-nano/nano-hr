@@ -1,0 +1,160 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title">Transaction History List</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button> -->
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- <div class="table_header">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <div class="dataTables_length">
+              <label>
+                Show
+                <select [(ngModel)]="pageSize" (ngModelChange)="changePageSize()" class="form-control form-control-sm">
+                  <option value="10">10</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+                Entries
+              </label>
+            </div>
+          </div>
+        </div>
+      </div> -->
+                <div class="table-responsive">
+                    <table matSort (matSortChange)="sortData($event)" class="table table-striped custom-table mb-0">
+                        <thead>
+                            <tr>
+                                <th mat-sort-header="id">No</th>
+                                <th mat-sort-header="expenseType">Expense Type</th>
+                                <th mat-sort-header="expenseSource">Expense Source</th>
+                                <th mat-sort-header="creditorName">Creditor Name</th>
+                                <th mat-sort-header="amount">Amount</th>
+                                <th mat-sort-header="expenseDate">Expense Date</th>
+                                <th mat-sort-header="dueDate">Due Date</th>
+                                <th mat-sort-header="status">Status</th>
+                                <th class="text-end">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (item of lstTransactionHistory; track item) {
+                            <tr>
+                                <td>{{ serialNumberArray[lstTransactionHistory.indexOf(item)] }}</td>
+                               
+                                <td>{{ item.expense_type }}</td>
+                                <td>{{ item.expense_source }}</td>
+                                <td>{{ item.creditor_name }}</td>
+                                <td>{{ item.amount }}</td>
+                                <td>{{ item.expense_date }}</td>
+                                <td>{{ item.expense_date }}</td>
+                                <td>{{ item.status }}</td>
+                                <td class="text-end">
+                                    <div class="dropdown dropdown-action">
+                                        <a href="javascript:void(0);" class="action-icon dropdown-toggle"
+                                            data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                class="material-icons">more_vert</i></a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal"
+                                                data-bs-target="#edit_categories"><i
+                                                    class="fa-solid fa-pencil m-r-5"></i>
+                                                Edit</a>
+                                            <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal"
+                                                data-bs-target="#delete"><i class="fa-regular fa-trash-can m-r-5"></i>
+                                                Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            }
+                                @if (lstTransactionHistory.length === 0) {
+                            <tr>
+                                <td colspan="10">
+                                    <h5 style="text-align: center">No data found</h5>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table_footer">
+                    <div class="col-sm-12 col-md-5">
+                        <div class="dataTables_info">
+                            Showing {{ serialNumberArray[0] }} to
+                            {{ serialNumberArray[serialNumberArray.length - 1] }} of
+                            {{ totalData }} entries
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-7">
+                        <div class="pagination_section">
+                            <ul class="pagination">
+                                <li class="page-item" [ngClass]="{
+                  disabled: currentPage === 1
+                }">
+                                    <a (click)="getMoreData('previous')" class="page-link" href="javascript:void(0);"
+                                        tabindex="-1"><i class="fa fa-angle-double-left"></i></a>
+                                </li>
+
+                                @for (item of pageNumberArray; track item; let i = $index) {
+                                <li class="page-item" [class.active]="item === currentPage" [ngClass]="
+                    (pageNumberArray[currentPage - 2] > item &&
+                      item !== 1 &&
+                      pageNumberArray.length > 6) ||
+                    (pageNumberArray[currentPage] < item &&
+                      item !== 1 &&
+                      pageNumberArray.length > 6 &&
+                      pageNumberArray.length !== item)
+                      ? 'hide-page-no'
+                      : 'show-page-no'
+                  ">
+                                    <a (click)="moveToPage(item)" class="page-link" href="javascript:void(0);">
+                                        {{ item }}
+                                    </a>
+                                </li>
+                                @if (
+                                i === 0 && pageNumberArray.length > 6 && currentPage > 2
+                                ) {
+                                <li class="page-item" [hidden]="currentPage === 1" (click)="moveToPage(currentPage - 2)"
+                                    (keydown.enter)="moveToPage(currentPage - 2)" tabindex="0">
+                                    <a class="page-link" href="javascript:void(0);"> ... </a>
+                                </li>
+                                }
+                                @if (
+                                i === pageNumberArray.length - 2 &&
+                                pageNumberArray.length > 6
+                                ) {
+                                <li [hidden]="
+                    currentPage >=
+                      pageNumberArray[pageNumberArray.length - 2] ||
+                    totalData < serialNumberArray[serialNumberArray.length - 1]
+                  " class="page-item" (click)="moveToPage(currentPage + 2)"
+                                    (keydown.enter)="moveToPage(currentPage + 2)" tabindex="0">
+                                    <a class="page-link" href="javascript:void(0);"> ... </a>
+                                </li>
+                                }
+                                }
+
+                                <li class="page-item" [ngClass]="{
+                  disabled:
+                    currentPage ===
+                      pageNumberArray[pageNumberArray.length - 1] ||
+                    lstTransactionHistory.length === 0
+                }">
+                                    <a (click)="getMoreData('next')" class="page-link" href="javascript:void(0);"><i
+                                            class=" fa fa-angle-double-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,207 @@
+<!-- Page Content -->
+<div class="content container-fluid">
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col">
+          <h3 class="page-title">{{"FORM.car_list" | translate}}</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="routes.adminDashboard">{{"FORM.dashboard" | translate}}</a></li>
+            <li class="breadcrumb-item active">{{"FORM.car_list" | translate}}</li>
+          </ul>
+        </div>
+        <div class="col-auto float-end ms-auto">
+          <a class="btn add-btn" (click)="openAddCompanyModal()" ><i class="la la-plus-circle"></i>
+            {{"FORM.add_car" | translate}}</a>
+        </div>
+      </div>
+    </div>
+    <div class="row filter-row">
+  
+     
+  
+      <div class="col-sm-6 col-md-3">
+        <div class="input-block mb-3 form-focus select-focus select">
+  
+          <mat-select class="select mat-cust-select custom-mat-select" [(ngModel)]="searchBrand"
+          placeholder="{{'FORM.select_brand' | translate}}" 
+          >
+          <mat-option *ngFor="let brand of carBrandList" [value]="brand.id">
+            {{ brand.name }}
+          </mat-option>
+        </mat-select>
+          <label class="focus-label">{{"FORM.brand" | translate}}</label>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3" style="margin-bottom: 12px;">
+        <a class="btn btn-primary w-100" (click)="searchCar()"> {{"FORM.search" | translate}} </a>
+  
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <a class="btn btn-secondary w-100" (click)="cancelSearch()"> {{"FORM.cancel" | translate}} </a>
+  
+      </div>
+     
+    </div>
+    <!-- /Search Filter -->
+  
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table_header">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="dataTables_length">
+                <label class="col-form-label" for="">
+                  Show
+                  <select [(ngModel)]="pageSize" (ngModelChange)="changePageSize()" class="form-control form-control-sm">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                  </select>
+                  Entries
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table matSort (matSortChange)="sortData($event)" class="table table-striped custom-table datatable"
+            id="datatable">
+            <thead>
+              <tr>
+                <th mat-sort-header="name">{{"FORM.brand" | translate}}</th>
+                <th mat-sort-header="email">{{"FORM.model" | translate}}</th>
+                <th mat-sort-header="company">{{"FORM.color" | translate}}</th>
+                <th mat-sort-header="role">{{"FORM.car_number" | translate}}</th>
+                <th>{{"FORM.current_mile" | translate}}</th>
+  
+                <th class="text-end">{{"FORM.action" | translate}}</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let company of carList;  let i = index">
+              <tr>
+  
+                <td>
+                  <h2 class="table-avatar">
+                    <!-- <a [routerLink]="routes.employeeProfile" class="avatar"><img
+                        src="assets/img/profiles/avatar-{{ i + 1 }}.jpg" alt=""></a> -->
+                   {{company.brandName | uppercase}}
+                   
+                  </h2>
+                </td>
+  
+                <td>{{company.modelName | uppercase}}</td>
+                <td>{{company.color | uppercase}}</td>
+                <td>{{company.car_number | uppercase}}</td>
+                <td>{{company.current_mile | uppercase}}</td>
+  
+  
+  
+                <td class="text-end">
+                  <div class="dropdown dropdown-action">
+                    <a class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i
+                        class="material-icons">more_vert</i></a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                      <a class="dropdown-item" (click)="openEditCompanyModal(company)"><i class="fa-solid fa-pencil m-r-5"></i>
+                        Edit</a>
+                      <a class="dropdown-item" (click)="openViewCompanyModal(company)"><i
+                          class="fa-regular fa-trash-can m-r-5"></i>
+                        View</a>
+  
+                    </div>
+                  </div>
+                </td>
+              </tr>
+  
+  
+  
+            </tbody>
+  
+            <tbody *ngIf="carList.length === 0">
+              <tr>
+                <td colspan="10">
+                  <h5 style="text-align: center;">{{"FORM.no_data_found" | translate}}</h5>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table_footer">
+          <div class="col-sm-12 col-md-5">
+            <div class="dataTables_info">
+              Showing {{ serialNumberArray[0] }} to
+              {{ serialNumberArray[serialNumberArray.length - 1] }} of
+              {{ totalData }} entries
+            </div>
+          </div>
+  
+          <div class="col-sm-12 col-md-7">
+            <div class="pagination_section">
+              <ul class="pagination">
+                <li class="page-item" [ngClass]="{
+                            disabled: currentPage === 1
+                          }">
+                  <a (click)="getMoreData('previous')" class="page-link" href="javascript:void(0);" tabindex="-1"><i
+                      class="fa fa-angle-double-left"></i></a>
+                </li>
+  
+                @for (item of pageNumberArray; track item; let i = $index) {
+                <li class="page-item" [class.active]="item === currentPage" [ngClass]="
+                              (pageNumberArray[currentPage - 2] > item &&
+                                item !== 1 &&
+                                pageNumberArray.length > 6) ||
+                              (pageNumberArray[currentPage] < item &&
+                                item !== 1 &&
+                                pageNumberArray.length > 6 &&
+                                pageNumberArray.length !== item)
+                                ? 'hide-page-no'
+                                : 'show-page-no'
+                            ">
+                  <a (click)="moveToPage(item)" class="page-link" href="javascript:void(0);">
+                    {{ item }}
+                  </a>
+                </li>
+                @if (
+                i === 0 && pageNumberArray.length > 6 && currentPage > 2
+                ) {
+                <li class="page-item" [hidden]="currentPage === 1" (click)="moveToPage(currentPage - 2)"
+                  (keydown.enter)="moveToPage(currentPage - 2)" tabindex="0">
+                  <a class="page-link" href="javascript:void(0);"> ... </a>
+                </li>
+                }
+                @if (
+                i === pageNumberArray.length - 2 &&
+                pageNumberArray.length > 6
+                ) {
+                <li [hidden]="
+                              currentPage >=
+                                pageNumberArray[pageNumberArray.length - 2] ||
+                              totalData < serialNumberArray[serialNumberArray.length - 1]
+                            " class="page-item" (click)="moveToPage(currentPage + 2)" (keydown.enter)="moveToPage(currentPage + 2)"
+                  tabindex="0">
+                  <a class="page-link" href="javascript:void(0);"> ... </a>
+                </li>
+                }
+                }
+  
+                <li class="page-item" [ngClass]="{
+                            disabled:
+                              currentPage === pageNumberArray[pageNumberArray.length - 1] ||
+                              carList.length === 0
+                          }">
+                  <a (click)="getMoreData('next')" class="page-link" href="javascript:void(0);"><i
+                      class=" fa fa-angle-double-right"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  

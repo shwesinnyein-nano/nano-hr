@@ -1,69 +1,67 @@
 {
-  "data" : [
-      {
-        "parentId": "nano-store-phuket",
-        "companyId": "nano-store",
-        "id": "chalong",
-        "name": "001 Chalong"
-
-      },
-      {
-        "parentId": "nano-store-bangkok",
-        "companyId": "nano-store",
-        "id": "thepharak",
-        "name": "002 Thepharak"
-
-      },
-      {
-        "parentId": "nano-store-bangkok",
-        "companyId": "nano-store",
-        "id": "vacharaphol",
-        "name": "003 Vacharaphol"
-
-      },
-      {
-        "parentId": "nano-store-bangkok",
-        "companyId": "nano-store",
-        "id": "nawamin",
-        "name": "004 Nawamin"
-
-      },
-      {
-        "parentId": "nano-store-bangkok",
-        "companyId": "nano-store",
-        "id": "srinagarindra",
-        "name": "005 Srinagarindra"
-
-      },
-      {
-        "parentId": "nano-store-bangkok",
-        "companyId": "nano-store",
-        "id": "ratchadaphisek",
-        "name": "006 Ratchadaphisek"
-
-      },
-      {
-        "parentId": "nano-store-bangkok",
-        "companyId": "nano-store",
-        "id": "bangphli",
-        "name": "007 Bang Phli"
-
-      },
-
-      {
-        "parentId": "nano-entertainment-phuket",
-        "companyId": "nano-entertainment",
-        "id": "sugar-daddy",
-        "name": "Sugar Daddy"
-
-      },
-      {
-        "parentId": "nano-entertainment-phuket",
-        "companyId": "nano-entertainment",
-        "id": "huapan",
-        "name": "Huapan"
-
-      }
-    ],
-    "totalData":6
+  "data": [
+    {
+      "parentId": "nano-store-phuket",
+      "companyId": "nano-store",
+      "id": "chalong",
+      "name": "001 Chalong",
+      "name_th": "001 ฉลอง"
+    },
+    {
+      "parentId": "nano-store-bangkok",
+      "companyId": "nano-store",
+      "id": "thepharak",
+      "name": "002 Thepharak",
+      "name_th": "002 เทพารักษ์"
+    },
+    {
+      "parentId": "nano-store-bangkok",
+      "companyId": "nano-store",
+      "id": "vacharaphol",
+      "name": "003 Vacharaphol",
+      "name_th": "003 วัชรพล"
+    },
+    {
+      "parentId": "nano-store-bangkok",
+      "companyId": "nano-store",
+      "id": "nawamin",
+      "name": "004 Nawamin",
+      "name_th": "004 นวมินทร์"
+    },
+    {
+      "parentId": "nano-store-bangkok",
+      "companyId": "nano-store",
+      "id": "srinagarindra",
+      "name": "005 Srinagarindra",
+      "name_th": "005 ศรีนครินทร์"
+    },
+    
+    {
+      "parentId": "nano-store-bangkok",
+      "companyId": "nano-store",
+      "id": "ratchadaphisek",
+      "name": "006 Ratchadaphisek 19",
+      "name_th": "006 Ratchadaphisek 19"
+    },
+    {
+      "parentId": "nano-store-bangkok",
+      "companyId": "nano-store",
+      "id": "bangphli",
+      "name": "007 PTT Bang Phli",
+      "name_th": "007 PTT Bang Phli"
+    },
+    {
+      "parentId": "nano-entertainment-phuket",
+      "companyId": "nano-entertainment",
+      "id": "sugar-daddy",
+      "name": "Sugar Daddy"
+    },
+    {
+      "parentId": "nano-entertainment-phuket",
+      "companyId": "nano-entertainment",
+      "id": "huapan",
+      "name": "Huapan"
+    }
+  ],
+  "totalData": 6
 }

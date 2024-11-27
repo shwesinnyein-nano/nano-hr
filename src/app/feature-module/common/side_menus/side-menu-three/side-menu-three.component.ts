@@ -2,12 +2,14 @@ import { Component, OnDestroy } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
 import {
+  AuthService,
   DataService,
   SideBar,
   SideBarMenu,
   routes,
 } from 'src/app/core/core.index';
 import { SideBarService } from 'src/app/core/services/side-bar/side-bar.service';
+import { UserRoleService } from 'src/app/core/services/user-role/user-role.service';
 
 @Component({
   selector: 'app-side-menu-three',
@@ -24,7 +26,9 @@ export class SideMenuThreeComponent implements OnDestroy {
   constructor(
     public router: Router,
     private data: DataService,
-    private sideBar: SideBarService
+    private sideBar: SideBarService,
+    private authService: AuthService,
+    private userRoleService: UserRoleService
   ) {
     router.events.subscribe((event: object) => {
       if (event instanceof NavigationEnd) {
@@ -34,7 +38,16 @@ export class SideMenuThreeComponent implements OnDestroy {
       }
     });
     // get sidebar data as observable because data is controlled for design to expand submenus
-    this.data.getSideBarData.subscribe((res: Array<SideBar>) => {
+    // this.data.getSideBarData.subscribe((res: Array<SideBar>) => {
+    //   res.map((data: SideBar) => {
+    //     data.menu.map((menus: SideBarMenu) => {
+    //       this.side_bar_data.push(menus);
+    //       menus.showMyTab = false;
+    //     });
+    //     this.side_bar_data[0].showMyTab = true;
+    //   });
+    // });
+    this.data.getSideBarData.subscribe(async (res: Array<SideBar>) => {
       res.map((data: SideBar) => {
         data.menu.map((menus: SideBarMenu) => {
           this.side_bar_data.push(menus);
@@ -42,7 +55,36 @@ export class SideMenuThreeComponent implements OnDestroy {
         });
         this.side_bar_data[0].showMyTab = true;
       });
+      try {
+        const uid = await this.authService.getUid();
+        this.userRoleService.getMenuAccess(uid).subscribe((menuData: any) => {
+          if (menuData.menuAccess) {
+            console.log("menuGroup", this.side_bar_data);
+
+            // Map over each menu group and menu item to assign permissions
+            this.side_bar_data = this.side_bar_data.map((menuGroup: any) => {
+              const access = menuData.menuAccess.find((accessItem: any) => accessItem.menuValue === menuGroup.menuValue);
+              return {
+                ...menuGroup,
+                permissions: access
+                  ? {
+                    read: access.read || false,
+                    write: access.write || false,
+                    create: access.create || false,
+                    delete: access.delete || false,
+                  }
+                  : { read: true, write: true, create: true, delete: true }, // Default permissions
+              };
+            })
+          };
+          console.log("Updated side_bar_data with permissions", this.side_bar_data);
+        });
+
+      } catch (error) {
+        console.error("Error fetching UID:", error);
+      }
     });
+
 
     this.sideBar.toggleSideBar.subscribe((res: string) => {
       if (res === 'true' || res === 'true') this.showSubMenusTab = true;
@@ -94,4 +136,8 @@ export class SideMenuThreeComponent implements OnDestroy {
   openSubmenus() {
     this.submenus = !this.submenus;
   }
+  trackMainTittle(index: number, item: any): string {
+    return item.menuValue; // or another unique identifier for the menu item
+  }
+  
 }

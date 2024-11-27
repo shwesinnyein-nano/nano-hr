@@ -9,7 +9,8 @@ import { BudgetExpensesComponent } from './budget-expenses/budget-expenses.compo
 import { BudgetRevenuesComponent } from './budget-revenues/budget-revenues.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { SubCategoriesComponent } from './sub-categories/sub-categories.component';
-
+import { BudgetExpensesAddModalComponent } from './budget-expenses-add-modal/budget-expenses-add-modal.component';
+import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 @NgModule({
   declarations: [
     AccountingComponent,
@@ -17,7 +18,10 @@ import { SubCategoriesComponent } from './sub-categories/sub-categories.componen
     BudgetsComponent,
     BudgetExpensesComponent,
     BudgetRevenuesComponent,
-    SubCategoriesComponent
+    SubCategoriesComponent,
+    BudgetExpensesAddModalComponent,
+    TransactionHistoryComponent
+    
   ],
   imports: [
     CommonModule,

@@ -1,8 +1,9 @@
-import { Component ,OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 
-import { DataService, SideBar, SideBarMenu, routes } from 'src/app/core/core.index';
+import { AuthService, DataService, SideBar, SideBarMenu, routes } from 'src/app/core/core.index';
 import { SideBarService } from 'src/app/core/services/side-bar/side-bar.service';
+import { UserRoleService } from 'src/app/core/services/user-role/user-role.service';
 import { CommonService } from 'src/app/shared/common/common.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { CommonService } from 'src/app/shared/common/common.service';
   templateUrl: './side-menu-one.component.html',
   styleUrls: ['./side-menu-one.component.scss'],
 })
-export class SideMenuOneComponent implements OnDestroy{
+export class SideMenuOneComponent implements OnDestroy {
   public routes = routes;
   public multilevel: Array<boolean> = [false, false, false];
   base = 'dashboard';
@@ -23,7 +24,9 @@ export class SideMenuOneComponent implements OnDestroy{
     public router: Router,
     private data: DataService,
     private sideBar: SideBarService,
-    private common: CommonService
+    private common: CommonService,
+    private authService: AuthService,
+    private userRoleService: UserRoleService
   ) {
 
     router.events.subscribe((event: object) => {
@@ -36,9 +39,47 @@ export class SideMenuOneComponent implements OnDestroy{
       }
     });
     // get sidebar data as observable because data is controlled for design to expand submenus
-    this.data.getSideBarData.subscribe((res: Array<SideBar>) => {
+    this.data.getSideBarData.subscribe(async (res: Array<SideBar>) => {
       this.side_bar_data = res;
+
+      try {
+        const uid = await this.authService.getUid();
+        this.userRoleService.getMenuAccess(uid).subscribe((menuData: any) => {
+          // console.log("menuData", menuData);
+          if (menuData.menuAccess) {
+            // Map permissions to `menu` inside `side_bar_data`
+            this.side_bar_data = this.side_bar_data.map((menuGroup: any) => {
+              return {
+                ...menuGroup,
+                menu: menuGroup.menu.map((menuItem: any) => {
+                  // Find the corresponding menu in `menuAccess`
+                  const access = menuData.menuAccess.find((accessItem: any) => accessItem.menuValue === menuItem.menuValue);
+
+                  // If found, assign permissions; otherwise, set default permissions
+                  return {
+                    ...menuItem,
+                    permissions: access
+                      ? {
+                        read: access.read || false,
+                        write: access.write || false,
+                        create: access.create || false,
+                        delete: access.delete || false,
+                      }
+                      : { read: true, write: true, create: true, delete: true }, // Default permissions
+                  };
+                }),
+              };
+            });
+          }
+          console.log("Updated side_bar_data with permissions", this.side_bar_data);
+        });
+
+      } catch (error) {
+        console.error("Error fetching UID:", error);
+      }
     });
+
+
     this.common.base.subscribe((res: string) => {
       this.base = res;
     });
@@ -106,5 +147,13 @@ export class SideMenuOneComponent implements OnDestroy{
     } else {
       this.openSubmenuOneItem = subMenus;
     }
+  }
+  shouldDisplayMenu(mainTittle: any): boolean {
+    // console.log("mainTittle", mainTittle);
+    
+    return mainTittle.menu.some((menu: any) =>
+      menu.permissions?.read !== false 
+      // menu.subMenus?.some((subMenu: any) => subMenu.permissions?.read !== false)
+    );
   }
 }

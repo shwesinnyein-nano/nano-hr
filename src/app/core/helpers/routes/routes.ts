@@ -67,6 +67,16 @@ export class routes {
   public static get filemanager(): string {
     return this.baseUrl + '/apps/file-manager';
   }
+  public static get product(): string {
+    return this.baseUrl + '/product';
+  }
+  public static get carList(): string {
+    return this.baseUrl + '/product/car-list';
+  }
+  public static get addCarModal(): string {
+    return this.baseUrl + '/product/add-car-modal';
+  }
+
   public static get employees(): string {
     return this.baseUrl + '/employees';
   }
@@ -312,9 +322,7 @@ export class routes {
   public static get users(): string {
     return this.baseUrl + '/users/user-view';
   }
-  public static get companylist(): string {
-    return this.baseUrl + '/company-list/company-view';
-  }
+ 
   public static get companysettings(): string {
     return this.baseUrl + '/settings/company-settings';
   }

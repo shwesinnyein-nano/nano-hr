@@ -31,21 +31,14 @@
       <div class="input-block mb-3 form-focus inputs">
         <mat-form-field class="example-full-width">
           <mat-label>{{"FORM.employee_name" | translate}}</mat-label>
-          <input type="text" matInput class="form-control floating">
+          <input type="text" matInput class="form-control floating" [(ngModel)]="searchName">
         </mat-form-field>
       </div>
     </div>
-    <div class="col-sm-6 col-md-3">
-      <div class="input-block mb-3 form-focus inputs">
-        <mat-form-field class="example-full-width">
-          <mat-label>{{"FORM.employee_position" | translate}}</mat-label>
-          <input type="text" matInput class="form-control floating">
-        </mat-form-field>
-      </div>
-    </div>
+    
     <div class="col-sm-6 col-md-3">
       <div class="input-block mb-3 form-focus select-focus select">
-        <mat-select class="select mat-cust-select custom-mat-select" placeholder="Select Company">
+        <mat-select class="select mat-cust-select custom-mat-select" [(ngModel)]="searchCompany" placeholder="{{'FORM.select_company' | translate}}">
           <mat-option *ngFor="let company of companyList" [value]="company.id">
             {{ company.name }}
           </mat-option>
@@ -53,9 +46,15 @@
         <label class="focus-label">{{"FORM.company" | translate}}</label>
       </div>
     </div>
-    <div class="col-sm-6 col-md-3">
-      <a class="btn btn-primary w-100">{{"FORM.search" | translate}}</a>
+    <div class="col-sm-6 col-md-3" style="margin-bottom: 12px;">
+      <a class="btn btn-primary w-100" (click)="searchEmployee()"> {{"FORM.search" | translate}} </a>
+
     </div>
+    <div class="col-sm-6 col-md-3">
+      <a class="btn btn-secondary w-100" (click)="cancelSearch()"> {{"FORM.cancel" | translate}} </a>
+
+    </div>
+   
   </div>
   <!-- /Search Filter -->
 

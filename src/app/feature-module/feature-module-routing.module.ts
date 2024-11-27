@@ -32,6 +32,13 @@ const routes: Routes = [
             (m) => m.EmployeesModule
           ),
       },
+      {
+        path: 'product',
+        loadChildren: () =>
+          import('../feature-module/product/product.module').then(
+            (m) => m.ProductModule
+          ),
+      },
 
 
       {
@@ -79,13 +86,7 @@ const routes: Routes = [
             (m) => m.UsersModule
           ),
       },
-      {
-        path: 'company-list',
-        loadChildren: () =>
-          import('./administration/company-list/company-list.module').then(
-            (m) => m.CompanyListModule
-          ),
-      },
+      
       {
         path: 'settings',
         loadChildren: () =>
@@ -105,63 +106,63 @@ const routes: Routes = [
         loadChildren: () =>
           import('./page/pages/pages.module').then((m) => m.PagesModule),
       },
-      {
-        path: 'elements',
-        loadChildren: () =>
-          import('./ui-interface/elements/elements.module').then(
-            (m) => m.ElementsModule
-          ),
-      },
-      {
-        path: 'icon',
-        loadChildren: () =>
-          import('./ui-interface/icon/icon.module').then((m) => m.IconModule),
-      },
-      {
-        path: 'charts',
-        loadChildren: () =>
-          import('./ui-interface/charts/charts.module').then(
-            (m) => m.ChartsModule
-          ),
-      },
-      {
-        path: 'base-ui',
-        loadChildren: () =>
-          import('./ui-interface/base-ui/base-ui.module').then(
-            (m) => m.BaseUiModule
-          ),
-      },
-      {
-        path: 'table',
-        loadChildren: () =>
-          import('./ui-interface/table/table.module').then(
-            (m) => m.TableModule
-          ),
-      },
-      {
-        path: 'forms',
-        loadChildren: () =>
-          import('./ui-interface/forms/forms.module').then(
-            (m) => m.FormsModule
-          ),
-      },
-      {
-        path: 'advanced-ui',
-        loadChildren: () =>
-          import('./ui-interface/advanced-ui/advanced-ui.module').then(
-            (m) => m.AdvancedUiModule
-          ),
-      },
+      // {
+      //   path: 'elements',
+      //   loadChildren: () =>
+      //     import('./ui-interface/elements/elements.module').then(
+      //       (m) => m.ElementsModule
+      //     ),
+      // },
+      // {
+      //   path: 'icon',
+      //   loadChildren: () =>
+      //     import('./ui-interface/icon/icon.module').then((m) => m.IconModule),
+      // },
+      // {
+      //   path: 'charts',
+      //   loadChildren: () =>
+      //     import('./ui-interface/charts/charts.module').then(
+      //       (m) => m.ChartsModule
+      //     ),
+      // },
+      // {
+      //   path: 'base-ui',
+      //   loadChildren: () =>
+      //     import('./ui-interface/base-ui/base-ui.module').then(
+      //       (m) => m.BaseUiModule
+      //     ),
+      // },
+      // {
+      //   path: 'table',
+      //   loadChildren: () =>
+      //     import('./ui-interface/table/table.module').then(
+      //       (m) => m.TableModule
+      //     ),
+      // },
+      // {
+      //   path: 'forms',
+      //   loadChildren: () =>
+      //     import('./ui-interface/forms/forms.module').then(
+      //       (m) => m.FormsModule
+      //     ),
+      // },
+      // {
+      //   path: 'advanced-ui',
+      //   loadChildren: () =>
+      //     import('./ui-interface/advanced-ui/advanced-ui.module').then(
+      //       (m) => m.AdvancedUiModule
+      //     ),
+      // },
 
 
 
-      {
-        path: 'jobs',
-        loadChildren: () =>
-          import('../feature-module/administration/jobs/jobs.module').then(
-            (m) => m.JobsModule
-          ),
-      },
+      // {
+      //   path: 'jobs',
+      //   loadChildren: () =>
+      //     import('../feature-module/administration/jobs/jobs.module').then(
+      //       (m) => m.JobsModule
+      //     ),
+      // },
     ],
   },
   {

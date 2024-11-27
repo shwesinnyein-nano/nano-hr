@@ -6,42 +6,48 @@
       "companyId": "nano-vip",
       "locationId": "nano-vip-phuket",
       "id": "nano-vip-management",
-      "name": "Management"
+      "name": "Management",
+      "name_th": "ผู้บริหาร"
     },
     {
       "parentId": "",
       "companyId": "nano-vip",
       "locationId": "nano-vip-phuket",
       "id": "nano-vip-accountant",
-      "name": "Accountant"
+      "name": "Accountant",
+      "name_th": "นักบัญชี"
     },
     {
       "parentId": "",
       "companyId": "nano-vip",
       "locationId": "nano-vip-phuket",
       "id": "nano-vip-content-writer",
-      "name": "Content Writer"
+      "name": "Content Writer",
+      "name_th": "คอนเทนต์"
     },
     {
       "parentId": "",
       "companyId": "nano-vip",
       "locationId": "nano-vip-phuket",
       "id": "nano-vip-programmer",
-      "name": "Programmer"
+      "name": "Programmer",
+      "name_th": "โปรแกรมเมอร์"
     },
     {
       "parentId": "",
       "companyId": "nano-vip",
       "locationId": "nano-vip-phuket",
       "id": "nano-vip-driver",
-      "name": "Driver"
+      "name": "Driver",
+      "name_th": "คนขับรถ"
     },
     {
       "parentId": "",
       "companyId": "nano-vip",
       "locationId": "nano-vip-phuket",
       "id": "nano-vip-operator",
-      "name": "Operator"
+      "name": "Operator",
+      "name_th": "พนักงานปฏิบัติการ"
     },
 
     {
@@ -49,42 +55,48 @@
       "companyId": "nano-vip",
       "locationId": "nano-vip-bangkok",
       "id": "nano-vip-bangkok-management",
-      "name": "Management"
+      "name": "Management",
+      "name_th": "ผู้บริหาร"
     },
     {
       "parentId": "",
       "companyId": "nano-vip",
       "locationId": "nano-vip-bangkok",
       "id": "nano-vip-bangkok-accountant",
-      "name": "Accountant"
+      "name": "Accountant",
+      "name_th": "นักบัญชี"
     },
     {
       "parentId": "",
       "companyId": "nano-vip",
       "locationId": "nano-vip-bangkok",
       "id": "nano-vip-bangkok-content-writer",
-      "name": "Content Writer"
+      "name": "Content Writer",
+      "name_th": "คอนเทนต์"
     },
     {
       "parentId": "",
       "companyId": "nano-vip",
       "locationId": "nano-vip-bangkok",
       "id": "nano-vip-bangkok-programmer",
-      "name": "Programmer"
+      "name": "Programmer",
+      "name_th": "โปรแกรมเมอร์"
     },
     {
       "parentId": "",
       "companyId": "nano-vip",
       "locationId": "nano-vip-bangkok",
       "id": "nano-vip-bangkok-driver",
-      "name": "Driver"
+      "name": "Driver",
+      "name_th": "คนขับรถ"
     },
     {
       "parentId": "",
       "companyId": "nano-vip",
       "locationId": "nano-vip-bangkok",
       "id": "nano-vip-bangkok-operator",
-      "name": "Operator"
+      "name": "Operator",
+      "name_th": "พนักงานปฏิบัติการ"
     },
 
 
@@ -94,7 +106,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-phuket",
       "id": "nano-store-chalong-hr",
-      "name": "HR"
+      "name": "HR",
+      "name_th": "ฝ่ายทรัพยากรบุคคล"
     },
 
     {
@@ -102,15 +115,16 @@
       "companyId": "nano-store",
       "locationId": "nano-store-phuket",
       "id": "nano-store-chalong-manager",
-      "name": "Manager"
-
+      "name": "Manager",
+      "name_th": "ผู้จัดการ"
     },
     {
       "parentId": "chalong",
       "companyId": "nano-store",
       "locationId": "nano-store-phuket",
       "id": "nano-store-chalong-accountant",
-      "name": "Accountant"
+      "name": "Accountant",
+      "name_th": "นักบัญชี"
 
     },
     {
@@ -118,7 +132,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-phuket",
       "id": "nano-store-chalong-programmer",
-      "name": "Programmer"
+      "name": "Programmer",
+      "name_th": "โปรแกรมเมอร์"
 
     },
     {
@@ -126,7 +141,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-phuket",
       "id": "nano-store-chalong-salesman",
-      "name": "Salesman"
+      "name": "Salesman",
+      "name_th": "พนักงานขาย"
 
     },
     {
@@ -134,7 +150,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-phuket",
       "id": "nano-store-chalong-purchase",
-      "name": "Purchase"
+      "name": "Purchase",
+      "name_th": "ฝ่ายจัดซื้อ"
 
     },
     {
@@ -142,7 +159,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-phuket",
       "id": "nano-store-chalong-security",
-      "name": "Security"
+      "name": "Security",
+      "name_th": "เจ้าหน้าที่รักษาความปลอดภัย"
 
     },
     {
@@ -150,7 +168,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-phuket",
       "id": "nano-store-chalong-housekeeper",
-      "name": "Housekeeper"
+      "name": "Housekeeper",
+      "name_th": "พนักงานทำความสะอาด"
 
     },
     {
@@ -158,15 +177,16 @@
       "companyId": "nano-store",
       "locationId": "nano-store-phuket",
       "id": "nano-store-chalong-shipper",
-      "name": "Shipper"
-
+      "name": "Shipper",
+      "name_th": "พนักงานขนส่ง"
     },
     {
       "parentId": "chalong",
       "companyId": "nano-store",
       "locationId": "nano-store-phuket",
       "id": "nano-store-chalong-management",
-      "name": "Management"
+      "name": "Management",
+      "name_th": "ผู้บริหาร"
 
     },
     {
@@ -174,7 +194,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-phuket",
       "id": "nano-store-chalong-warehouse-worker",
-      "name": "Warehouse Worker"
+      "name": "Warehouse Worker",
+      "name_th": "พนักงานคลังสินค้า"
 
     },
     {
@@ -182,7 +203,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-phuket",
       "id": "nano-store-chalong-surveyor",
-      "name": "Surveyor"
+      "name": "Surveyor",
+      "name_th": "เซอร์เวย์"
 
     },
 
@@ -198,7 +220,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-thepharak-hr",
-      "name": "HR"
+      "name": "HR",
+      "name_th": "ฝ่ายทรัพยากรบุคคล"
     },
 
     {
@@ -206,7 +229,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-thepharak-manager",
-      "name": "Manager"
+      "name": "Manager",
+      "name_th": "ผู้จัดการ"
 
     },
     {
@@ -214,7 +238,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-thepharak-accountant",
-      "name": "Accountant"
+      "name": "Accountant",
+      "name_th": "นักบัญชี"
 
     },
     {
@@ -222,7 +247,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-thepharak-programmer",
-      "name": "Programmer"
+      "name": "Programmer",
+      "name_th": "โปรแกรมเมอร์"
 
     },
     {
@@ -230,7 +256,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-thepharak-salesman",
-      "name": "Salesman"
+      "name": "Salesman",
+      "name_th": "พนักงานขาย"
 
     },
     {
@@ -238,7 +265,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-thepharak-purchase",
-      "name": "Purchase"
+      "name": "Purchase",
+      "name_th": "ฝ่ายจัดซื้อ"
 
     },
     {
@@ -246,7 +274,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-thepharak-security",
-      "name": "Security"
+      "name": "Security",
+      "name_th": "เจ้าหน้าที่รักษาความปลอดภัย"
 
     },
     {
@@ -254,7 +283,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-thepharak-housekeeper",
-      "name": "Housekeeper"
+      "name": "Housekeeper",
+      "name_th": "พนักงานทำความสะอาด"
 
     },
     {
@@ -262,7 +292,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-thepharak-shipper",
-      "name": "Shipper"
+      "name": "Shipper",
+      "name_th": "พนักงานขนส่ง"
 
     },
     {
@@ -270,7 +301,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-thepharak-management",
-      "name": "Management"
+      "name": "Management",
+      "name_th": "ผู้บริหาร"
 
     },
     {
@@ -278,7 +310,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-thepharak-warehouse-worker",
-      "name": "Warehouse Worker"
+      "name": "Warehouse Worker",
+      "name_th": "พนักงานคลังสินค้า"
 
     },
     {
@@ -286,7 +319,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-thepharak-surveyor",
-      "name": "Surveyor"
+      "name": "Surveyor",
+      "name_th": "เซอร์เวย์"
 
     },
 
@@ -300,7 +334,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-vacharaphol-hr",
-      "name": "HR"
+      "name": "HR",
+      "name_th": "ฝ่ายทรัพยากรบุคคล"
     },
 
     {
@@ -308,7 +343,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-vacharaphol-manager",
-      "name": "Manager"
+      "name": "Manager",
+      "name_th": "ผู้จัดการ"
 
     },
     {
@@ -316,7 +352,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-vacharaphol-accountant",
-      "name": "Accountant"
+      "name": "Accountant",
+      "name_th": "นักบัญชี"
 
     },
     {
@@ -324,7 +361,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-vacharaphol-programmer",
-      "name": "Programmer"
+      "name": "Programmer",
+      "name_th": "โปรแกรมเมอร์"
 
     },
     {
@@ -332,7 +370,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-vacharaphol-salesman",
-      "name": "Salesman"
+      "name": "Salesman",
+      "name_th": "พนักงานขาย"
 
     },
     {
@@ -340,7 +379,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-vacharaphol-purchase",
-      "name": "Purchase"
+      "name": "Purchase",
+      "name_th": "ฝ่ายจัดซื้อ"
 
     },
     {
@@ -348,7 +388,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-vacharaphol-security",
-      "name": "Security"
+      "name": "Security",
+      "name_th": "เจ้าหน้าที่รักษาความปลอดภัย"
 
     },
     {
@@ -356,7 +397,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-vacharaphol-housekeeper",
-      "name": "Housekeeper"
+      "name": "Housekeeper",
+      "name_th": "พนักงานทำความสะอาด"
 
     },
     {
@@ -364,7 +406,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-vacharaphol-shipper",
-      "name": "Shipper"
+      "name": "Shipper",
+      "name_th": "พนักงานขนส่ง"
 
     },
     {
@@ -372,7 +415,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-vacharaphol-management",
-      "name": "Management"
+      "name": "Management",
+      "name_th": "ผู้บริหาร"
 
     },
     {
@@ -380,7 +424,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-vacharaphol-warehouse-worker",
-      "name": "Warehouse Worker"
+      "name": "Warehouse Worker",
+      "name_th": "พนักงานคลังสินค้า"
 
     },
     {
@@ -388,7 +433,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-vacharaphol-surveyor",
-      "name": "Surveyor"
+      "name": "Surveyor",
+      "name_th": "เซอร์เวย์"
 
     },
 
@@ -398,7 +444,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-nawamin-hr",
-      "name": "HR"
+      "name": "HR",
+      "name_th": "ฝ่ายทรัพยากรบุคคล"
     },
 
     {
@@ -406,7 +453,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-nawamin-manager",
-      "name": "Manager"
+      "name": "Manager",
+      "name_th": "ผู้จัดการ"
 
     },
     {
@@ -414,7 +462,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-nawamin-accountant",
-      "name": "Accountant"
+      "name": "Accountant",
+      "name_th": "นักบัญชี"
 
     },
     {
@@ -422,7 +471,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-nawamin-programmer",
-      "name": "Programmer"
+      "name": "Programmer",
+      "name_th": "โปรแกรมเมอร์"
 
     },
     {
@@ -430,7 +480,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-nawamin-salesman",
-      "name": "Salesman"
+      "name": "Salesman",
+      "name_th": "พนักงานขาย"
 
     },
     {
@@ -438,7 +489,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-nawamin-purchase",
-      "name": "Purchase"
+      "name": "Purchase",
+      "name_th": "ฝ่ายจัดซื้อ"
 
     },
     {
@@ -446,7 +498,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-nawamin-security",
-      "name": "Security"
+      "name": "Security",
+      "name_th": "เจ้าหน้าที่รักษาความปลอดภัย"
 
     },
     {
@@ -454,7 +507,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-nawamin-housekeeper",
-      "name": "Housekeeper"
+      "name": "Housekeeper",
+      "name_th": "พนักงานทำความสะอาด"
 
     },
     {
@@ -462,7 +516,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-nawamin-shipper",
-      "name": "Shipper"
+      "name": "Shipper",
+      "name_th": "พนักงานขนส่ง"
 
     },
     {
@@ -470,7 +525,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-nawamin-management",
-      "name": "Management"
+      "name": "Management",
+      "name_th": "ผู้บริหาร"
 
     },
     {
@@ -478,7 +534,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-nawamin-warehouse-worker",
-      "name": "Warehouse Worker"
+      "name": "Warehouse Worker",
+      "name_th": "พนักงานคลังสินค้า"
 
     },
     {
@@ -486,7 +543,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-nawamin-surveyor",
-      "name": "Surveyor"
+      "name": "Surveyor",
+      "name_th": "เซอร์เวย์"
 
     },
 
@@ -496,7 +554,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-srinagarindra-hr",
-      "name": "HR"
+      "name": "HR",
+      "name_th": "ฝ่ายทรัพยากรบุคคล"
     },
 
     {
@@ -504,7 +563,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-srinagarindra-manager",
-      "name": "Manager"
+      "name": "Manager",
+      "name_th": "ผู้จัดการ"
 
     },
     {
@@ -512,7 +572,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-srinagarindra-accountant",
-      "name": "Accountant"
+        "name": "Accountant",
+      "name_th": "นักบัญชี"
 
     },
     {
@@ -520,7 +581,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-srinagarindra-programmer",
-      "name": "Programmer"
+      "name": "Programmer",
+      "name_th": "โปรแกรมเมอร์"
 
     },
     {
@@ -528,7 +590,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-srinagarindra-salesman",
-      "name": "Salesman"
+      "name": "Salesman",
+      "name_th": "พนักงานขาย"
 
     },
     {
@@ -536,7 +599,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-srinagarindra-purchase",
-      "name": "Purchase"
+      "name": "Purchase",
+      "name_th": "ฝ่ายจัดซื้อ"
 
     },
     {
@@ -544,7 +608,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-srinagarindra-security",
-      "name": "Security"
+      "name": "Security",
+      "name_th": "เจ้าหน้าที่รักษาความปลอดภัย"
 
     },
     {
@@ -552,7 +617,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-srinagarindra-housekeeper",
-      "name": "Housekeeper"
+      "name": "Housekeeper",
+      "name_th": "พนักงานทำความสะอาด"
 
     },
     {
@@ -560,7 +626,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-srinagarindra-shipper",
-      "name": "Shipper"
+      "name": "Shipper",
+      "name_th": "พนักงานขนส่ง"
 
     },
     {
@@ -568,7 +635,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-srinagarindra-management",
-      "name": "Management"
+      "name": "Management",
+      "name_th": "ผู้บริหาร"
 
     },
     {
@@ -576,7 +644,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-srinagarindra-warehouse-worker",
-      "name": "Warehouse Worker"
+      "name": "Warehouse Worker",
+      "name_th": "พนักงานคลังสินค้า"
 
     },
     {
@@ -584,7 +653,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-srinagarindra-surveyor",
-      "name": "Surveyor"
+      "name": "Surveyor",
+      "name_th": "เซอร์เวย์"
 
     },
 
@@ -602,7 +672,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-bangphli-hr",
-      "name": "HR"
+      "name": "HR",
+      "name_th": "ฝ่ายทรัพยากรบุคคล"
     },
 
     {
@@ -610,7 +681,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-bangphli-manager",
-      "name": "Manager"
+      "name": "Manager",
+      "name_th": "ผู้จัดการ"
 
     },
     {
@@ -618,7 +690,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-bangphli-accountant",
-      "name": "Accountant"
+      "name": "Accountant",
+      "name_th": "นักบัญชี"
 
     },
     {
@@ -626,7 +699,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-bangphli-programmer",
-      "name": "Programmer"
+      "name": "Programmer",
+      "name_th": "โปรแกรมเมอร์"
 
     },
     {
@@ -634,7 +708,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-bangphli-salesman",
-      "name": "Salesman"
+      "name": "Salesman",
+      "name_th": "พนักงานขาย"
 
     },
     {
@@ -642,7 +717,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-bangphli-purchase",
-      "name": "Purchase"
+      "name": "Purchase",
+      "name_th": "ฝ่ายจัดซื้อ"
 
     },
     {
@@ -650,7 +726,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-bangphli-security",
-      "name": "Security"
+      "name": "Security",
+      "name_th": "เจ้าหน้าที่รักษาความปลอดภัย"
 
     },
     {
@@ -658,7 +735,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-bangphli-housekeeper",
-      "name": "Housekeeper"
+      "name": "Housekeeper",
+      "name_th": "พนักงานทำความสะอาด"
 
     },
     {
@@ -666,7 +744,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-bangphli-shipper",
-      "name": "Shipper"
+      "name": "Shipper",
+      "name_th": "พนักงานขนส่ง"
 
     },
     {
@@ -674,7 +753,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-bangphli-management",
-      "name": "Management"
+      "name": "Management",
+      "name_th": "ผู้บริหาร"
 
     },
     {
@@ -682,7 +762,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-bangphli-warehouse-worker",
-      "name": "Warehouse Worker"
+      "name": "Warehouse Worker",
+      "name_th": "พนักงานคลังสินค้า"
 
     },
     {
@@ -690,7 +771,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-bangphli-surveyor",
-      "name": "Surveyor"
+      "name": "Surveyor",
+      "name_th": "เซอร์เวย์"
 
     },
 
@@ -702,7 +784,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-ratchadaphisek-hr",
-      "name": "HR"
+      "name": "HR",
+      "name_th": "ฝ่ายทรัพยากรบุคคล"
     },
 
     {
@@ -710,7 +793,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-ratchadaphisek-manager",
-      "name": "Manager"
+      "name": "Manager",
+      "name_th": "ผู้จัดการ"
 
     },
     {
@@ -718,7 +802,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-ratchadaphisek-accountant",
-      "name": "Accountant"
+      "name": "Accountant",
+      "name_th": "นักบัญชี"
 
     },
     {
@@ -726,7 +811,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-ratchadaphisek-programmer",
-      "name": "Programmer"
+      "name": "Programmer",
+      "name_th": "โปรแกรมเมอร์"
 
     },
     {
@@ -734,7 +820,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-ratchadaphisek-salesman",
-      "name": "Salesman"
+      "name": "Salesman",
+      "name_th": "พนักงานขาย"
 
     },
     {
@@ -742,7 +829,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-ratchadaphisek-purchase",
-      "name": "Purchase"
+      "name": "Purchase",
+      "name_th": "ฝ่ายจัดซื้อ"
 
     },
     {
@@ -750,7 +838,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-ratchadaphisek-security",
-      "name": "Security"
+      "name": "Security",
+      "name_th": "เจ้าหน้าที่รักษาความปลอดภัย"
 
     },
     {
@@ -758,7 +847,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-ratchadaphisek-housekeeper",
-      "name": "Housekeeper"
+      "name": "Housekeeper",
+      "name_th": "พนักงานทำความสะอาด"
 
     },
     {
@@ -766,7 +856,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-ratchadaphisek-shipper",
-      "name": "Shipper"
+      "name": "Shipper",
+      "name_th": "พนักงานขนส่ง"
 
     },
     {
@@ -774,7 +865,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-ratchadaphisek-management",
-      "name": "Management"
+      "name": "Management",
+      "name_th": "ผู้บริหาร"
 
     },
     {
@@ -782,7 +874,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-ratchadaphisek-warehouse-worker",
-      "name": "Warehouse Worker"
+      "name": "Warehouse Worker",
+      "name_th": "พนักงานคลังสินค้า"
 
     },
     {
@@ -790,7 +883,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-ratchadaphisek-surveyor",
-      "name": "Surveyor"
+      "name": "Surveyor",
+      "name_th": "เซอร์เวย์"
 
     },
 
@@ -805,7 +899,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-bangphli-hr",
-      "name": "HR"
+      "name": "HR",
+      "name_th": "ฝ่ายทรัพยากรบุคคล"
     },
 
     {
@@ -813,7 +908,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-bangphli-manager",
-      "name": "Manager"
+      "name": "Manager",
+      "name_th": "ผู้จัดการ"
 
     },
     {
@@ -821,7 +917,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-bangphli-accountant",
-      "name": "Accountant"
+      "name": "Accountant",
+      "name_th": "นักบัญชี"
 
     },
     {
@@ -829,7 +926,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-bangphli-programmer",
-      "name": "Programmer"
+      "name": "Programmer",
+      "name_th": "โปรแกรมเมอร์"
 
     },
     {
@@ -837,7 +935,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-bangphli-salesman",
-      "name": "Salesman"
+      "name": "Salesman",
+      "name_th": "พนักงานขาย"
 
     },
     {
@@ -845,7 +944,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-bangphli-purchase",
-      "name": "Purchase"
+      "name": "Purchase",
+      "name_th": "ฝ่ายจัดซื้อ"
 
     },
     {
@@ -853,7 +953,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-bangphli-security",
-      "name": "Security"
+      "name": "Security",
+      "name_th": "เจ้าหน้าที่รักษาความปลอดภัย"
 
     },
     {
@@ -861,7 +962,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-bangphli-housekeeper",
-      "name": "Housekeeper"
+      "name": "Housekeeper",
+      "name_th": "พนักงานทำความสะอาด"
 
     },
     {
@@ -869,7 +971,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-bangphli-shipper",
-      "name": "Shipper"
+      "name": "Shipper",
+      "name_th": "พนักงานขนส่ง"
 
     },
     {
@@ -877,7 +980,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-bangphli-management",
-      "name": "Management"
+      "name": "Management",
+      "name_th": "ผู้บริหาร"
 
     },
     {
@@ -885,7 +989,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-bangphli-warehouse-worker",
-      "name": "Warehouse Worker"
+      "name": "Warehouse Worker",
+      "name_th": "พนักงานคลังสินค้า"
 
     },
     {
@@ -893,7 +998,8 @@
       "companyId": "nano-store",
       "locationId": "nano-store-bangkok",
       "id": "nano-store-bangphli-surveyor",
-      "name": "Surveyor"
+      "name": "Surveyor",
+      "name_th": "เซอร์เวย์"
 
     },
 
@@ -914,7 +1020,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-cashier",
-      "name": "Cashier"
+      "name": "Cashier",
+      "name_th": "พนักงานเก็บเงิน"
     },
 
     {
@@ -922,7 +1029,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-sale",
-      "name": "Sale"
+      "name": "Sale",
+      "name_th": "พนักงานขาย"
 
     },
     {
@@ -930,7 +1038,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-management",
-      "name": "Management"
+      "name": "Management",
+      "name_th": "ผู้บริหาร" 
 
     },
     {
@@ -938,7 +1047,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-accountant",
-      "name": "Accountant"
+      "name": "Accountant",
+      "name_th": "นักบัญชี"  
 
     },
     {
@@ -946,7 +1056,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-captain",
-      "name": "Captain"
+      "name": "Captain",
+      "name_th": "กัปตัน"
 
     },
     {
@@ -954,7 +1065,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-head-chef",
-      "name": "Head Chef"
+      "name": "Head Chef",
+      "name_th": "หัวหน้าเชฟ"
 
     },
     {
@@ -962,7 +1074,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-sous-chef",
-      "name": "Sous Chef"
+      "name": "Sous Chef",
+      "name_th": "ผู้ช่วยเชฟ"
 
     },
     {
@@ -970,7 +1083,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-waiter-waitress",
-      "name": "Waiter/Waitress"
+      "name": "Waiter/Waitress",
+      "name_th": "พนักงานเสิร์ฟ"
 
     },
     {
@@ -978,7 +1092,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-bar-runner",
-      "name": "Bar Runner"
+      "name": "Bar Runner",
+      "name_th": "พนักงานบาร์"
 
     },
     {
@@ -986,7 +1101,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-dishwasher",
-      "name": "Dishwasher"
+      "name": "Dishwasher",
+      "name_th": "พนักงานล้างจาน"
 
     },
 
@@ -996,7 +1112,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-cashier",
-      "name": "Cashier"
+      "name": "Cashier",
+      "name_th": "พนักงานเก็บเงิน"
 
 
     },
@@ -1005,7 +1122,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-receptionist",
-      "name": "Receptionist"
+      "name": "Receptionist",
+      "name_th": "พนักงานต้อนรับ"
 
     },
     {
@@ -1013,7 +1131,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-management",
-      "name": "Management"
+      "name": "Management",
+      "name_th": "ผู้บริหาร" 
 
     },
     {
@@ -1021,7 +1140,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-accountant",
-      "name": "Accountant"
+      "name": "Accountant",
+      "name_th": "นักบัญชี"
 
     },
     {
@@ -1029,7 +1149,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-captain",
-      "name": "Captain"
+      "name": "Captain",
+      "name_th": "กัปตัน"
 
     },
     {
@@ -1037,7 +1158,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-manager",
-      "name": "Manager"
+      "name": "Manager",
+      "name_th": "ผู้บริหาร"
 
     },
     {
@@ -1045,7 +1167,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-assistant-manager",
-      "name": "Assistant Manager"
+      "name": "Assistant Manager",
+      "name_th": "ผู้ช่วยผู้จัดการ" 
 
     },
     {
@@ -1053,7 +1176,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-bartender",
-      "name": "Bartender"
+      "name": "Bartender",
+      "name_th": "บาร์เทนเดอร์"
 
     },
     {
@@ -1061,7 +1185,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-waiter-waitress",
-      "name": "Waiter/Waitress"
+      "name": "Waiter/Waitress",
+      "name_th": "พนักงานเสิร์ฟ"
 
     },
     {
@@ -1069,7 +1194,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-purchasing",
-      "name": "Purchasing"
+      "name": "Purchasing",
+      "name_th": "ฝ่ายจัดซื้อ"
 
     },
     {
@@ -1077,7 +1203,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-bar-runner",
-      "name": "Bar Runner"
+      "name": "Bar Runner",
+      "name_th": "พนักงานบาร์"
 
     },
     {
@@ -1085,7 +1212,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-food-runner",
-      "name": "Food Runner"
+      "name": "Food Runner",
+      "name_th": "เดินอาหาร"
 
     },
     {
@@ -1093,7 +1221,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-housekeeper",
-      "name": "Housekeeper"
+      "name": "Housekeeper",
+      "name_th": "พนักงานทำความสะอาด" 
 
     },
     {
@@ -1101,7 +1230,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-singer",
-      "name": "Singer"
+      "name": "Singer",
+      "name_th": "นักร้อง"
 
     },
     {
@@ -1109,7 +1239,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-bassist",
-      "name": "Bassist"
+      "name": "Bassist",
+      "name_th": "มือเบส"
 
     },
     {
@@ -1117,7 +1248,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-guitarist",
-      "name": "Guitarist"
+      "name": "Guitarist",
+      "name_th": "มือกีตาร์"
 
     },
     {
@@ -1125,7 +1257,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-keyboardist",
-      "name": "Keyboardist"
+      "name": "Keyboardist",
+      "name_th": "มือคีย์บอร์ด"
 
     },
     {
@@ -1133,7 +1266,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-drummer",
-      "name": "Drummer"
+      "name": "Drummer",
+      "name_th": "มือกลอง"
 
     },
     {
@@ -1141,7 +1275,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-sound-engineer",
-      "name": "Sound Engineer"
+      "name": "Sound Engineer",
+      "name_th": "วิศวกรเสียง"
 
     },
     {
@@ -1149,7 +1284,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-musician",
-      "name": "Musician"
+      "name": "Musician",
+      "name_th": "นักดนตรี"
 
     },
     {
@@ -1157,7 +1293,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-dj",
-      "name": "DJ"
+      "name": "DJ",
+      "name_th": "ดีเจ"
 
     },
     {
@@ -1165,7 +1302,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-mc",
-      "name": "MC"
+      "name": "MC",
+      "name_th": "พิธีกร"
 
     },
     {
@@ -1173,7 +1311,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-lightmen",
-      "name": "Lightmen"
+      "name": "Lightmen",
+      "name_th": "ช่างไฟ"
 
     },
     {
@@ -1181,7 +1320,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-photographer",
-      "name": "Photographer"
+      "name": "Photographer",
+      "name_th": "ช่างภาพ"
 
     },
     {
@@ -1189,7 +1329,8 @@
       "companyId": "nano-entertainment",
       "locationId": "nano-entertainment-phuket",
       "id": "nano-entertainment-phuket-bodyguard",
-      "name": "Bodyguard"
+      "name": "Bodyguard",
+      "name_th": "บอดี้การ์ด"
 
     }
 

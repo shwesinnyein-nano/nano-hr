@@ -129,9 +129,9 @@
                     <div class="title">{{"FORM.gender" | translate}}.</div>
                     <mat-select class="select mat-cust-select custom-mat-select" [placeholder]="'FORM.select_gender' | translate"
                       formControlName="gender">
-                      <mat-option value="Male">Male</mat-option>
-                      <mat-option value="Female">Female</mat-option>
-                      <mat-option value="Other">Other</mat-option>
+                      <mat-option value="Male">{{"FORM.male" | translate}}</mat-option>
+                      <mat-option value="Female">{{"FORM.female" | translate}}</mat-option>
+                      <mat-option value="Other">{{"FORM.other" | translate}}</mat-option>
                     </mat-select>
                     <!-- <mat-radio-group aria-label="Select an option" formControlName="gender" class="d-flex flex-row gap-2"
                  >
@@ -169,9 +169,10 @@
                     <div class="title">{{"FORM.marital_status" | translate}}.</div>
                     <mat-select class="select mat-cust-select custom-mat-select" [placeholder]="'FORM.select_marital_status' | translate"
                       formControlName="maritalStatus">
-                      <mat-option value="Single">Single</mat-option>
-                      <mat-option value="Married">Married</mat-option>
-                      <mat-option value="Other">Other</mat-option>
+                      <mat-option value="Single">{{"FORM.single" | translate}}</mat-option>
+                      <mat-option value="Married">{{"FORM.married" | translate}}</mat-option>
+                      <mat-option value="Divorced">{{"FORM.divorced" | translate}}</mat-option>
+                      <mat-option value="Other">{{"FORM.other" | translate}}</mat-option>
                     </mat-select>
 
                   </li>
@@ -261,14 +262,14 @@
                     <div class="title">{{"FORM.relationship" | translate}}</div>
                     <mat-select class="select mat-cust-select custom-mat-select" [placeholder]="'FORM.select_relationship' | translate"
                       formControlName="relationship">
-                      <mat-option value="hr">Spouse</mat-option>
-                      <mat-option value="it">Parent</mat-option>
-                      <mat-option value="transportation">Sibling</mat-option>
-                      <mat-option value="hr">Child</mat-option>
-                      <mat-option value="it">Relative</mat-option>
-                      <mat-option value="transportation">Friend</mat-option>
-                      <mat-option value="it">Partner</mat-option>
-                      <mat-option value="transportation">Other</mat-option>
+                      <mat-option value="spouse">{{"FORM.spouse" | translate}}</mat-option>
+                      <mat-option value="parent">{{"FORM.parent" | translate}}</mat-option>
+                      <mat-option value="sibling">{{"FORM.sibling" | translate}}</mat-option>
+                      <mat-option value="child">{{"FORM.child" | translate}}</mat-option>
+                      <mat-option value="relative">{{"FORM.relative" | translate}}</mat-option>
+                      <mat-option value="friend">{{"FORM.friend" | translate}}</mat-option>
+                     
+                      <mat-option value="other">{{"FORM.other" | translate}}</mat-option>
 
                     </mat-select>
                   </li>
@@ -350,8 +351,8 @@
                     <div class="title">{{"FORM.allergies" | translate}}</div>
                     <mat-select class="select mat-cust-select custom-mat-select" [placeholder]="'FORM.select_allergies_status' | translate" (selectionChange)="onAllergiesChange($event)"
                       formControlName="allergies">
-                      <mat-option value="Yes">Yes</mat-option>
-                      <mat-option value="No">No</mat-option>
+                      <mat-option value="Yes">{{"FORM.yes" | translate}}</mat-option>
+                      <mat-option value="No">{{"FORM.no" | translate}}</mat-option>
                     </mat-select>
                   </li>
                   <li *ngIf="isAllergies">
@@ -373,8 +374,8 @@
                     <div class="title">{{"FORM.disabilities" | translate}}</div>
                     <mat-select class="select mat-cust-select custom-mat-select" [placeholder]="'FORM.select_disabilities' | translate" (selectionChange)="onDisabilitiesChange($event)"
                       formControlName="disabilities">
-                      <mat-option value="Yes">Yes</mat-option>
-                      <mat-option value="No">No</mat-option>
+                      <mat-option value="Yes">{{"FORM.yes" | translate}}</mat-option>
+                      <mat-option value="No">{{"FORM.no" | translate}}</mat-option>
                     </mat-select>
                   </li>
                   <li *ngIf="isDisabilities">
@@ -386,8 +387,8 @@
                     <div class="title">{{"FORM.congenital_diseases" | translate}}</div>
                     <mat-select class="select mat-cust-select custom-mat-select"
                       [placeholder]="'FORM.select_congenital_diseases' | translate" formControlName="congenitalDiseases" (selectionChange)="onCongenitalDiseasesChange($event)">
-                      <mat-option value="Yes">Yes</mat-option>
-                      <mat-option value="No">No</mat-option>
+                      <mat-option value="Yes">{{"FORM.yes" | translate}}</mat-option>
+                      <mat-option value="No">{{"FORM.no" | translate}}</mat-option>
                     </mat-select>
 
                   </li>
@@ -473,7 +474,7 @@
                               (click)="downloadDocument(document)"
                             >
                               <i class="fa fa-download"></i>
-                            </a>
+                            </a>x
                             <a
                               href="javascript:void(0);"
                               class="btn btn-sm btn-danger"

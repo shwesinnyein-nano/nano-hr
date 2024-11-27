@@ -6,6 +6,8 @@ import { BudgetRevenuesComponent } from './budget-revenues/budget-revenues.compo
 import { BudgetsComponent } from './budgets/budgets.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { SubCategoriesComponent } from './sub-categories/sub-categories.component';
+import { BudgetExpensesAddModalComponent } from './budget-expenses-add-modal/budget-expenses-add-modal.component';
+import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 
 const routes: Routes = [
   { 
@@ -17,7 +19,8 @@ const routes: Routes = [
       { path: "budget-expenses", component: BudgetExpensesComponent },
       { path: "budget-revenues", component: BudgetRevenuesComponent },
       { path: "sub-category", component: SubCategoriesComponent },
-      
+      { path: "budget-expenses-add-modal", component: BudgetExpensesAddModalComponent },
+      { path: "transactions-history", component: TransactionHistoryComponent },
     ] 
   }
 ];

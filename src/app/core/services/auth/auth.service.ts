@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, first, from, map, of, switchMap } from 'rxjs';
+import { BehaviorSubject, catchError, first, from, map, of, switchMap } from 'rxjs';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
@@ -30,6 +30,11 @@ export class AuthService  {
 
     ngOnInit() {
 
+    }
+    getUid(){
+      return this.afAuth.authState.pipe(first()).toPromise().then((user: any) => {
+        return user.uid;
+      });
     }
 
 
@@ -75,7 +80,52 @@ export class AuthService  {
         });
     }
 
+    
     registerUser(email: string, password: string, userData: any) {
+      console.log("registerUser userData", userData);
+    
+      // Step 1: Capture the current user (the currently authenticated user)
+      const currentUser = this.afAuth.currentUser;
+    
+      // Step 2: Proceed with creating the new user (this will not sign out the current user)
+      return from(this.afAuth.createUserWithEmailAndPassword(email, password)).pipe(
+        switchMap((userCredential: any) => {
+          console.log("userCredential", userCredential);
+          
+          if (userCredential.user) {
+            const uid = userCredential.user.uid;
+            console.log("uid", uid);
+    
+            // Save user data to Firestore
+            delete userData.password;
+            delete userData.confirmPassword;
+            if (!userData.uid) {
+              userData.uid = uid;
+            }
+    
+            return this.userRoleService.saveUserData(uid, userData).pipe(
+              switchMap(() => this.employeeService.saveEmployeeData(uid, userData)),
+              map(() => ({
+                success: true,
+                message: 'User registered successfully',
+                data: {
+                  uid: uid,
+                  ...userData
+                }
+              }))
+            );
+          }
+          throw new Error("User registration failed.");
+        }),
+        catchError((error: any) => {
+          console.error("Error registering user", error);
+          throw error;
+        })
+      );
+    }
+    
+    
+    registerUser1(email: string, password: string, userData: any) {
       console.log("registerUser userData", userData);
       return from(this.afAuth.createUserWithEmailAndPassword(email, password)).pipe(
         switchMap((userCredential: any) => {

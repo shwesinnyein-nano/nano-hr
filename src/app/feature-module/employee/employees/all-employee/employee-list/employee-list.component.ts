@@ -32,6 +32,8 @@ export class EmployeeListComponent implements OnInit {
   public pageNumberArray: Array<number> = [];
   public pageSelection: Array<pageSelection> = [];
   public totalPages = 0;
+  searchCompany = '';
+  searchName = '';
   companyList: any[] = [];
   //** / pagination variables
 
@@ -49,6 +51,19 @@ export class EmployeeListComponent implements OnInit {
       this.companyList = res;
     });
     console.log("companyList", this.companyList);
+  }
+
+  searchEmployee() {
+    console.log("searchEmployee", this.searchCompany);
+    this.employeeService.searchEmployee(this.searchCompany, this.searchName).then((res: any) => {
+      console.log("res", res);
+      this.lstEmployee = res;
+    }); 
+  }
+
+  cancelSearch() {
+    this.searchCompany = '';
+    this.getTableData();
   }
 
   openEditEmployeeModal(row: any, type: string): void {

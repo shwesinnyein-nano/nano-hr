@@ -3,32 +3,37 @@
       {
         "parentId": "nano-vip",
         "id": "nano-vip-phuket",
-        "name": "Phuket"
+        "name": "Phuket",
+        "name_th": "ภูเก็ต"
       },
       {
         "parentId": "nano-vip",
 
         "id": "nano-vip-bangkok",
-        "name": "Bangkok"
+        "name": "Bangkok",
+        "name_th": "กรุงเทพฯ"
 
       },
       {
         "parentId": "nano-store",
         "id": "nano-store-phuket",
-        "name": "Phuket"
+        "name": "Phuket",
+        "name_th": "ภูเก็ต"
 
       },
       {
         "parentId": "nano-store",
 
         "id": "nano-store-bangkok",
-        "name": "Bangkok"
+        "name": "Bangkok",
+        "name_th": "กรุงเทพฯ"
 
       },
       {
         "parentId": "nano-entertainment",
         "id": "nano-entertainment-phuket",
-        "name": "Phuket"
+        "name": "Phuket",
+        "name_th": "ภูเก็ต"
 
       }
 

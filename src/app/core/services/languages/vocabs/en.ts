@@ -58,10 +58,7 @@ export const locale = {
       province: "Province",
       postal_code: "Postal Code",
       current_address: "Current Address",
-      current_district: "Current District",
-      current_sub_district: "Current Sub District",
-      current_province: "Current Province",
-      current_postal_code: "Current Postal Code",
+      
       relationship: "Relationship",
 
       emergency_contact_name: "Emergency Contact Name",
@@ -72,7 +69,7 @@ export const locale = {
       bank_branch: "Bank Branch",
       account_holder_name: "Account Holder Name",
       blood_type: "Blood Type",
-      allergies: "Alergies",
+      allergies: "Allergies",
       chronic_diseases: "Chronic Diseases",
       current_medication: "Current Medication",
       family_medical_history: "Family Medical History",
@@ -102,6 +99,42 @@ export const locale = {
       select_disabilities: "Select Disabilities",
       select_congenital_diseases: "Select Congenital Diseases",
       details: "Details",
+      select_branch: "Select Branch",
+      select_position: "Select Position",
+      select_role: "Select Role",
+      select_location: "Select Location",
+      add_car: "Add Car",
+      edit_car: "Edit Car",
+      car_list: "Car List",
+      brand: "Brand",
+      model: "Model",
+      current_mile: " Miles on the Date of Latest Maintenance",
+      color: "Color",
+      car_number: "Car Plate No",
+      maintain_date: " Latest Maintenance Date",
+      expire_date_for_tax: "Expire Date For Tax",
+      expire_date_for_insurance: "Expired Date of Compulsory Motor Insurance",
+      select_brand: "Select Brand",
+      select_model: "Select Model",
+      products: "Products",
+      male: "Male",
+      female: "Female",
+      other: "Other",
+      phuket: "Phuket",
+      bangkok: "Bangkok",
+      single: "Single",
+      married: "Married",
+      divorced: "Divorced",
+      widowed: "Widowed",
+      spouse: "Spouse",
+      parent: "Parent",
+      sibling: "Sibling",
+      child: "Child",
+      relative: "Relative",
+      friend: "Friend",
+      
+      yes: "Yes",
+      no: "No",
     },
 
 
@@ -119,11 +152,22 @@ export const locale = {
       change_pw: "Change Password",
       setting: "Setting",
       logout: "Logout",
+      male: "Male",
+      female: "Female",
+      other: "Other",
+      phuket: "Phuket",
+      bangkok: "Bangkok",
+      
+
+     
 
     },
-    TABLE: {
-      'FNA ID': "FNA ID",
-
+    SIDE_MENU: {
+      products: "Products",
+      car_list: "Car List",
+      employees: "Employees",
+      all_employees: "All Employees",
+      
     },
     ERROR: {
 
