@@ -4,19 +4,20 @@
   <div class="page-header">
     <div class="row align-items-center">
       <div class="col">
-        <h3 class="page-title">Budgets Expenses</h3>
+        <h3 class="page-title">{{'FORM.budgets_expenses' | translate}}</h3>
         <ul class="breadcrumb">
           <li class="breadcrumb-item">
-            <a [routerLink]="routes.adminDashboard">Dashboard</a>
+            <a [routerLink]="routes.adminDashboard">{{'FORM.dashboard' | translate}}</a>
           </li>
-          <li class="breadcrumb-item active">Accounts</li>
+         
+          <li class="breadcrumb-item active">{{'FORM.budgets_expenses' | translate}}</li>
         </ul>
       </div>
       <div class="col-auto float-end ms-auto">
-        <a class="btn add-btn" (click)="openTransactionHistory()"><i class=""></i>Transactions History</a>
+        <a class="btn add-btn" [routerLink]="routes.transactionHistory">{{'FORM.transaction_history' | translate}}</a>
       </div>
       <div class="col-auto float-end ms-auto">
-        <a class="btn add-btn" (click)="openAddModal()"><i class="la la-plus-circle"></i> Add Expenses</a>
+        <a class="btn add-btn" (click)="openAddModal()"><i class="la la-plus-circle"></i> {{'FORM.add_expenses' | translate}}</a>
       </div>
     </div>
   </div>
@@ -46,14 +47,14 @@
         <table matSort (matSortChange)="sortData($event)" class="table table-striped custom-table mb-0">
           <thead>
             <tr>
-              <th mat-sort-header="id">No</th>
-              <th mat-sort-header="expenseType">Expense Type</th>
-              <th mat-sort-header="expenseSource">Expense Source</th>
-              <th mat-sort-header="creditorName">Creditor Name</th>
-              <th mat-sort-header="amount">Amount</th>
-              <th mat-sort-header="expenseDate">Expense Date</th>
-              <th mat-sort-header="status">Status</th>
-              <th class="text-end">Action</th>
+              <th mat-sort-header="id">{{'FORM.no' | translate}}</th>
+              <th mat-sort-header="expenseType">{{'FORM.expense_type' | translate}}</th>
+              <th mat-sort-header="expenseSource">{{'FORM.expense_source' | translate}}</th>
+              <th mat-sort-header="creditorName">{{'FORM.creditor_name' | translate}}</th>
+              <th mat-sort-header="amount">{{'FORM.amount' | translate}}</th>
+              <th mat-sort-header="expenseDate">{{'FORM.expense_date' | translate}}</th>
+              <th mat-sort-header="status">{{'FORM.status' | translate}}</th>
+              <th class="text-end">{{'FORM.action' | translate}}</th>
             </tr>
           </thead>
           <tbody>
@@ -87,7 +88,7 @@
             @if (expenseList.length === 0) {
             <tr>
               <td colspan="10">
-                <h5 style="text-align: center">No data found</h5>
+                <h5 style="text-align: center">{{'FORM.no_data_found' | translate}}</h5>
               </td>
             </tr>
             }
@@ -97,9 +98,9 @@
       <div class="table_footer">
         <div class="col-sm-12 col-md-5">
           <div class="dataTables_info">
-            Showing {{ serialNumberArray[0] }} to
-            {{ serialNumberArray[serialNumberArray.length - 1] }} of
-            {{ totalData }} entries
+            {{'FORM.showing' | translate}} {{ serialNumberArray[0] }} {{'FORM.to' | translate}}
+            {{ serialNumberArray[serialNumberArray.length - 1] }} {{'FORM.of' | translate}}
+            {{ totalData }} {{'FORM.entries' | translate}}
           </div>
         </div>
 

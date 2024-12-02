@@ -97,16 +97,32 @@ export class EmployeeListComponent implements OnInit {
 
     this.employeeService.getEmployeeList().subscribe((res: any) => {
 
-      this.lstEmployee = res.data
-      console.log("this.lstEmployee", this.lstEmployee);
-
       this.totalData = res.data.length
+      res.data.map((res: getEmployees, index: number) => {
+        const serialNumber = index + 1;
+        if (index >= this.skip && serialNumber <= this.limit) {
+          res.id = serialNumber;
+         
+          this.lstEmployee.push(res);
+          this.serialNumberArray.push(serialNumber);
+        }
+      });
       this.calculateTotalPages(this.totalData, this.pageSize);
       this.serialNumberArray = Array.from({ length: this.totalData }, (_, i) => i + 1);
-
-
-
+      console.log("data", this.lstEmployee)
     })
+    // this.employeeService.getEmployeeList().subscribe((res: any) => {
+
+    //   this.lstEmployee = res.data
+    //   console.log("this.lstEmployee", this.lstEmployee);
+
+    //   this.totalData = res.data.length
+    //   this.calculateTotalPages(this.totalData, this.pageSize);
+    //   this.serialNumberArray = Array.from({ length: this.totalData }, (_, i) => i + 1);
+
+
+
+    // })
 
 
 

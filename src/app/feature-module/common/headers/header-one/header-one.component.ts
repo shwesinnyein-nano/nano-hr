@@ -73,8 +73,12 @@ export class HeaderOneComponent {
       console.log("userId", userId);
       this.userRoleService.getUserByUid(userId).subscribe((res: any) => {
         console.log("userData", res);
-        this.userData = res;
-        this.displayName = res.firstName + ' ' + res.lastName;
+        if(res){
+          this.userData = res;
+          const firstName = res.firstName ? res.firstName : '';
+          const lastName = res.lastName ? res.lastName : '';
+          this.displayName = firstName + ' ' + lastName;
+        }
       });
     } else {
       console.error("User ID is null or undefined");

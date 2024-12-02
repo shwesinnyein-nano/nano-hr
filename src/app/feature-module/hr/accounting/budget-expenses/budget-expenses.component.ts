@@ -3,6 +3,7 @@ import { Sort } from '@angular/material/sort';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MatTableDataSource } from '@angular/material/table';
 import { DataService, apiResultFormat, getBudgets, routes } from 'src/app/core/core.index';
+import { Router } from '@angular/router';
 import { ExpenseDataService } from 'src/app/core/services/expense-data/expense-data.service';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { BudgetExpensesAddModalComponent } from '../budget-expenses-add-modal/budget-expenses-add-modal.component';
@@ -14,7 +15,7 @@ import { TransactionHistoryComponent } from '../transaction-history/transaction-
   styleUrls: ['./budget-expenses.component.scss']
 })
 export class BudgetExpensesComponent implements OnInit {
-  lstRevenue:any [] = [];
+  lstRevenue: any[] = [];
   public searchDataValue = '';
   public addRevenueForm!: FormGroup;
   public editRevenueForm!: FormGroup;
@@ -36,11 +37,11 @@ export class BudgetExpensesComponent implements OnInit {
   public totalPages = 0;
   //** / pagination variables
 
-  constructor(private formBuilder: FormBuilder, private data: DataService, private modalService: NgbModal, private expenseDataService: ExpenseDataService) { }
+  constructor(private formBuilder: FormBuilder,private router: Router, private data: DataService, private modalService: NgbModal, private expenseDataService: ExpenseDataService) { }
 
   ngOnInit(): void {
     this.getTableData()
-    
+
 
   }
 
@@ -52,7 +53,7 @@ export class BudgetExpensesComponent implements OnInit {
       if (result.data) {
         this.expenseDataService.saveExpenseData(result.data.uid, result.data).subscribe((res: any) => {
 
-          if(res.success){
+          if (res.success) {
             this.getTableData();
           }
         })
@@ -62,22 +63,33 @@ export class BudgetExpensesComponent implements OnInit {
   }
 
   openTransactionHistory() {
+
+    // Navigate to transaction history route
+    this.router.navigate([routes.transactionHistory],
+      {
+        queryParams:
+          { 
+           }
+      });
+    // console.log("routes.transactionHistory", routes.transactionHistory);
+    // this.router.navigate(['/accounting/transaction-history']);
+    // this.router.navigate([routes.transactionHistory]);
     // Open in extra large modal size
-    const modalRef = this.modalService.open(TransactionHistoryComponent, { size: 'xl', centered: true })
-    // const modalRef = this.modalService.open(TransactionHistoryComponent, { size: 'lg', centered: true })
+    // const modalRef = this.modalService.open(TransactionHistoryComponent, { size: 'xl', centered: true })
+    //  const modalRef = this.modalService.open(TransactionHistoryComponent, { size: 'xl', centered: true })
 
-    modalRef.result.then((result: any) => {
+    // modalRef.result.then((result: any) => {
 
-      if (result.data) {
-        // this.carDataService.saveCarData(result.data.uid, result.data).subscribe((res: any) => {
+    //   if (result.data) {
+    //     // this.carDataService.saveCarData(result.data.uid, result.data).subscribe((res: any) => {
 
-        //   if(res.success){
-        //     this.getTableData();
-        //   }
-        // })
+    //     //   if(res.success){
+    //     //     this.getTableData();
+    //     //   }
+    //     // })
 
-      }
-    })
+    //   }
+    // })
   }
 
   private getTableData(): void {
@@ -85,13 +97,24 @@ export class BudgetExpensesComponent implements OnInit {
     this.serialNumberArray = [];
 
     this.expenseDataService.getExpenseList().subscribe((res: any) => {
-    
-      this.expenseList = res.data
-      console.log("this.expenseList", this.expenseList);
-      this.totalData = res.data.length
-      this.calculateTotalPages(this.totalData, this.pageSize);
-      this.serialNumberArray = Array.from({ length: this.totalData }, (_, i) => i + 1);
-    
+
+      if (res) {
+        // Check if any expense has approved status
+        const hasApprovedExpense = res.data.some((expense: any) => expense.status === 'approved');
+        if (hasApprovedExpense) {
+          console.log('At least one expense is approved');
+          this.expenseList = res.data
+          console.log("this.expenseList", this.expenseList);
+          this.totalData = res.data.length
+          this.calculateTotalPages(this.totalData, this.pageSize);
+          this.serialNumberArray = Array.from({ length: this.totalData }, (_, i) => i + 1);
+        }
+        else {
+          console.log('No approved expense found');
+        }
+
+      }
+
     })
 
 

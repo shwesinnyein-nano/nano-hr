@@ -41,6 +41,7 @@ export class BudgetExpensesAddModalComponent implements OnInit{
       expense_currency: new FormControl(null, ),
       expense_notes: new FormControl(null, ),
       image: new FormControl(null, ),
+      status: new FormControl(null, ),
     });
   }
 
@@ -99,12 +100,17 @@ export class BudgetExpensesAddModalComponent implements OnInit{
         due_date: dueDate.toISOString()
       });
     }
+    if(this.addRevenueForm.value.status){
+      this.addRevenueForm.patchValue({
+        status: 'requested'
+      });
+    }
     this.addRevenueForm.get('image')?.setValue(this.previewUrl);
     console.log(this.addRevenueForm.value);
     if(this.addRevenueForm.valid) {
       console.log('valid');
       this.ngbActiveModal.close({
-        data: { ...this.addRevenueForm.value, status: 'inprogress' },
+        data: { ...this.addRevenueForm.value},
        
         // Add current user's UID to the data
       });

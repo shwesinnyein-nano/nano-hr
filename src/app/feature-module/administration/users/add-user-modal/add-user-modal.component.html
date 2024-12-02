@@ -90,12 +90,10 @@
           <div class="input-block mb-3">
             <label class="col-form-label" for="">{{"FORM.role" | translate}} <span class="text-danger">*</span></label>
             <mat-select  class="select mat-cust-select custom-mat-select" placeholder="{{'FORM.select_role' | translate}}" formControlName="role">
-              <mat-option value="admin">Admin</mat-option>
-
-              <mat-option value="employee" selected>Employee</mat-option>
-              <mat-option value="employee" selected>Employee</mat-option>
-              <mat-option value="employee" selected>Employee</mat-option>
-              <mat-option value="employee" selected>Employee</mat-option>
+              
+              <mat-option *ngFor="let role of userRoleList" [value]="role.id">
+                {{ role.name }}
+              </mat-option>
             </mat-select>
             @if (this.addUserForm.get('role')?.invalid && this.addUserForm.get('role')?.touched) {
             <div>

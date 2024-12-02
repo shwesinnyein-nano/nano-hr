@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FeatureModuleComponent } from './feature-module.component';
 import { ChangePasswordComponent } from './auth/change-password/change-password.component';
-
+import { TransactionHistoryComponent } from './hr/accounting/transaction-history/transaction-history.component';
 const routes: Routes = [
   {
     path: '',
@@ -41,11 +41,7 @@ const routes: Routes = [
       },
 
 
-      {
-        path: 'sales',
-        loadChildren: () =>
-          import('./hr/sales/sales.module').then((m) => m.SalesModule),
-      },
+      
       {
         path: 'accounting',
         loadChildren: () =>
@@ -53,6 +49,11 @@ const routes: Routes = [
             (m) => m.AccountingModule
           ),
       },
+      // {
+      //   path: 'accounting/transaction-history',
+      //   component: TransactionHistoryComponent  
+        
+      // },
       {
         path: 'payroll',
         loadChildren: () =>
@@ -100,6 +101,13 @@ const routes: Routes = [
           import('./page/profile/profile.module').then((m) => m.ProfileModule),
       },
 
+      {
+        path: 'configuration',
+        loadChildren: () =>
+          import('./administration/configuration/configuration.module').then(
+              (m) => m.ConfigurationModule
+          ),
+      },
 
       {
         path: 'pages',

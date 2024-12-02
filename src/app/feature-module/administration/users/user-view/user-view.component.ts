@@ -146,11 +146,6 @@ export class UserViewComponent implements OnInit {
 
     this.userService.getUsers().subscribe((res: any) => {
 
-      // this.users = res.data
-
-
-
-     
       this.totalData = res.data.length
       res.data.map((res: getUsers, index: number) => {
         const serialNumber = index + 1;
@@ -162,18 +157,12 @@ export class UserViewComponent implements OnInit {
         }
       });
       this.calculateTotalPages(this.totalData, this.pageSize);
-      // this.serialNumberArray = Array.from({ length: this.totalData }, (_, i) => i + 1);
-      // console.log("data", this.users)
+      this.serialNumberArray = Array.from({ length: this.totalData }, (_, i) => i + 1);
+      console.log("data", this.users)
     })
   }
 
-  // findMatchName(id: string, listName: any){
-  //   console.log("id", id);
-  //   console.log("companyList", listName);
-  //   const company = listName.find((company: any) => company['id'] === id);
-
-  //   return company ;
-  // }
+  
   openEditUserModal(user: any) {
     console.log("openEditUserModal", user);
     const modalRef = this.modalService.open(AddUserModalComponent, { size: 'lg', centered: true });

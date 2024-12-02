@@ -8,19 +8,10 @@ import { EmployeeListComponent } from './all-employee/employee-list/employee-lis
 import { EmployeePageContentComponent } from './all-employee/employee-page-content/employee-page-content.component';
 import { EmployeeModalComponent } from './all-employee/employee-modal/employee-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HolidaysComponent } from './holidays/holidays.component';
-import { LeaveAdminComponent } from './leave-admin/leave-admin.component';
-import { LeaveEmployeeComponent } from './leave-employee/leave-employee.component';
-import { LeaveSettingsComponent } from './leave-settings/leave-settings.component';
-import { AttendanceAdminComponent } from './attendance-admin/attendance-admin.component';
-import { AttendanceEmployeeComponent } from './attendance-employee/attendance-employee.component';
-import { DepartmentsComponent } from './departments/departments.component';
-import { DesignationsComponent } from './designations/designations.component';
-import { TimesheetComponent } from './timesheet/timesheet.component';
 
-import { ShiftScheduleComponent } from './shift-schedule/shift-schedule.component';
+
 import { SharedModule } from 'src/app/shared/shared.module';
-import { ShiftListComponent } from './shift-list/shift-list.component';
+
 import { LanguageModule } from 'src/app/core/services/languages/languages.modules';
 
 @NgModule({
@@ -30,18 +21,10 @@ import { LanguageModule } from 'src/app/core/services/languages/languages.module
     EmployeeListComponent,
     EmployeePageContentComponent,
     EmployeeModalComponent,
-    HolidaysComponent,
-    LeaveAdminComponent,
-    LeaveEmployeeComponent,
-    LeaveSettingsComponent,
-    AttendanceAdminComponent,
-    AttendanceEmployeeComponent,
-    DepartmentsComponent,
-    DesignationsComponent,
-    TimesheetComponent,
-
-    ShiftScheduleComponent,
-    ShiftListComponent
+   
+   
+  
+  
   ],
   imports: [
     CommonModule,

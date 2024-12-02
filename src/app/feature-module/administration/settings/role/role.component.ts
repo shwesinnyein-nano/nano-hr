@@ -8,9 +8,9 @@ import { DataService, allroles } from 'src/app/core/core.index';
   styleUrls: ['./role.component.scss']
 })
 export class RoleComponent  {
-  public allroles: Array<allroles>;
+  public allroles: Array<allroles> = [] ;
   constructor(public router: Router, private dataservice: DataService) {
-  this.allroles = this.dataservice.allroles
+    // this.allroles = this.dataservice.allroles;
   }
   
 

@@ -6,6 +6,7 @@ import { DataService, routes } from 'src/app/core/core.index';
 import { getBudgets } from 'src/app/core/services/interface/models';
 import { Sort } from '@angular/material/sort';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ExpenseDataService } from 'src/app/core/services/expense-data/expense-data.service';
 @Component({
   selector: 'app-transaction-history',
   templateUrl: './transaction-history.component.html',
@@ -29,34 +30,49 @@ export class TransactionHistoryComponent implements OnInit{
   public pageSelection: Array<pageSelection> = [];
   public totalPages = 0;
   public lstTransactionHistory: Array<getTransactionHistory> = [];
-  constructor(private fb: FormBuilder, private data: DataService, private ngbActiveModal: NgbActiveModal){}
+  constructor(private fb: FormBuilder, private data: DataService, private expenseDataService: ExpenseDataService  ){}
 
   ngOnInit(): void {
-    
+    this.getTableData();
   }
-  private getTableData(): void {
-    this.lstTransactionHistory = [];
-    this.serialNumberArray = [];
+  
 
-    this.data.getBudgets().subscribe((res: apiResultFormat) => {
-      this.totalData = res.totalData;
-      res.data.map((res: getBudgets, index: number) => {
-        const serialNumber = index + 1;
-        if (index >= this.skip && serialNumber <= this.limit) {
-          res.id = serialNumber;
-          this.lstTransactionHistory.push(res);
-          this.serialNumberArray.push(serialNumber);
+    private getTableData(): void {
+      this.lstTransactionHistory = [];
+      this.serialNumberArray = [];
+  
+      this.expenseDataService.getExpenseList().subscribe((res: any) => {
+  
+        if (res) {
+          // Check if any expense has approved status
+          const hasApprovedExpense = res.data.filter((expense: any) => expense.status !== 'approved');
+          console.log("hasApprovedExpense", hasApprovedExpense);
+          if (hasApprovedExpense.length === 0) {
+            console.log('At least one expense is approved');
+            
+          }
+          else {
+            this.lstTransactionHistory = hasApprovedExpense
+            console.log("this.lstTransactionHistory", this.lstTransactionHistory);
+            this.totalData = hasApprovedExpense.length
+            this.calculateTotalPages(this.totalData, this.pageSize);
+            this.serialNumberArray = Array.from({ length: this.totalData }, (_, i) => i + 1);
+           
+          }
+  
         }
-      });
-      this.dataSource = new MatTableDataSource<getTransactionHistory>(this.lstTransactionHistory);
-      this.calculateTotalPages(this.totalData, this.pageSize);
-    });
+  
+      })
+  
+  
+    }
+  
 
 
-  }
+  
 
   closeModal() {
-    this.ngbActiveModal.dismiss();
+    // this.ngbActiveModal.dismiss();
   }
 
   public sortData(sort: Sort) {

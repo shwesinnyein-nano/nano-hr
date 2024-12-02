@@ -34,7 +34,8 @@
     <div class="col-sm-6 col-md-3">
       <div class="input-block mb-3 form-focus select-focus select">
 
-        <mat-select class="select custom-mat-select floating-mat-select" [placeholder]="'FORM.select_company' | translate" [(ngModel)]="searchCompany">
+        <mat-select class="select custom-mat-select floating-mat-select"
+          [placeholder]="'FORM.select_company' | translate" [(ngModel)]="searchCompany">
           <mat-option value="nano-vip">NANO VIP</mat-option>
           <mat-option value="nano-store">NANO STORE</mat-option>
           <mat-option value="nano-entertainment">NANO ENTERTAINMENT</mat-option>
@@ -105,9 +106,18 @@
               <td>{{user.companyName }}</td>
               <td>{{user.positionName | dyn_translate:positionObj[user.positionName] }}</td>
               <td>
-                <span
-                  [ngClass]="{'bg-inverse-info':user.role === 'client','bg-inverse-warning':user.role === 'admin','bg-inverse-success':user.role === 'employee'}"
-                  class="badge ">{{user.role | uppercase}}</span>
+                <span [ngClass]="{
+    'role-approver': user.role === 'approver',
+    'role-verifier': user.role === 'verifier',
+    'role-maker': user.role === 'maker',
+    'role-employee': user.role === 'employee',
+    'role-admin': user.role === 'admin'
+  }" class="badge">
+                  {{ user.role | uppercase }}
+                </span>
+                <!-- <span
+                  [ngClass]="{'bg-inverse-info':user.role === 'admin','bg-inverse-warning':user.role === 'employee','bg-inverse-success':user.role === 'verifier', 'bg-inverse-primary':user.role === 'approver'}"
+                  class="badge ">{{user.role | uppercase}}</span> -->
               </td>
               <td>{{user.createdDate | date:'dd MMM yyyy'}}</td>
 
@@ -221,5 +231,3 @@
     </div>
   </div>
 </div>
-
-

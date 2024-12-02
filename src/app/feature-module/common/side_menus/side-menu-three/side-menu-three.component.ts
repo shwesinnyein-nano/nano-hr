@@ -58,7 +58,8 @@ export class SideMenuThreeComponent implements OnDestroy {
       try {
         const uid = await this.authService.getUid();
         this.userRoleService.getMenuAccess(uid).subscribe((menuData: any) => {
-          if (menuData.menuAccess) {
+          console.log("menuData", menuData);
+          if (menuData && menuData.menuAccess) {
             console.log("menuGroup", this.side_bar_data);
 
             // Map over each menu group and menu item to assign permissions
@@ -76,7 +77,18 @@ export class SideMenuThreeComponent implements OnDestroy {
                   : { read: true, write: true, create: true, delete: true }, // Default permissions
               };
             })
-          };
+          }
+          else{
+            this.side_bar_data = this.side_bar_data.map((menuGroup: any) => {
+              // const access = menuData.menuAccess.find((accessItem: any) => accessItem.menuValue === menuGroup.menuValue);
+              return {
+                ...menuGroup,
+                permissions: 
+                   { read: true, write: true, create: true, delete: true }, // Default permissions
+              };
+            })
+
+          }
           console.log("Updated side_bar_data with permissions", this.side_bar_data);
         });
 

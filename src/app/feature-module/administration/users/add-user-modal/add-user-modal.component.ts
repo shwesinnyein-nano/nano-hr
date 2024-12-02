@@ -39,7 +39,7 @@ export class AddUserModalComponent implements OnInit {
   isNanoEntertainment: boolean = false;
   companyList: any[] = [];
   positionList: any[] = [];
-
+  userRoleList: any[] = [];
   locationList: any[] = [];
   branchList: any[] = [];
   selectedCompany: string = '';
@@ -51,6 +51,7 @@ export class AddUserModalComponent implements OnInit {
   selectedLocationList: any[] = [];
   selectedBranchList: any[] = [];
   selectedPositionList: any[] = [];
+  selectedRoleList: any[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -78,6 +79,7 @@ export class AddUserModalComponent implements OnInit {
       this.locationList = data.locationList.data;
       this.positionList = data.positionList.data;
       this.branchList = data.branchList.data;
+      this.userRoleList = data.userRoleList.data;
     });
 
 
@@ -181,6 +183,12 @@ export class AddUserModalComponent implements OnInit {
       map((res: any) => res.data)
     ).subscribe((res: any) => {
       this.companyList = res;
+    });
+    this.dataService.getUserRole().pipe(
+      map((res: any) => res.data)
+    ).subscribe((res: any) => {
+      this.userRoleList = res;
+      this.selectedRoleList = res;
     });
 
     this.dataService.getLocationList().pipe(

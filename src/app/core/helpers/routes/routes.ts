@@ -26,6 +26,9 @@ export class routes {
   public static get dashboard(): string {
     return this.baseUrl + '/dashboard';
   }
+  public static get configuration(): string {
+    return this.baseUrl + '/configuration/configuration-view';
+  }
   public static get baseUi(): string {
     return this.baseUrl + '/base-ui';
   }
@@ -76,6 +79,12 @@ export class routes {
   public static get addCarModal(): string {
     return this.baseUrl + '/product/add-car-modal';
   }
+  // public static get configurationView(): string {
+  //   return this.baseUrl + '/configuration/configuration-view';
+  // }
+  // public static get addConfigurationModal(): string {
+  //   return this.baseUrl + '/configuration/add-configuration-modal';
+  // }
 
   public static get employees(): string {
     return this.baseUrl + '/employees';
@@ -149,7 +158,9 @@ export class routes {
   }
   public static get expenses(): string {
     return this.baseUrl + '/sales/expenses';
+
   }
+ 
   public static get providentfund(): string {
     return this.baseUrl + '/sales/provident-fund';
   }
@@ -171,6 +182,7 @@ export class routes {
   public static get budgetexpenses(): string {
     return this.baseUrl + '/accounting/budget-expenses';
   }
+ 
   public static get budgetrevenues(): string {
     return this.baseUrl + '/accounting/budget-revenues';
   }
@@ -331,6 +343,9 @@ export class routes {
   }
   public static get employeeProfile(): string {
     return this.baseUrl + '/employees/employee-profile';
+  }
+  public static get transactionHistory(): string {
+    return this.baseUrl + '/accounting/transaction-history';
   }
   public static get clientProfile(): string {
     return this.baseUrl + '/clients/client-profile';
@@ -701,32 +716,5 @@ export class routes {
   public static get leads(): string {
     return this.crm + '/leads';
   }
-  public static get companySubscriptions(): string {
-    return this.baseUrl + '/subscriptions/company';
-  }
-  public static get emailview(): string {
-    return this.baseUrl + '/apps/mailview';
-  }
-  public static get color(): string {
-    return this.baseUi + '/ui-colors';
-  }
-
-  public static get chartPrime(): string {
-    return this.charts + '/prime-ng';
-  }
-  public static get horizontalTimeline(): string {
-    return this.forms + '/horizontal-timeline';
-  }
-  public static get editInvoice(): string {
-    return this.baseUrl + '/sales/edit-invoice';
-  }
-  public static get comingSoon(): string {
-    return this.baseUrl + '/pages/coming-soon';
-  }
-  public static get underMaintanance(): string {
-    return this.baseUrl + '/pages/under-maintenance';
-  }
-  public static get changePassword(): string {
-    return this.baseUrl + '/change-password';
-  }
+  
 }

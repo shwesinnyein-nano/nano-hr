@@ -1,6 +1,6 @@
 <div class="modal-content">
   <div class="modal-header">
-    <h5 class="modal-title">Add Expenses</h5>
+    <h5 class="modal-title">{{'FORM.add_expenses' | translate}}</h5>
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -8,35 +8,35 @@
   <div class="modal-body">
     <form [formGroup]="addRevenueForm">
       <div class="input-block mb-3 form-row">
-        <label for="" class="col-lg-12 control-label col-form-label">Expense Type <span
+        <label for="" class="col-lg-12 control-label col-form-label">{{'FORM.expense_type' | translate}} <span
             class="text-danger">*</span></label>
         <div class="col-lg-12">
           <mat-select name="expense_type" class="custom-mat-select"
             [class.invalid]="addRevenueForm.get('expense_type')?.invalid && addRevenueForm.get('expense_type')?.touched"
-            id="expense_type" placeholder="Choose Type" formControlName="expense_type">
-            <mat-option value="salary">Salary</mat-option>
-            <mat-option value="utilities">Utilities</mat-option>
-            <mat-option value="advertising">Advertising </mat-option>
-            <mat-option value="fuel">Fuel</mat-option>
-            <mat-option value="compliance-legal">Compliance and Legal</mat-option>
-            <mat-option value="employee-welfare">Employee Welfare</mat-option>
-            <mat-option value="taxes-financial-obligations">Taxes and Financial Obligations</mat-option>
-            <mat-option value="travel-miscellaneous">Travel and Miscellaneous</mat-option>
-            <mat-option value="other">Other</mat-option>
+            id="expense_type" [placeholder]="'FORM.choose_type' | translate" formControlName="expense_type">
+            <mat-option value="salary">{{'FORM.salary' | translate}}</mat-option>
+            <mat-option value="utilities">{{'FORM.utilities' | translate}}</mat-option>
+            <mat-option value="advertising">{{'FORM.advertising' | translate}}</mat-option>
+            <mat-option value="fuel">{{'FORM.fuel' | translate}}</mat-option>
+            <mat-option value="compliance-legal">{{'FORM.compliance_legal' | translate}}</mat-option>
+            <mat-option value="employee-welfare">{{'FORM.employee_welfare' | translate}}</mat-option>
+            <mat-option value="taxes-financial-obligations">{{'FORM.taxes_financial_obligations' | translate}}</mat-option>
+            <mat-option value="travel-miscellaneous">{{'FORM.travel_miscellaneous' | translate}}</mat-option>
+            <mat-option value="other">{{'FORM.other' | translate}}</mat-option>
           </mat-select>
           @if (
-          addRevenueForm.get('expense_type')?.invalid &&
+          addRevenueForm.get('expense_type')?.invalid && 
           addRevenueForm.get('expense_type')?.touched
           ) {
           <div>
             <small class="text-danger">
-              *Expense Type required</small>
+              * {{'FORM.expense_type_required' | translate}}</small>
           </div>
           }
         </div>
       </div>
       <div class="input-block mb-3 form-row">
-        <label for="" class="col-lg-12 control-label col-form-label">Expense Source <span
+        <label for="" class="col-lg-12 control-label col-form-label">{{'FORM.expense_source' | translate}} <span
             class="text-danger">*</span></label>
         <div class="col-lg-12 ">
           <input class="form-control" type="text" name="expense_source" [class.invalid]="
@@ -60,7 +60,7 @@
         }
       </div>
       <div class="input-block mb-3 form-row">
-        <label for="" class="col-lg-12 control-label col-form-label">Creditor Name <span
+        <label for="" class="col-lg-12 control-label col-form-label">{{'FORM.creditor_name' | translate}} <span
             class="text-danger">*</span></label>
         <div class="col-lg-12" >
           <input class=" form-control" type="text"  formControlName="creditor_name"
@@ -85,7 +85,7 @@
         }
       </div>
       <div class="input-block mb-3 form-row">
-        <label for="" class="col-lg-12 control-label col-form-label">Invoice Number <span
+        <label for="" class="col-lg-12 control-label col-form-label">{{'FORM.invoice_number' | translate}} <span
             class="text-danger">*</span></label>
         <div class="col-lg-12">
           <input class="form-control" type="text"name="invoice_number" formControlName="invoice_number" [class.invalid]="
@@ -109,7 +109,7 @@
         }
       </div>
       <div class="input-block mb-3 form-row">
-        <label for="" class="col-lg-6 control-label col-form-label">Expense Date <span
+        <label for="" class="col-lg-6 control-label col-form-label">{{'FORM.expense_date' | translate}} <span
             class="text-danger">*</span></label>
         <div class="col-lg-12 date-input">
           <div class="cal-icon">
@@ -135,7 +135,7 @@
         }
       </div>
       <div class="input-block mb-3 form-row">
-        <label for="" class="col-lg-12 control-label col-form-label">Due Date <span class="text-danger">*</span></label>
+        <label for="" class="col-lg-12 control-label col-form-label">{{'FORM.due_date' | translate}} <span class="text-danger">*</span></label>
         <div class="col-lg-12 date-input">
           <div class="cal-icon">
             <!-- Set minimum date to today to prevent selecting past dates -->
@@ -181,17 +181,10 @@
         </div>
         }
       </div>
-      <div class="input-block mb-3 form-row">
-        <label for="" class="col-lg-12 control-label col-form-label">Tax </label>
-        <div class="col-lg-12 ">
-          <input class="form-control" type="text"  name="expense_tax" />
-        </div>
-
-      </div>
-
+     
 
       <div class="input-block mb-3 form-row row">
-        <label for="" class="col-lg-12 control-label col-form-label">Amount <span class="text-danger">*</span></label>
+        <label for="" class="col-lg-12 control-label col-form-label">{{'FORM.amount' | translate}} <span class="text-danger">*</span></label>
         <div class="col-lg-6 p-0 mb-3 pe-lg-3 pe-0">
           <input type="text" class="form-control" placeholder="800.00" formControlName="expense_amount" [class.invalid]="
               addRevenueForm.get('expense_amount')?.invalid &&
@@ -214,7 +207,7 @@
         </div>
         <div class="col-lg-6">
           <mat-select name="currency_symbol" formControlName="expense_currency" class="custom-mat-select"
-            placeholder="Select Currency">
+            [placeholder]="'FORM.select_currency' | translate">
             <mat-option value="$ - AUD">THB - Baht</mat-option>
             <mat-option value="$ - AUD">USD - US Dollar</mat-option>
 
@@ -225,7 +218,7 @@
         </div>
       </div>
       <div class="input-block mb-3 form-row">
-        <label for="" class="col-lg-12 control-label col-form-label">Notes </label>
+        <label for="" class="col-lg-12 control-label col-form-label">{{'FORM.notes' | translate}} </label>
         <div class="col-lg-12">
           <textarea class="form-control ta" formControlName="expense_notes"></textarea>
         </div>
@@ -233,7 +226,7 @@
       </div>
 
       <div class="input-block mb-3 form-row position-relative">
-        <label for="" class="col-lg-12 control-label col-form-label">Attach File</label>
+        <label for="" class="col-lg-12 control-label col-form-label">{{'FORM.attach_file' | translate}}</label>
         <div class="col-lg-12">
           <input
             type="file"
@@ -252,7 +245,7 @@
         <img [src]="previewUrl" alt="File Preview" class="img-fluid" style="max-width: 100%; height: auto;" />
       </div>
       <div class="submit-section">
-        <button class="btn btn-primary submit-btn" (click)="onSubmitExpense()">Submit</button>
+        <button class="btn btn-primary submit-btn" (click)="onSubmitExpense()">{{'FORM.submit' | translate}}</button>
       </div>
     </form>
   </div>

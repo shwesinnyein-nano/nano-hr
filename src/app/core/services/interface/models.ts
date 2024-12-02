@@ -917,7 +917,7 @@ export interface getTransactionHistory {
   expense_type: string;
   expense_source: string;
   creditor_name: string;
-  amount: string;
+  expense_amount: string;
   expense_date: string;
   status: string;
 }
