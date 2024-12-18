@@ -37,8 +37,11 @@ import { ToastModule } from 'primeng/toast';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
+
 @NgModule({
-  declarations: [],
+  declarations: [
+    
+  ],
   imports: [
     CommonModule,
     HttpClientModule,

@@ -36,14 +36,13 @@
 
         <mat-select class="select custom-mat-select floating-mat-select"
           [placeholder]="'FORM.select_company' | translate" [(ngModel)]="searchCompany">
-          <mat-option value="nano-vip">NANO VIP</mat-option>
-          <mat-option value="nano-store">NANO STORE</mat-option>
-          <mat-option value="nano-entertainment">NANO ENTERTAINMENT</mat-option>
+          <mat-option *ngFor="let company of companyList" [value]="company.id">{{company.name}}</mat-option>
 
         </mat-select>
         <label class="focus-label">{{"FORM.company" | translate}}</label>
       </div>
     </div>
+    
     <div class="col-sm-6 col-md-3" style="margin-bottom: 12px;">
       <a class="btn btn-primary w-100" (click)="searchUser()"> {{"FORM.search" | translate}} </a>
 
@@ -57,53 +56,31 @@
 
   <div class="row">
     <div class="col-md-12">
-      <div class="table_header">
-        <div class="row">
-          <div class="col-sm-12 col-md-6">
-            <div class="dataTables_length">
-              <label class="col-form-label" for="">
-                Show
-                <select [(ngModel)]="pageSize" (ngModelChange)="changePageSize()" class="form-control form-control-sm">
-                  <option value="10">10</option>
-                  <option value="25">25</option>
-                  <option value="50">50</option>
-                  <option value="100">100</option>
-                </select>
-                Entries
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
+      
       <div class="table-responsive">
-        <table matSort (matSortChange)="sortData($event)" class="table table-striped custom-table datatable"
-          id="datatable">
-          <thead>
+       
+        <table class="table text-nowrap">
+          <thead class="table-primary">
             <tr>
-              <th mat-sort-header="name">{{"FORM.name" | translate}}</th>
-              <th mat-sort-header="email">{{"FORM.company" | translate}}</th>
-              <th mat-sort-header="company">{{"FORM.position" | translate}}</th>
-              <th mat-sort-header="role">{{"FORM.role" | translate}}</th>
-              <th>{{"FORM.created_date" | translate}}</th>
-              <th>{{"FORM.updated_date" | translate}}</th>
+              <th scope="col">{{"FORM.no" | translate}}</th>
+              <th scope="col">{{"FORM.name" | translate}}</th>
+              <th scope="col">{{"FORM.company" | translate}}</th>
+              <th scope="col">{{"FORM.location" | translate}}</th>
+              <th scope="col">{{"FORM.position" | translate}}</th>
+              <th scope="col">{{"FORM.role" | translate}}</th>
+              <th scope="col">{{"FORM.created_date" | translate}}</th>
+              <th scope="col">{{"FORM.updated_date" | translate}}</th>
+            
 
-              <th class="text-end">{{"FORM.action" | translate}}</th>
+              <th scope="col" class="text-center" >{{"FORM.action" | translate}}</th>
             </tr>
           </thead>
-          <tbody *ngFor="let user of users;  let i = index">
+          <tbody *ngFor="let user of userArray;  let i = index">
             <tr>
-
-              <td>
-                <h2 class="table-avatar">
-                  <a [routerLink]="routes.employeeProfile" class="avatar">
-                    <img [src]="user.img? user.img : 'assets/images/user.png'" alt=""></a>
-                  <a [routerLink]="routes.employeeProfile">{{user.firstName}} {{user.lastName}}<span class="text-danger"
-                      *ngIf="user.status === 'disabled'"> (Disabled)</span>
-                  </a>
-                </h2>
-              </td>
-
-              <td>{{user.companyName }}</td>
+              <th scope="row">{{serialNumberArray[userArray.indexOf(user)]}}</th>
+              <td>{{user.firstName}} {{user.lastName}}</td>
+              <td>{{user.companyName}}</td>
+              <td>{{user.locationName}}</td>
               <td>{{user.positionName | dyn_translate:positionObj[user.positionName] }}</td>
               <td>
                 <span [ngClass]="{
@@ -122,33 +99,25 @@
               <td>{{user.createdDate | date:'dd MMM yyyy'}}</td>
 
               <td>{{user.updatedDate | date:'dd MMM yyyy'}}</td>
-
-              <td class="text-end">
-                <div class="dropdown dropdown-action">
-                  <a class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i
-                      class="material-icons">more_vert</i></a>
-                  <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" (click)="openEditUserModal(user)"><i class="fa-solid fa-pencil m-r-5"></i>
-                      Edit</a>
-                    <a class="dropdown-item" (click)="openViewUserModal(user)"><i
-                        class="fa-regular fa-trash-can m-r-5"></i>
-                      View</a>
-                    <a class="dropdown-item" *ngIf="user.status !== 'disabled'" (click)="disabledUser(user)"><i
-                        class="fa fa-circle m-r-5" style="color: red;"></i>
-                      Disabled</a>
-                    <a class="dropdown-item" *ngIf="user.status == 'disabled'" (click)="disabledUser(user)"><i
-                        class="fa fa-circle m-r-5" style="color: green;"></i>
-                      Enabled</a>
-                  </div>
+              <!-- <td>{{user.due_date | date:'dd MMM yyyy'}}</td> -->
+              
+              <!-- <td>{{user.createdDate | date:'dd MMM yyyy'}}</td>
+              <td>{{user.updatedDate | date:'dd MMM yyyy'}}</td> -->
+              <td class="text-center" >
+                <div class="">
+                 
+                  <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-soft-info rounded-pill" (click)="openEditUserModal(user)"><i
+                      class="feather icon-edit"></i></a>
+                  <!-- <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-soft-danger rounded-pill" (click)="openViewUserModal(user)"><i
+                      class="ti ti-trash"></i></a> -->
                 </div>
               </td>
+             
+              
             </tr>
 
-
-
           </tbody>
-
-          <tbody *ngIf="users.length === 0">
+          <tbody *ngIf="userArray.length === 0">
             <tr>
               <td colspan="10">
                 <h5 style="text-align: center;">{{"FORM.no_data_found" | translate}}</h5>
@@ -157,6 +126,10 @@
           </tbody>
         </table>
       </div>
+
+
+
+
       <div class="table_footer">
         <div class="col-sm-12 col-md-5">
           <div class="dataTables_info">
@@ -218,7 +191,7 @@
               <li class="page-item" [ngClass]="{
 						  disabled:
 							currentPage === pageNumberArray[pageNumberArray.length - 1] ||
-							users.length === 0
+							userArray.length === 0
 						}">
                 <a (click)="getMoreData('next')" class="page-link" href="javascript:void(0);"><i
                     class=" fa fa-angle-double-right"></i>

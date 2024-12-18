@@ -878,7 +878,8 @@ mat-select.custom-mat-select .mat-mdc-select-trigger {
 }
 
 mat-select.custom-mat-select .mat-mdc-select-value {
-  padding-left: 15px;
+  padding-left: 14px;
+  padding-top: 10px;
 }
 
 mat-select .mat-mdc-select-arrow-wrapper svg {
@@ -923,7 +924,7 @@ mat-chip-row.mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) {
 }
 
 .input-block mat-form-field .mat-mdc-text-field-wrapper {
-  height: 50px;
+  height: 44px;
 }
 
 .input-block mat-form-field .mat-mdc-form-field-infix .mdc-floating-label mat-label {

@@ -20,6 +20,7 @@ export class UserViewComponent implements OnInit {
   selected1 = 'option1';
   selected2 = 'option1';
   public users: Array<getUsers> = [];
+  userArray: Array<getUsers> = [];
   public searchDataValue = '';
   dataSource!: MatTableDataSource<getUsers>;
   public addUsers!: FormGroup;
@@ -39,20 +40,13 @@ export class UserViewComponent implements OnInit {
   public totalPages = 0;
   public searchName = '';
   public searchCompany = '';
-  //** / pagination variables
-
-
-  // positionListNanoVipList: any;
-  // positionListNanoStore: any;
-  // positionListNanoEntertainmentSugarDaddy: any;
-  // positionListNanoEntertainmentHu: any;
+  public searchLocation = '';
+  
   locationList: any;
   positionList: any;
   companyList: any;
   branchList: any;
-  // storeBranchPhuketList: any;
-  // storeBranchBangkokList: any;
-  // entertainmentBranchList: any;
+ 
   positionObj:any
   constructor(private formBuilder: FormBuilder, private data: DataService, private modalService: NgbModal, private authService: AuthService, private userService: UserRoleService, private employeeService: EmployeeService) {
 
@@ -69,7 +63,7 @@ export class UserViewComponent implements OnInit {
   fetchAllData(): void {
     this.data.fetchAllList().subscribe(
       (data) => {
-       
+        
         this.positionList = data.positionList.data;
         this.locationList = data.locationList.data;
         this.companyList = data.companyList.data;
@@ -127,7 +121,7 @@ export class UserViewComponent implements OnInit {
    
     this.userService.searchUsers(this.searchName, this.searchCompany).then((res: any) => {
     
-      this.users = res;
+      this.userArray = res;
     });
   }
   cancelSearch() {
@@ -137,27 +131,31 @@ export class UserViewComponent implements OnInit {
   }
 
   disabledUser(user: any) {
-
+    // this.userService.updateUserStatus(user.uid, user.status === 'disabled' ? 'enabled' : 'disabled').subscribe((res: any) => {
+    //   this.getTableData();
+    // });
   }
 
   private getTableData(): void {
     this.users = [];
     this.serialNumberArray = [];
+    this.userArray = [];
 
     this.userService.getUsers().subscribe((res: any) => {
 
       this.totalData = res.data.length
+      console.log("res", res)
       res.data.map((res: getUsers, index: number) => {
         const serialNumber = index + 1;
         if (index >= this.skip && serialNumber <= this.limit) {
           res.id = serialNumber;
          
-          this.users.push(res);
+          this.userArray.push(res);
           this.serialNumberArray.push(serialNumber);
         }
       });
       this.calculateTotalPages(this.totalData, this.pageSize);
-      this.serialNumberArray = Array.from({ length: this.totalData }, (_, i) => i + 1);
+      // this.serialNumberArray = Array.from({ length: this.totalData }, (_, i) => i + 1);
       console.log("data", this.users)
     })
   }
@@ -198,25 +196,25 @@ export class UserViewComponent implements OnInit {
     });
 
   }
+  
+
+  public searchData(value: string): void {
+    this.dataSource.filter = value.trim().toLowerCase();
+    this.userArray = this.dataSource.filteredData;
+  }
   public sortData(sort: Sort) {
-    const data = this.users.slice();
+    const data = this.userArray.slice();
     /* eslint-disable @typescript-eslint/no-explicit-any */
     if (!sort.active || sort.direction === '') {
-      this.users = data;
+      this.userArray = data;
     } else {
-      this.users = data.sort((a: any, b: any) => {
+      this.userArray = data.sort((a: any, b: any) => {
         const aValue = (a as any)[sort.active];
         const bValue = (b as any)[sort.active];
         return (aValue < bValue ? -1 : 1) * (sort.direction === 'asc' ? 1 : -1);
       });
     }
   }
-
-  public searchData(value: string): void {
-    this.dataSource.filter = value.trim().toLowerCase();
-    this.users = this.dataSource.filteredData;
-  }
-
   public getMoreData(event: string): void {
     if (event === 'next') {
       this.currentPage++;
@@ -242,7 +240,7 @@ export class UserViewComponent implements OnInit {
     } else if (pageNumber < this.currentPage) {
       this.pageIndex = pageNumber + 1;
     }
-    this.getTableData();
+     this.getTableData();
   }
 
   public changePageSize(): void {

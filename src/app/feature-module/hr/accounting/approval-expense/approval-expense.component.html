@@ -1,0 +1,128 @@
+<div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">{{'FORM.approval_expense' | translate}}</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      
+        <div class="row">
+            <div class="col-sm-6 m-b-20">
+                
+                <ul class="list-unstyled mb-0">
+                    <li class="mb-2"><strong>{{'FORM.company' | translate | uppercase}}</strong>:<strong> {{data?.companyName}}</strong></li>
+                    
+                    <li class="mb-2"><strong>{{'FORM.location' | translate | uppercase}}</strong>: <strong> {{data?.locationName}}</strong></li>
+                    <li class="mb-2"><strong>{{'FORM.branch' | translate | uppercase}}</strong>: <strong> {{data?.branchName}}</strong></li>
+                </ul>
+            </div>
+            <div class="col-sm-6 m-b-20">
+                <div class="invoice-details">
+                    <h3 class="text-uppercase">{{data?.expense_slip_no}}</h3>
+                    <ul class="list-unstyled">
+                        <li><span style="color:darkgreen">Request Date: </span><span>{{data?.expense_date | date:'dd, MMM, yyyy'}}</span></li>
+                        <li><span style="color: red">Due Date: </span><span>{{data?.due_date | date:'dd, MMM, yyyy'}}</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 m-b-20">
+                <ul class="list-unstyled">
+                    <li>
+                        <h5 class="mb-0"><strong>Request By: {{requestBy?.firstName}} {{requestBy?.lastName}}</strong></h5>
+                    </li>
+                    <li><span><strong>Position:</strong> {{requestBy?.positionName}}</span></li>
+                    <!-- <li><span><strong>Employee ID:</strong> {{requestBy?.employee_id}}</span></li>
+                    <li><span><strong>Joining Date:</strong> {{requestBy?.joining_date | date:'dd, MMM, yyyy'}}</span></li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div>
+                    <!-- <h4 class="m-b-10"><strong>Earnings</strong></h4> -->
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td><strong>Expense Type</strong> <span class="float-end">{{data?.expense_type}}</span>
+                                </td>
+                            </tr>
+                            <!-- <tr>
+                                <td><strong>Expense Source</strong> <span
+                                        class="float-end">{{data?.expense_source}}</span></td>
+                            </tr> -->
+                            <tr>
+                                <td><strong>Creditor Name</strong> <span class="float-end">{{data?.creditor_name}}</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Invoice Number</strong> <span class="float-end">{{data?.invoice_number}}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total Amount</strong> <span
+                                        class="float-end"><strong>{{data?.expense_amount | currency: data?.expense_currency === 'baht' ? '฿' : '$'}}</strong></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Currency</strong> <span
+                                        class="float-end"><strong>{{data?.expense_currency}}</strong></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Notes</strong> <span
+                                        class="float-end"><strong>{{data?.expense_notes}}</strong></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            
+        </div>
+        <div class="uploaded-docs" *ngIf="uploadedDocuments.length>0" style="margin-top: 20px;">
+            <h4 class="mb-3">{{ "FORM.uploaded_documents" | translate }}</h4>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>{{ "FORM.document_name" | translate }}</th>
+                    <th>{{ "FORM.date_uploaded" | translate }}</th>
+                    <th>{{ "FORM.action" | translate }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let document of uploadedDocuments; let i = index">
+                    <td>{{ document.name }}</td>
+                    <td>{{ document.dateUploaded }}</td>
+                    <td>
+                      <a
+                        href="javascript:void(0);"
+                        class="btn btn-sm btn-primary me-2"
+                        (click)="downloadDocument(document)"
+                      >
+                        <i class="fa fa-download"></i>
+                      </a>
+                     
+                        
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        <div *ngIf="!isView && !isNotification" class="submit-section gap-2">
+            <button class="btn btn-danger submit-btn"  style="margin-right: 10px;color:white" (click)="rejectExpense()">{{'FORM.reject' | translate}}</button>
+          
+          <button class="btn btn-primary submit-btn" (click)="verifyExpense()">{{data.status === 'requested' ? ('FORM.verify' | translate) : ('FORM.approve' | translate)}}</button>
+        </div>
+        <div *ngIf="isView " class="submit-section gap-2">
+           
+          
+          <button class="btn btn-primary submit-btn" (click)="closeModal()">{{'FORM.cancel' | translate}}</button>
+        </div>
+        <div *ngIf="isNotification" class="submit-section gap-2">   
+            <button class="btn btn-primary submit-btn" (click)="openTransaction()">Open Transaction</button>  
+        </div>
+     
+    </div>
+  </div>

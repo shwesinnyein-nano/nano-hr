@@ -444,11 +444,11 @@
                         multiple
                         (change)="onFileSelectedFiles($event)"
                       />
-                      <label class="custom-file-label" for="document-upload">
+                      <!-- <label class="custom-file-label" for="document-upload">
                         <i class="fa fa-cloud-upload"></i> {{ "FORM.choose_files" | translate }}
-                      </label>
+                      </label> -->
                     </div>
-                    <small class="form-text text-muted">{{ "FORM.allowed_file_types" | translate }}</small>
+                    <!-- <small class="form-text text-muted">{{ "FORM.allowed_file_types" | translate }}</small> -->
                   </div>
                 </div>
 
@@ -474,7 +474,7 @@
                               (click)="downloadDocument(document)"
                             >
                               <i class="fa fa-download"></i>
-                            </a>x
+                            </a>
                             <a
                               href="javascript:void(0);"
                               class="btn btn-sm btn-danger"

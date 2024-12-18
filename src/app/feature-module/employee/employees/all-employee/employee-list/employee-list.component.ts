@@ -108,24 +108,10 @@ export class EmployeeListComponent implements OnInit {
         }
       });
       this.calculateTotalPages(this.totalData, this.pageSize);
-      this.serialNumberArray = Array.from({ length: this.totalData }, (_, i) => i + 1);
-      console.log("data", this.lstEmployee)
+      // this.serialNumberArray = Array.from({ length: this.totalData }, (_, i) => i + 1);
+      // console.log("data", this.lstEmployee)
     })
-    // this.employeeService.getEmployeeList().subscribe((res: any) => {
-
-    //   this.lstEmployee = res.data
-    //   console.log("this.lstEmployee", this.lstEmployee);
-
-    //   this.totalData = res.data.length
-    //   this.calculateTotalPages(this.totalData, this.pageSize);
-    //   this.serialNumberArray = Array.from({ length: this.totalData }, (_, i) => i + 1);
-
-
-
-    // })
-
-
-
+    
   }
 
   public sortData(sort: Sort) {

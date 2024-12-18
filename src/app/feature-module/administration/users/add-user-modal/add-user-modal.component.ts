@@ -133,6 +133,7 @@ export class AddUserModalComponent implements OnInit {
       positionName: [data ? data.positionName : ''],
       joinDate: [data ? data.joinDate ? data.joinDate : new Date().toISOString() : new Date().toISOString()],
       role: [data ? data.role : '', Validators.required],
+
       createdDate: [data ? data.createdDate ? data.createdDate : new Date().toISOString() : new Date().toISOString()],
       updatedDate: [new Date().toISOString()],
 
@@ -382,7 +383,7 @@ export class AddUserModalComponent implements OnInit {
 
           // Pass the current user's UID along with the new user data
           this.ngbActiveModal.close({
-            data: { ...this.addUserForm.value, email: this.addUserForm.getRawValue().email, status: 'enabled' },
+            data: { ...this.addUserForm.value, email: this.addUserForm.getRawValue().email,createdBy: currentUser.uid, status: 'enabled' },
             menuAccess: menuAccess,
             createdBy: currentUser.uid  // Add current user's UID to the data
           });

@@ -30,6 +30,11 @@ export class EmployeeService {
             ...doc.data()
           });
         });
+        employees.sort((a, b) => {
+          const dateA = new Date(a.updatedDate || a.createdDate).getTime();
+          const dateB = new Date(b.updatedDate || b.createdDate).getTime();
+          return dateB - dateA; // Descending order
+        });
         observer.next({
           data: employees,
           totalData: employees.length
@@ -39,6 +44,24 @@ export class EmployeeService {
         observer.error(error);
       });
     });
+    // return new Observable((observer) => {
+    //   this.firestore.collection('employees').get().toPromise().then((querySnapshot: any) => {
+    //     const employees: any[] = [];
+    //     querySnapshot?.forEach((doc: any) => {
+    //       employees.push({
+    //         id: doc.id,
+    //         ...doc.data()
+    //       });
+    //     });
+    //     observer.next({
+    //       data: employees,
+    //       totalData: employees.length
+    //     });
+    //     observer.complete();
+    //   }).catch((error) => {
+    //     observer.error(error);
+    //   });
+    // });
   }
 
   updateEmployeeData(uid: string, data: any) {

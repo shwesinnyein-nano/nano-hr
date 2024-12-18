@@ -83,9 +83,9 @@
         }
     }
     .btn {
-        min-height: 50px;
+        // min-height: 50px;
         text-transform: uppercase;
-        @include margin-padding(null, 12px);
+        @include margin-padding(null, 9px);
     }
 }
 .card-table {

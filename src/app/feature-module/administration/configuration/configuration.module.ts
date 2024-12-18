@@ -7,6 +7,7 @@ import { ConfigurationComponent } from './configuration.component';
 import { AddConfigurationComponent } from './add-configuration/add-configuration.component';
 import { LanguageModule } from 'src/app/core/services/languages/languages.modules';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { CustomPaginationModule } from 'src/app/feature-module/common/custom-pagination/custom-pagination.module';
 @NgModule({
   declarations: [
     ConfigurationComponent,
@@ -17,7 +18,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CommonModule,
     ConfigurationRoutingModule,
     LanguageModule,
-    SharedModule
+    SharedModule,
+    CustomPaginationModule
   ]
 })
 export class ConfigurationModule { }

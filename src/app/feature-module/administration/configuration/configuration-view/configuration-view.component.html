@@ -1,62 +1,61 @@
 <!-- Page Content -->
 <div class="content container-fluid">
 
-    <!-- Page Header -->
-    <div class="page-header">
-      <div class="row align-items-center">
-        <div class="col">
-          <h3 class="page-title">{{"FORM.configuration" | translate}}</h3>
-          <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a [routerLink]="routes.adminDashboard">{{"FORM.dashboard" | translate}}</a></li>
-            <li class="breadcrumb-item active">{{"FORM.configuration" | translate}}</li>
-          </ul>
-        </div>
-        <div class="col-auto float-end ms-auto">
-          <a class="btn add-btn" (click)="openAddUserModal()"><i class="la la-plus-circle"></i>
-                {{"FORM.add_configuration" | translate}}</a>
-        </div>
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="row align-items-center">
+      <div class="col">
+        <h3 class="page-title">{{"FORM.configuration" | translate}}</h3>
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item"><a [routerLink]="routes.adminDashboard">{{"FORM.dashboard" | translate}}</a></li>
+          <li class="breadcrumb-item active">{{"FORM.configuration" | translate}}</li>
+        </ul>
+      </div>
+      <div class="col-auto float-end ms-auto">
+        <a class="btn add-btn" (click)="openAddUserModal()"><i class="la la-plus-circle"></i>
+          {{"FORM.add_configuration" | translate}}</a>
       </div>
     </div>
-    <!-- /Page Header -->
-  
-    <!-- Search Filter -->
-    <div class="row filter-row">
-  
-      <div class="col-sm-6 col-md-3">
-        <div class="input-block mb-3 form-focus inputs">
-          <mat-form-field class="example-full-width">
-            <mat-label>{{"FORM.name" | translate}}</mat-label>
-            <input type="text" matInput class="form-control floating" [(ngModel)]="searchName">
-          </mat-form-field>
-        </div>
-      </div>
-  
-      <div class="col-sm-6 col-md-3">
-        <div class="input-block mb-3 form-focus select-focus select">
-  
-          <mat-select class="select custom-mat-select floating-mat-select" [placeholder]="'FORM.select_company' | translate" [(ngModel)]="searchCompany">
-            <mat-option value="nano-vip">NANO VIP</mat-option>
-            <mat-option value="nano-store">NANO STORE</mat-option>
-            <mat-option value="nano-entertainment">NANO ENTERTAINMENT</mat-option>
-  
-          </mat-select>
-          <label class="focus-label">{{"FORM.company" | translate}}</label>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-3" style="margin-bottom: 12px;">
-        <a class="btn btn-primary w-100" (click)="searchUser()"> {{"FORM.search" | translate}} </a>
-  
-      </div>
-      <div class="col-sm-6 col-md-3">
-        <a class="btn btn-secondary w-100" (click)="cancelSearch()"> {{"FORM.cancel" | translate}} </a>
-  
+  </div>
+ 
+  <div class="row filter-row">
+
+    <div class="col-sm-6 col-md-3">
+      <div class="input-block mb-3 form-focus inputs">
+        <mat-form-field class="example-full-width">
+          <mat-label>{{"FORM.name" | translate}}</mat-label>
+          <input type="text" matInput class="form-control floating" [(ngModel)]="searchName">
+        </mat-form-field>
       </div>
     </div>
-    <!-- /Search Filter -->
+
+    <div class="col-sm-6 col-md-3">
+      <div class="input-block mb-3 form-focus select-focus select">
+
+        <mat-select class="select custom-mat-select floating-mat-select"
+          [placeholder]="'FORM.select_company' | translate" [(ngModel)]="searchCompany">
+          <mat-option value="nano-vip">NANO VIP</mat-option>
+          <mat-option value="nano-store">NANO STORE</mat-option>
+          <mat-option value="nano-entertainment">NANO ENTERTAINMENT</mat-option>
+
+        </mat-select>
+        <label class="focus-label">{{"FORM.company" | translate}}</label>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-3" style="margin-bottom: 12px;">
+      <a class="btn btn-primary w-100" (click)="searchUser()"> {{"FORM.search" | translate}} </a>
+
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <a class="btn btn-secondary w-100" (click)="cancelSearch()"> {{"FORM.cancel" | translate}} </a>
+
+    </div>
+  </div>
   
-    <div class="row">
-      <div class="col-md-12">
-        <div class="table_header">
+
+  <div class="row">
+    <div class="col-md-12">
+      <!-- <div class="table_header">
           <div class="row">
             <div class="col-sm-12 col-md-6">
               <div class="dataTables_length">
@@ -73,42 +72,81 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="table-responsive">
-          <table matSort (matSortChange)="sortData($event)" class="table table-striped custom-table datatable"
+        </div> -->
+      <div class="table-responsive">
+        <table class="table text-nowrap">
+          <thead class="table-primary">
+            <tr>
+              <th scope="col">{{"FORM.company" | translate}}</th>
+              <th scope="col">{{"FORM.location" | translate}}</th>
+              <th scope="col">{{"FORM.verifier" | translate}}</th>
+              <th scope="col">{{"FORM.approver_one" | translate}}</th>
+              <th scope="col">{{"FORM.approver_two" | translate}}</th>
+              <th scope="col">{{"FORM.approver_three" | translate}}</th>
+              <!-- <th scope="col">{{"FORM.created_date" | translate}}</th>
+              <th scope="col">{{"FORM.updated_date" | translate}}</th> -->
+
+              <th scope="col" class="text-center">{{"FORM.action" | translate}}</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let user of configurationList;  let i = index">
+            <tr>
+              <th scope="row">{{user.companyName}}</th>
+              <td>{{user.locationName}}</td>
+              <td>{{user.verifierName}}</td>
+              <td>{{user.approver_oneName}}</td>
+              <td>{{user.approver_twoName}}</td>
+              <td>{{user.approver_threeName}}</td>
+              <!-- <td>{{user.createdDate | date:'dd MMM yyyy'}}</td>
+              <td>{{user.updatedDate | date:'dd MMM yyyy'}}</td> -->
+              <td class="text-center">
+                <div class="">
+                  <!-- <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-soft-success rounded-pill"><i class="feather icon-download"></i></a> -->
+                  <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-soft-info rounded-pill" (click)="openEditConfiguration(user)"><i
+                      class="feather icon-edit"></i></a>
+                  <!-- <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-soft-danger rounded-pill" (click)="openDeleteConfiguration(user)"><i
+                      class="ti ti-trash"></i></a> -->
+                </div>
+              </td>
+            </tr>
+
+          </tbody>
+          <tbody *ngIf="configurationList.length === 0">
+            <tr>
+              <td colspan="10">
+                <h5 style="text-align: center;">{{"FORM.no_data_found" | translate}}</h5>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- <table matSort (matSortChange)="sortData($event)" class="table table-striped custom-table datatable"
             id="datatable">
             <thead>
               <tr>
-                <th mat-sort-header="name">{{"FORM.name" | translate}}</th>
-                <th mat-sort-header="email">{{"FORM.company" | translate}}</th>
-                <th mat-sort-header="company">{{"FORM.position" | translate}}</th>
-                <th mat-sort-header="role">{{"FORM.role" | translate}}</th>
+                <th mat-sort-header="company">{{"FORM.company" | translate}}</th>
+                <th mat-sort-header="branch">{{"FORM.location" | translate}}</th>
+                <th mat-sort-header="position">{{"FORM.verifier" | translate}}</th>
+                <th mat-sort-header="location">{{"FORM.approver_one" | translate}}</th>
+                <th mat-sort-header="verifier">{{"FORM.approver_two" | translate}}</th>
+                <th mat-sort-header="approver_three">{{"FORM.approver_three" | translate}}</th>
                 <th>{{"FORM.created_date" | translate}}</th>
                 <th>{{"FORM.updated_date" | translate}}</th>
   
                 <th class="text-end">{{"FORM.action" | translate}}</th>
               </tr>
             </thead>
-            <tbody *ngFor="let user of users;  let i = index">
+            <tbody *ngFor="let user of configurationList;  let i = index">
               <tr>
-  
                 <td>
-                  <h2 class="table-avatar">
-                    <a [routerLink]="routes.employeeProfile" class="avatar">
-                      <img [src]="user.img? user.img : 'assets/images/user.png'" alt=""></a>
-                    <a [routerLink]="routes.employeeProfile">{{user.firstName}} {{user.lastName}}<span class="text-danger"
-                        *ngIf="user.status === 'disabled'"> (Disabled)</span>
-                    </a>
-                  </h2>
+                 {{user.companyName}}
                 </td>
-  
-                <td>{{user.companyName }}</td>
-                <td>{{user.positionName | dyn_translate:positionObj[user.positionName] }}</td>
+                <td>{{user.locationName}}</td>
+                <td>{{user.verifierName}}</td>
                 <td>
-                  <span
-                    [ngClass]="{'bg-inverse-info':user.role === 'client','bg-inverse-warning':user.role === 'admin','bg-inverse-success':user.role === 'employee'}"
-                    class="badge ">{{user.role | uppercase}}</span>
-                </td>
+                  {{user.approver_oneName}}
+                </td>  
+                <td>{{user.approver_twoName}}</td>
+                <td>{{user.approver_threeName}}</td>
                 <td>{{user.createdDate | date:'dd MMM yyyy'}}</td>
   
                 <td>{{user.updatedDate | date:'dd MMM yyyy'}}</td>
@@ -123,51 +161,44 @@
                       <a class="dropdown-item" (click)="openViewUserModal(user)"><i
                           class="fa-regular fa-trash-can m-r-5"></i>
                         View</a>
-                      <a class="dropdown-item" *ngIf="user.status !== 'disabled'" (click)="disabledUser(user)"><i
-                          class="fa fa-circle m-r-5" style="color: red;"></i>
-                        Disabled</a>
-                      <a class="dropdown-item" *ngIf="user.status == 'disabled'" (click)="disabledUser(user)"><i
-                          class="fa fa-circle m-r-5" style="color: green;"></i>
-                        Enabled</a>
+                     
                     </div>
                   </div>
+                  
                 </td>
               </tr>
-  
-  
-  
             </tbody>
   
-            <tbody *ngIf="users.length === 0">
+            <tbody *ngIf="configurationList.length === 0">
               <tr>
                 <td colspan="10">
                   <h5 style="text-align: center;">{{"FORM.no_data_found" | translate}}</h5>
                 </td>
               </tr>
             </tbody>
-          </table>
-        </div>
-        <div class="table_footer">
-          <div class="col-sm-12 col-md-5">
-            <div class="dataTables_info">
-              Showing {{ serialNumberArray[0] }} to
-              {{ serialNumberArray[serialNumberArray.length - 1] }} of
-              {{ totalData }} entries
-            </div>
+          </table> -->
+      </div>
+      <div class="table_footer">
+        <div class="col-sm-12 col-md-5">
+          <div class="dataTables_info">
+            Showing {{ serialNumberArray[0] }} to
+            {{ serialNumberArray[serialNumberArray.length - 1] }} of
+            {{ totalData }} entries
           </div>
-  
-          <div class="col-sm-12 col-md-7">
-            <div class="pagination_section">
-              <ul class="pagination">
-                <li class="page-item" [ngClass]="{
+        </div>
+
+        <div class="col-sm-12 col-md-7">
+          <div class="pagination_section">
+            <ul class="pagination">
+              <li class="page-item" [ngClass]="{
                             disabled: currentPage === 1
                           }">
-                  <a (click)="getMoreData('previous')" class="page-link" href="javascript:void(0);" tabindex="-1"><i
-                      class="fa fa-angle-double-left"></i></a>
-                </li>
-  
-                @for (item of pageNumberArray; track item; let i = $index) {
-                <li class="page-item" [class.active]="item === currentPage" [ngClass]="
+                <a (click)="getMoreData('previous')" class="page-link" href="javascript:void(0);" tabindex="-1"><i
+                    class="fa fa-angle-double-left"></i></a>
+              </li>
+
+              @for (item of pageNumberArray; track item; let i = $index) {
+              <li class="page-item" [class.active]="item === currentPage" [ngClass]="
                               (pageNumberArray[currentPage - 2] > item &&
                                 item !== 1 &&
                                 pageNumberArray.length > 6) ||
@@ -178,49 +209,47 @@
                                 ? 'hide-page-no'
                                 : 'show-page-no'
                             ">
-                  <a (click)="moveToPage(item)" class="page-link" href="javascript:void(0);">
-                    {{ item }}
-                  </a>
-                </li>
-                @if (
-                i === 0 && pageNumberArray.length > 6 && currentPage > 2
-                ) {
-                <li class="page-item" [hidden]="currentPage === 1" (click)="moveToPage(currentPage - 2)"
-                  (keydown.enter)="moveToPage(currentPage - 2)" tabindex="0">
-                  <a class="page-link" href="javascript:void(0);"> ... </a>
-                </li>
-                }
-                @if (
-                i === pageNumberArray.length - 2 &&
-                pageNumberArray.length > 6
-                ) {
-                <li [hidden]="
+                <a (click)="moveToPage(item)" class="page-link" href="javascript:void(0);">
+                  {{ item }}
+                </a>
+              </li>
+              @if (
+              i === 0 && pageNumberArray.length > 6 && currentPage > 2
+              ) {
+              <li class="page-item" [hidden]="currentPage === 1" (click)="moveToPage(currentPage - 2)"
+                (keydown.enter)="moveToPage(currentPage - 2)" tabindex="0">
+                <a class="page-link" href="javascript:void(0);"> ... </a>
+              </li>
+              }
+              @if (
+              i === pageNumberArray.length - 2 &&
+              pageNumberArray.length > 6
+              ) {
+              <li [hidden]="
                               currentPage >=
                                 pageNumberArray[pageNumberArray.length - 2] ||
                               totalData < serialNumberArray[serialNumberArray.length - 1]
-                            " class="page-item" (click)="moveToPage(currentPage + 2)" (keydown.enter)="moveToPage(currentPage + 2)"
-                  tabindex="0">
-                  <a class="page-link" href="javascript:void(0);"> ... </a>
-                </li>
-                }
-                }
-  
-                <li class="page-item" [ngClass]="{
+                            " class="page-item" (click)="moveToPage(currentPage + 2)"
+                (keydown.enter)="moveToPage(currentPage + 2)" tabindex="0">
+                <a class="page-link" href="javascript:void(0);"> ... </a>
+              </li>
+              }
+              }
+
+              <li class="page-item" [ngClass]="{
                             disabled:
                               currentPage === pageNumberArray[pageNumberArray.length - 1] ||
                               users.length === 0
                           }">
-                  <a (click)="getMoreData('next')" class="page-link" href="javascript:void(0);"><i
-                      class=" fa fa-angle-double-right"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
+                <a (click)="getMoreData('next')" class="page-link" href="javascript:void(0);"><i
+                    class=" fa fa-angle-double-right"></i>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
-      </div>
+      </div> 
     </div>
+    <!-- <app-custom-pagination></app-custom-pagination> -->
   </div>
-  
-  
-  
+</div>

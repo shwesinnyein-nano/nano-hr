@@ -12,6 +12,7 @@ import { BudgetExpensesAddModalComponent } from './budget-expenses-add-modal/bud
 import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LanguageModule } from 'src/app/core/services/languages/languages.modules'
+import { ApprovalExpenseComponent } from './approval-expense/approval-expense.component';
 @NgModule({
   declarations: [
     AccountingComponent,
@@ -20,7 +21,8 @@ import { LanguageModule } from 'src/app/core/services/languages/languages.module
     BudgetRevenuesComponent,
   
     BudgetExpensesAddModalComponent,
-    TransactionHistoryComponent
+    TransactionHistoryComponent,
+    ApprovalExpenseComponent
     
   ],
   imports: [

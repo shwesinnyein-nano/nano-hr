@@ -24,16 +24,16 @@
     </span>
   </a>
 
-  <!-- Header Title -->
+  
   <div class="page-title-box">
     <h3>{{'FORM.nano_store' | translate}}</h3>
   </div>
-  <!-- /Header Title -->
+ 
 
   <a id="mobile_btn" (click)="togglesMobileSideBar()" (keydown.enter)="togglesMobileSideBar()" tabindex="0"
     class="mobile_btn"><i class="fa-solid fa-bars"></i></a>
 
-  <!-- Header Menu -->
+  
   <ul class="nav user-menu">
 
     <li class="nav-item dropdown has-arrow flag-nav">
@@ -44,7 +44,7 @@
         <span>{{ selectedLanguage }}</span>
       </a>
       <div class="dropdown-menu dropdown-menu-right">
-        <!-- Show TH option if selected language is EN, and vice versa -->
+        
         <a *ngIf="selectedLanguage === 'EN'" href="javascript:void(0);" class="dropdown-item"
           (click)="changeLanguage('TH')">
           <img src="../../../../../assets/flags/th.png" alt="" height="16"> TH
@@ -68,9 +68,10 @@
       </div>
     </li>
     <li class="nav-item dropdown">
-      <a href="javascript:void(0);" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-        <i class="fa-regular fa-bell me-1"></i> <span class="badge rounded-pill">3</span>
+      <a href="javascript:void(0);" class="dropdown-toggle nav-link" data-bs-toggle="dropdown" (click)="resetNotificationCount()">
+        <i class="fa-regular fa-bell me-1"></i> <span class="badge rounded-pill">{{notificationCount}}</span>
       </a>
+      <!-- notifications.component.html -->
       <div class="dropdown-menu notifications">
         <div class="topnav-dropdown-header">
           <span class="notification-title">Notifications</span>
@@ -78,232 +79,74 @@
         </div>
         <div class="noti-content">
           <ul class="notification-list">
-            <li class="notification-message">
-              <a [routerLink]="routes.activities">
-                <div class="chat-block d-flex">
+            <li *ngFor="let notification of notifications" class="notification-message">
+              <!-- <a [routerLink]="['/activities']"> -->
+                <div class="chat-block d-flex" (click)="openNotificationModal(notification)">
                   <span class="avatar flex-shrink-0">
                     <img alt="" src="../../../../../assets/images/person.jpg">
                   </span>
                   <div class="media-body flex-grow-1">
-                    <p class="noti-details"><span class="noti-title">John Doe</span> added new task <span
-                        class="noti-title">Patient appointment booking</span></p>
-                    <p class="noti-time"><span class="notification-time">4 mins ago</span></p>
+                    <p class="noti-details">
+                      <!-- <span class="noti-title">{{ notification.requestByName }} has submitted  {{ notification.title }}.  Please review it. </span>
+                      {{ notification.body }} -->
+                       <span class="noti-title">{{ notification.title }}  {{ notification.message }}</span>  
+                    </p>
+                    <p class="noti-time">
+                      <span class="notification-time">{{ formatDate(notification.data.createdDate) }}</span>
+                    </p>
                   </div>
                 </div>
-              </a>
-            </li>
-            <li class="notification-message">
-              <a [routerLink]="routes.activities">
-                <div class="chat-block d-flex">
-                  <span class="avatar flex-shrink-0">
-                    <img alt="" src="../../../../../assets/images/person.jpg">
-                  </span>
-                  <div class="media-body flex-grow-1">
-                    <p class="noti-details"><span class="noti-title">Tarah Shropshire</span> changed the task name <span
-                        class="noti-title">Appointment booking with payment gateway</span></p>
-                    <p class="noti-time"><span class="notification-time">6 mins ago</span></p>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li class="notification-message">
-              <a [routerLink]="routes.activities">
-                <div class="chat-block d-flex">
-                  <span class="avatar flex-shrink-0">
-                    <img alt="" src="../../../../../assets/images/person.jpg">
-                  </span>
-                  <div class="media-body flex-grow-1">
-                    <p class="noti-details"><span class="noti-title">Misty Tison</span> added <span
-                        class="noti-title">Domenic Houston</span> and <span class="noti-title">Claire Mapes</span> to
-                      project <span class="noti-title">Doctor available module</span></p>
-                    <p class="noti-time"><span class="notification-time">8 mins ago</span></p>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li class="notification-message">
-              <a [routerLink]="routes.activities">
-                <div class="chat-block d-flex">
-                  <span class="avatar flex-shrink-0">
-                    <img alt="" src="../../../../../assets/images/person.jpg">
-                  </span>
-                  <div class="media-body flex-grow-1">
-                    <p class="noti-details"><span class="noti-title">Rolland Webber</span> completed task <span
-                        class="noti-title">Patient and Doctor video conferencing</span></p>
-                    <p class="noti-time"><span class="notification-time">12 mins ago</span></p>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li class="notification-message">
-              <a [routerLink]="routes.activities">
-                <div class="chat-block d-flex">
-                  <span class="avatar flex-shrink-0">
-                    <img alt="" src="../../../../../assets/images/person.jpg">
-                  </span>
-                  <div class="media-body flex-grow-1">
-                    <p class="noti-details"><span class="noti-title">Bernardo Galaviz</span> added new task <span
-                        class="noti-title">Private chat module</span></p>
-                    <p class="noti-time"><span class="notification-time">2 days ago</span></p>
-                  </div>
-                </div>
-              </a>
+              <!-- </a> -->
             </li>
           </ul>
         </div>
         <div class="topnav-dropdown-footer">
-          <a [routerLink]="routes.activities">View all Notifications</a>
+          <a [routerLink]="['/activities']">View all Notifications</a>
         </div>
       </div>
+
+    
     </li>
     <!-- /Notifications -->
 
-    <!-- Message Notifications -->
-    <li class="nav-item dropdown">
-      <a href="javascript:void(0);" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-        <i class="fa-regular fa-comment me-1"></i> <span class="badge rounded-pill">8</span>
-      </a>
-      <div class="dropdown-menu notifications">
-        <div class="topnav-dropdown-header">
-          <span class="notification-title">Messages</span>
-          <a href="javascript:void(0)" class="clear-noti"> Clear All </a>
-        </div>
-        <div class="noti-content">
-          <ul class="notification-list">
-            <li class="notification-message">
-              <a [routerLink]="routes.chat">
-                <div class="list-item">
-                  <div class="list-left">
-                    <span class="avatar">
-                      <img alt="" src="../../../../../assets/images/person.jpg">
-                    </span>
-                  </div>
-                  <div class="list-body">
-                    <span class="message-author">Richard Miles </span>
-                    <span class="message-time">12:28 AM</span>
-                    <div class="clearfix"></div>
-                    <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li class="notification-message">
-              <a [routerLink]="routes.chat">
-                <div class="list-item">
-                  <div class="list-left">
-                    <span class="avatar">
-                      <img alt="" src="../../../../../assets/images/person.jpg">
-                    </span>
-                  </div>
-                  <div class="list-body">
-                    <span class="message-author">John Doe</span>
-                    <span class="message-time">6 Mar</span>
-                    <div class="clearfix"></div>
-                    <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li class="notification-message">
-              <a [routerLink]="routes.chat">
-                <div class="list-item">
-                  <div class="list-left">
-                    <span class="avatar">
-                      <img alt="" src="../../../../../assets/images/person.jpg">
-                    </span>
-                  </div>
-                  <div class="list-body">
-                    <span class="message-author"> Tarah Shropshire </span>
-                    <span class="message-time">5 Mar</span>
-                    <div class="clearfix"></div>
-                    <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li class="notification-message">
-              <a [routerLink]="routes.chat">
-                <div class="list-item">
-                  <div class="list-left">
-                    <span class="avatar">
-                      <img alt="" src="../../../../../assets/images/person.jpg">
-                    </span>
-                  </div>
-                  <div class="list-body">
-                    <span class="message-author">Mike Litorus</span>
-                    <span class="message-time">3 Mar</span>
-                    <div class="clearfix"></div>
-                    <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li class="notification-message">
-              <a [routerLink]="routes.chat">
-                <div class="list-item">
-                  <div class="list-left">
-                    <span class="avatar">
-                      <img alt="" src="../../../../../assets/images/person.jpg">
-                    </span>
-                  </div>
-                  <div class="list-body">
-                    <span class="message-author"> Catherine Manseau </span>
-                    <span class="message-time">27 Feb</span>
-                    <div class="clearfix"></div>
-                    <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="topnav-dropdown-footer">
-          <a [routerLink]="routes.chat">View all Messages</a>
-        </div>
-      </div>
-    </li>
-    <!-- /Message Notifications -->
+    
 
     <li class="nav-item dropdown has-arrow main-drop">
       <a href="javascript:void(0);" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-        <span class="user-img me-2"><img src="../../../../../assets/images/person.jpg" alt="">
+        <span class="user-img me-2"><img [src]="profile ? profile : '../../../../../assets/images/person.jpg'" alt="">
           <span class="status online"></span></span>
         <span>{{displayName ? displayName : 'Admin'}}</span>
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" [routerLink]="routes.employeeProfile" (click)="openProfileModal()">My Profile</a>
-        <a class="dropdown-item" [routerLink]="'/settings/company-settings'">Settings</a>
+        <a class="dropdown-item"  (click)="openProfileModal()">My Profile</a>
+        <a class="dropdown-item" [routerLink]="routes.settings">Settings</a>
         <a class="dropdown-item" [routerLink]="routes.login">Logout</a>
       </div>
     </li>
   </ul>
-  <!-- /Header Menu -->
+ 
+  <ul class="nav user-menu1">
 
-  <!-- Mobile Menu -->
-
-  <!-- <div class="dropdown mobile-user-menu1 "> -->
-    <ul class="nav user-menu1">
-
-      <li class="nav-item dropdown has-arrow flag-nav">
-        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="javascript:void(0);" role="button">
-          <img
-            [src]="selectedLanguage === 'EN' ? '../../../../../assets/flags/us.png' : '../../../../../assets/flags/th.png'"
-            alt="" height="20">
-          <span>{{ selectedLanguage }}</span>
+    <li class="nav-item dropdown has-arrow flag-nav">
+      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="javascript:void(0);" role="button">
+        <img
+          [src]="selectedLanguage === 'EN' ? '../../../../../assets/flags/us.png' : '../../../../../assets/flags/th.png'"
+          alt="" height="20">
+        <span>{{ selectedLanguage }}</span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right">
+        <!-- Show TH option if selected language is EN, and vice versa -->
+        <a *ngIf="selectedLanguage === 'EN'" href="javascript:void(0);" class="dropdown-item"
+          (click)="changeLanguage('TH')">
+          <img src="../../../../../assets/flags/th.png" alt="" height="16"> TH
         </a>
-        <div class="dropdown-menu dropdown-menu-right">
-          <!-- Show TH option if selected language is EN, and vice versa -->
-          <a *ngIf="selectedLanguage === 'EN'" href="javascript:void(0);" class="dropdown-item"
-            (click)="changeLanguage('TH')">
-            <img src="../../../../../assets/flags/th.png" alt="" height="16"> TH
-          </a>
-          <a *ngIf="selectedLanguage === 'TH'" href="javascript:void(0);" class="dropdown-item"
-            (click)="changeLanguage('EN')">
-            <img src="../../../../../assets/flags/us.png" alt="" height="16"> EN
-          </a>
-        </div>
-      </li>
-    </ul>
+        <a *ngIf="selectedLanguage === 'TH'" href="javascript:void(0);" class="dropdown-item"
+          (click)="changeLanguage('EN')">
+          <img src="../../../../../assets/flags/us.png" alt="" height="16"> EN
+        </a>
+      </div>
+    </li>
+  </ul>
   <!-- </div> -->
 
   <div class="dropdown mobile-user-menu">

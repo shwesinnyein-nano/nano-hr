@@ -119,12 +119,36 @@ export interface getUsers {
   email: string;
   company: string;
   companyName: string;
+  locationName: string;
   role: string;
   img: string;
   createdBy: string;
   updatedBy: string;
   updatedDate: string;
   createdDate: string;
+}
+export interface getConfiguration {
+  id: number;
+  company: string;
+  companyName: string;
+  branch: string;
+  branchName: string;
+  position: string;
+  positionName: string;
+  location: string;
+  locationName: string;
+  createdBy: string;
+  updatedBy: string;
+  createdDate: string;
+  updatedDate: string;
+  verifier: string;   
+  verifierName: string;
+  approver_one: string;
+  approver_oneName: string;
+  approver_two: string;
+  approver_twoName: string;
+  approver_three: string;
+  approver_threeName: string;
 }
 export interface getCarList {
   id: number;
@@ -920,6 +944,7 @@ export interface getTransactionHistory {
   expense_amount: string;
   expense_date: string;
   status: string;
+  due_date: string;
 }
 export interface projectContent {
   project: string;

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { getUsers } from 'src/app/core/services/interface/models';
+import { getConfiguration } from 'src/app/core/services/interface/models';
 
 import { MatTableDataSource } from '@angular/material/table';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -10,6 +10,7 @@ import { UserRoleService } from 'src/app/core/services/user-role/user-role.servi
 import { routes } from 'src/app/core/core.index';
 import { AddConfigurationComponent } from '../add-configuration/add-configuration.component';
 import { Sort } from '@angular/material/sort';
+import { UserConfigService } from 'src/app/core/services/user-config/user-config.service';
 
 @Component({
   selector: 'app-configuration-view',
@@ -21,9 +22,9 @@ export class ConfigurationViewComponent {
 
   selected1 = 'option1';
   selected2 = 'option1';
-  public users: Array<getUsers> = [];
+  public users: Array<getConfiguration> = [];
   public searchDataValue = '';
-  dataSource!: MatTableDataSource<getUsers>;
+  dataSource!: MatTableDataSource<getConfiguration>;
   public addUsers!: FormGroup;
   public editUsers!: FormGroup;
   public routes = routes;
@@ -41,22 +42,14 @@ export class ConfigurationViewComponent {
   public totalPages = 0;
   public searchName = '';
   public searchCompany = '';
-  //** / pagination variables
-
-
-  // positionListNanoVipList: any;
-  // positionListNanoStore: any;
-  // positionListNanoEntertainmentSugarDaddy: any;
-  // positionListNanoEntertainmentHu: any;
+  
   locationList: any;
   positionList: any;
   companyList: any;
   branchList: any;
-  // storeBranchPhuketList: any;
-  // storeBranchBangkokList: any;
-  // entertainmentBranchList: any;
+  configurationList: any [] = [];
   positionObj:any
-  constructor(private formBuilder: FormBuilder, private data: DataService, private modalService: NgbModal, private authService: AuthService, private userService: UserRoleService, ) {
+  constructor(private formBuilder: FormBuilder, private data: DataService, private modalService: NgbModal, private authService: AuthService, private userService: UserRoleService,private userConfigService: UserConfigService   ) {
 
   }
 
@@ -96,30 +89,18 @@ export class ConfigurationViewComponent {
  
 
   openAddUserModal() {
-    const email = this.authService.decrypt(localStorage.getItem('currentUserEmail') || '');
-    const password = this.authService.decrypt(localStorage.getItem('currentUserPassword') || '');
+   
    
     const modalRef = this.modalService.open(AddConfigurationComponent, { size: 'lg', centered: true })
 
     modalRef.result.then((result: any) => {
-      
-      if (result.data) {
-        this.authService.registerUser(result.data.email, result.data.password, result.data).subscribe((res: any) => {
-         
-          if (result.menuAccess) {
-            this.userService.updateUserMenuAccess(res.data.uid, result.menuAccess, false).subscribe((menuRes: any) => {
-            
-              if (res.success) {
-                this.authService.loginWithEmail(email, password)
-                  .then(() => {
-                    this.getTableData();
-                  })
-              }
-            })
-          }
-
-        })
-      }
+     
+     if(result.data){
+      this.userConfigService.saveConfiguration(result.data).subscribe((res: any) => {
+       
+        this.getTableData();
+      })
+     }
     })
 
 
@@ -142,30 +123,25 @@ export class ConfigurationViewComponent {
 
   }
 
-  private getTableData(): void {
-    this.users = [];
+  getTableData(): void {
+    this.configurationList = [];
     this.serialNumberArray = [];
 
-    this.userService.getUsers().subscribe((res: any) => {
-
-      // this.users = res.data
-
-
-
-     
+      this.userConfigService.getConfigurationList().subscribe((res: any) => { 
       this.totalData = res.data.length
-      res.data.map((res: getUsers, index: number) => {
+     
+      res.data.map((res: any, index: number) => {
         const serialNumber = index + 1;
         if (index >= this.skip && serialNumber <= this.limit) {
           res.id = serialNumber;
          
-          this.users.push(res);
+          this.configurationList.push(res);
           this.serialNumberArray.push(serialNumber);
         }
       });
       this.calculateTotalPages(this.totalData, this.pageSize);
-      // this.serialNumberArray = Array.from({ length: this.totalData }, (_, i) => i + 1);
-      // console.log("data", this.users)
+       this.serialNumberArray = Array.from({ length: this.totalData }, (_, i) => i + 1);
+     console.log("data", this.configurationList)
     })
   }
 
@@ -176,35 +152,28 @@ export class ConfigurationViewComponent {
 
   //   return company ;
   // }
-  openEditUserModal(user: any) {
-    console.log("openEditUserModal", user);
+  openEditConfiguration(data: any) {
+    console.log("openEditUserModal", data);
     const modalRef = this.modalService.open(AddConfigurationComponent, { size: 'lg', centered: true });
-    modalRef.componentInstance.data = user;
+    modalRef.componentInstance.data = data;
     modalRef.componentInstance.isEdit = true;
 
     modalRef.result.then((result: any) => {
       console.log("edit result", result);
-      if (result.data) {
-        this.userService.updateUserData(result.data.uid, result.data).subscribe((res: any) => {
-          console.log("res", res);
-          if (result.menuAccess) {
-            this.userService.updateUserMenuAccess(result.data.uid, result.menuAccess, true).subscribe((menuRes: any) => {
-              console.log("menuRes", menuRes);
-              if (res.success) {
-                this.getTableData();
-              }
-            })
-          }
+      if (result) {
+        this.userConfigService.updateConfiguration(result.data.uid, result.data).subscribe((res: any) => {
+          this.getTableData();
         })
+        
       }
     });
 
   }
 
-  openViewUserModal(user: any) {
-    console.log("openViewUserModal", user);
+  openDeleteConfiguration(data: any) {
+    console.log("openDeleteConfiguration", data);
     const modalRef = this.modalService.open(AddConfigurationComponent, { size: 'lg', centered: true });
-    modalRef.componentInstance.data = user;
+    modalRef.componentInstance.data = data;
     modalRef.componentInstance.isView = true;
     modalRef.result.then((result: any) => {
       console.log("view result", result);

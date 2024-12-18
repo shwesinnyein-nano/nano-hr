@@ -13,7 +13,7 @@ import { environment } from '../app/environment/environment';
 import { LanguagesService } from './core/services/languages/languages.service';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-
+import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -24,7 +24,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     SharedModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireMessagingModule
   ],
   providers: [ToasterService, LanguagesService  ],
   bootstrap: [AppComponent],

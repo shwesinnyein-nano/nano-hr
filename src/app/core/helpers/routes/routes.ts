@@ -98,6 +98,7 @@ export class routes {
   public static get holidays(): string {
     return this.baseUrl + '/employees/holidays';
   }
+  
   public static get leaveadmin(): string {
     return this.baseUrl + '/employees/leave-admin';
   }
@@ -106,6 +107,9 @@ export class routes {
   }
   public static get leavesettings(): string {
     return this.baseUrl + '/employees/leave-settings';
+  }
+  public static get settings(): string {
+    return this.baseUrl + '/settings';
   }
   public static get attendanceadmin(): string {
     return this.baseUrl + '/employees/attendance-admin';

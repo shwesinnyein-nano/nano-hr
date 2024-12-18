@@ -384,6 +384,24 @@ export class AuthService  {
       }
 
     }
+    async getConfigurationData(company: string, location: string, branch?: string) {
+      // console.log("company", company);
+      // console.log("location", location);
+      // console.log("branch", branch);
+      const query = this.firestore.collection('user-config').ref
+        .where('company', '==', company)
+        .where('location', '==', location)
+        .where('branch', '==', branch || '');
+        
+      return query.get()
+        .then((snapshot: any) => {
+          const configs: any[] = [];
+          snapshot.forEach((doc: any) => {
+            configs.push(doc.data());
+          });
+          return configs;
+        });
+    }
 
     async getEmployeeData(employeeId: string) {
       return this.firestore.collection('employee').doc(employeeId).get().toPromise().then((snapshot: any) => {

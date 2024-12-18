@@ -18,10 +18,10 @@
                   {{ company.name }}
                 </mat-option>
               </mat-select>
-              @if (this.addConfigurationForm.get('brand')?.invalid && this.addConfigurationForm.get('brand')?.touched) {
+              @if (this.addConfigurationForm.get('company')?.invalid && this.addConfigurationForm.get('company')?.touched) {
               <div>
-                @if (this.addConfigurationForm.get('brand')?.invalid && this.addConfigurationForm.get('brand')?.touched) {
-                <small class="text-danger"> *Brand is required</small>
+                @if (this.addConfigurationForm.get('company')?.invalid && this.addConfigurationForm.get('company')?.touched) {
+                <small class="text-danger"> *Company is required</small>
                 }
               </div>
               }
@@ -37,16 +37,16 @@
                   {{ location.name }}
                 </mat-option>
               </mat-select>
-              @if (this.addConfigurationForm.get('model')?.invalid && this.addConfigurationForm.get('model')?.touched) {
+              @if (this.addConfigurationForm.get('location')?.invalid && this.addConfigurationForm.get('location')?.touched) {
               <div>
-                @if (this.addConfigurationForm.get('model')?.invalid && this.addConfigurationForm.get('model')?.touched) {
-                <small class="text-danger"> *Model is required</small>
+                @if (this.addConfigurationForm.get('location')?.invalid && this.addConfigurationForm.get('location')?.touched) {
+                <small class="text-danger"> *Location is required</small>
                 }
               </div>
               }
             </div>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-6" *ngIf="this.isNotVip">
             <div class="input-block mb-3">
               <label class="col-form-label" for="">{{"FORM.branch" | translate}} <span class="text-danger">*</span></label>
               <mat-select class="select mat-cust-select custom-mat-select" (selectionChange)="onModelChangeBranch($event)"
@@ -55,10 +55,10 @@
                   {{ location.name }}
                 </mat-option>
               </mat-select>
-              @if (this.addConfigurationForm.get('model')?.invalid && this.addConfigurationForm.get('model')?.touched) {
+              @if (this.addConfigurationForm.get('branch')?.invalid && this.addConfigurationForm.get('branch')?.touched) {
               <div>
-                @if (this.addConfigurationForm.get('model')?.invalid && this.addConfigurationForm.get('model')?.touched) {
-                <small class="text-danger"> *Model is required</small>
+                @if (this.addConfigurationForm.get('branch')?.invalid && this.addConfigurationForm.get('branch')?.touched) {
+                <small class="text-danger"> *Branch is required</small>
                 }
               </div>
               }
@@ -67,16 +67,24 @@
           <div class="col-sm-6">
             <div class="input-block mb-3">
               <label class="col-form-label" for="">{{"FORM.verifier" | translate}} <span class="text-danger">*</span></label>
-              <mat-select class="select mat-cust-select custom-mat-select" (selectionChange)="onModelChange($event)"
+             
+                <!-- <mat-select formControlName="verifier" multiple class="select mat-cust-select custom-mat-select" >
+                  @for (verifier of verifierList; track verifier) {
+                    <mat-option [value]="verifier">{{verifier.firstName}} {{verifier.lastName}}</mat-option>
+                  }
+                </mat-select> -->
+              
+              
+              <mat-select class="select mat-cust-select custom-mat-select" (selectionChange)="onChangeVerifier($event)"
                 placeholder="{{'FORM.select_verifier' | translate}}" formControlName="verifier">
-                <mat-option *ngFor="let verifier of selectedFirstVerifierList" [value]="verifier.id">
-                  {{ verifier.name }}
+                <mat-option *ngFor="let verifier of verifierList" [value]="verifier.id">
+                  {{ verifier.firstName }} {{ verifier.lastName }}
                 </mat-option>
               </mat-select>
-              @if (this.addConfigurationForm.get('model')?.invalid && this.addConfigurationForm.get('model')?.touched) {
+              @if (this.addConfigurationForm.get('verifier')?.invalid && this.addConfigurationForm.get('verifier')?.touched) {
               <div>
-                @if (this.addConfigurationForm.get('model')?.invalid && this.addConfigurationForm.get('model')?.touched) {
-                <small class="text-danger"> *Model is required</small>
+                @if (this.addConfigurationForm.get('verifier')?.invalid && this.addConfigurationForm.get('verifier')?.touched) {
+                <small class="text-danger"> *Verifier is required</small>
                 }
               </div>
               }
@@ -85,16 +93,16 @@
           <div class="col-sm-6">
             <div class="input-block mb-3">
               <label class="col-form-label" for="">{{"FORM.approver_one" | translate}} <span class="text-danger">*</span></label>
-              <mat-select class="select mat-cust-select custom-mat-select" (selectionChange)="onModelChange($event)"
-                placeholder="{{'FORM.select_approver' | translate}}" formControlName="verifier">
-                <mat-option *ngFor="let verifier of selectedSecondVerifierList" [value]="verifier.id">
-                  {{ verifier.name }}
+              <mat-select class="select mat-cust-select custom-mat-select"  (selectionChange)="onChangeApproverOne($event)"
+                placeholder="{{'FORM.select_approver' | translate}}" formControlName="approver_one">
+                <mat-option *ngFor="let verifier of firstApproverList" [value]="verifier.id">
+                  {{ verifier.firstName }} {{ verifier.lastName }}
                 </mat-option>
               </mat-select>
-              @if (this.addConfigurationForm.get('model')?.invalid && this.addConfigurationForm.get('model')?.touched) {
+              @if (this.addConfigurationForm.get('approver_one')?.invalid && this.addConfigurationForm.get('approver_one')?.touched) {
               <div>
-                @if (this.addConfigurationForm.get('model')?.invalid && this.addConfigurationForm.get('model')?.touched) {
-                <small class="text-danger"> *Model is required</small>
+                @if (this.addConfigurationForm.get('approver_one')?.invalid && this.addConfigurationForm.get('approver_one')?.touched) {
+                <small class="text-danger"> *Approver is required</small>
                 }
               </div>
               }
@@ -104,16 +112,16 @@
           <div class="col-sm-6">
             <div class="input-block mb-3">
               <label class="col-form-label" for="">{{"FORM.approver_two" | translate}} <span class="text-danger">*</span></label>
-              <mat-select class="select mat-cust-select custom-mat-select" (selectionChange)="onModelChange($event)"
-                placeholder="{{'FORM.select_approver' | translate}}" formControlName="verifier">
-                <mat-option *ngFor="let verifier of selectedApproverList" [value]="verifier.id">
-                  {{ verifier.name }}
+              <mat-select class="select mat-cust-select custom-mat-select" (selectionChange)="onChangeApproverTwo($event)"
+                placeholder="{{'FORM.select_approver' | translate}}" formControlName="approver_two">
+                <mat-option *ngFor="let verifier of secondApproverList" [value]="verifier.id">
+                  {{ verifier.firstName }} {{ verifier.lastName }}
                 </mat-option>
               </mat-select>
-              @if (this.addConfigurationForm.get('model')?.invalid && this.addConfigurationForm.get('model')?.touched) {
+              @if (this.addConfigurationForm.get('approver_two')?.invalid && this.addConfigurationForm.get('approver_two')?.touched) {
               <div>
-                @if (this.addConfigurationForm.get('model')?.invalid && this.addConfigurationForm.get('model')?.touched) {
-                <small class="text-danger"> *Model is required</small>
+                @if (this.addConfigurationForm.get('approver_two')?.invalid && this.addConfigurationForm.get('approver_two')?.touched) {
+                <small class="text-danger"> *Approver is required</small>
                 }
               </div>
               }
@@ -122,16 +130,16 @@
           <div class="col-sm-6">
             <div class="input-block mb-3">
               <label class="col-form-label" for="">{{"FORM.approver_three" | translate}} <span class="text-danger">*</span></label>
-              <mat-select class="select mat-cust-select custom-mat-select" (selectionChange)="onModelChange($event)"
-                placeholder="{{'FORM.select_approver' | translate}}" formControlName="verifier">
-                <mat-option *ngFor="let verifier of selectedApproverList" [value]="verifier.id">
-                  {{ verifier.name }}
+              <mat-select class="select mat-cust-select custom-mat-select" (selectionChange)="onChangeApproverThree($event)"
+                placeholder="{{'FORM.select_approver' | translate}}" formControlName="approver_three">
+                <mat-option *ngFor="let verifier of thirdApproverList" [value]="verifier.id">
+                  {{ verifier.firstName }} {{ verifier.lastName }}
                 </mat-option>
               </mat-select>
-              @if (this.addConfigurationForm.get('model')?.invalid && this.addConfigurationForm.get('model')?.touched) {
+              @if (this.addConfigurationForm.get('approver_three')?.invalid && this.addConfigurationForm.get('approver_three')?.touched) {
               <div>
-                @if (this.addConfigurationForm.get('model')?.invalid && this.addConfigurationForm.get('model')?.touched) {
-                <small class="text-danger"> *Model is required</small>
+                @if (this.addConfigurationForm.get('approver_three')?.invalid && this.addConfigurationForm.get('approver_three')?.touched) {
+                <small class="text-danger"> *Approver is required</small>
                 }
               </div>
               }

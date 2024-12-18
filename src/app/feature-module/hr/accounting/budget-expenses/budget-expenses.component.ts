@@ -8,7 +8,11 @@ import { ExpenseDataService } from 'src/app/core/services/expense-data/expense-d
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { BudgetExpensesAddModalComponent } from '../budget-expenses-add-modal/budget-expenses-add-modal.component';
 import { TransactionHistoryComponent } from '../transaction-history/transaction-history.component';
-
+import { NotificationService } from 'src/app/core/services/notification/notification.service';
+import { UserConfigService } from 'src/app/core/services/user-config/user-config.service';
+import { FirebaseMessagingService } from 'src/app/core/services/firebase-messaging/firebase-messaging.service';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-budget-expenses',
   templateUrl: './budget-expenses.component.html',
@@ -35,25 +39,124 @@ export class BudgetExpensesComponent implements OnInit {
   public pageNumberArray: Array<number> = [];
   public pageSelection: Array<pageSelection> = [];
   public totalPages = 0;
+  verifyId: any;
   //** / pagination variables
 
-  constructor(private formBuilder: FormBuilder,private router: Router, private data: DataService, private modalService: NgbModal, private expenseDataService: ExpenseDataService) { }
+  constructor(private firestore: AngularFirestore, private http: HttpClient,private firebaseMessagingService: FirebaseMessagingService,private notificationService: NotificationService,private configService: UserConfigService,private dataService: DataService,private formBuilder: FormBuilder,private router: Router, private modalService: NgbModal, private expenseDataService: ExpenseDataService) { }
 
   ngOnInit(): void {
     this.getTableData()
 
 
   }
-
   openAddModal() {
+    // Fetch the last increment number
+    
+      // Open the modal and pass the last increment number
+      const modalRef = this.modalService.open(BudgetExpensesAddModalComponent, { size: 'lg', centered: true });
+      
+      // Handle the modal result
+      modalRef.result
+        .then((result: any) => {
+          console.log("result", result);
+          if (result?.data) {
+            // Increment the slip number and save it
+            const newNumber = result.data.lastNumber + 1;
+  
+            this.expenseDataService.updateLastExpenseSlipNo(newNumber).subscribe(() => {
+              // Save the expense data
+              this.expenseDataService.saveExpenseData(result.data.uid, result.data).subscribe((response: any) => {
+                if (response.success) {
+                  console.log('Expense saved successfully:', response);
+  
+                  // Refresh the table or data
+                  this.getTableData();
+                }
+              });
+            });
+          }
+        })
+        .catch(() => {
+          console.log('Modal dismissed');
+        });
+   
+  }
+  
+  openAddModalwww() {
+    
+    this.expenseDataService.getLastExpenseSlipNo().subscribe((lastNumber: number) => {
+    
+      const modalRef = this.modalService.open(BudgetExpensesAddModalComponent, { size: 'lg', centered: true });
+      modalRef.componentInstance.lastNumber = lastNumber; // Pass data to the modal
+  
+      modalRef.result.then((result: any) => {
+        if (result.data) {
+          
+          const newNumber = lastNumber + 1;
+          this.expenseDataService.updateLastExpenseSlipNo(newNumber).subscribe(() => {
+            
+            this.expenseDataService.saveExpenseData(result.data.uid, result.data).subscribe((response: any) => {
+              if (response.success) {
+                console.log('Expense saved successfully:', response);
+                this.getTableData();
+              }
+            });
+          });
+        }
+      });
+    });
+  }
+  
+
+  openAddModal1() {
     const modalRef = this.modalService.open(BudgetExpensesAddModalComponent, { size: 'lg', centered: true })
 
     modalRef.result.then((result: any) => {
       console.log("result", result);
       if (result.data) {
+        let veriId = ''
+        const verifierId = result.data.company.id;
+        console.log("verifierId", verifierId);
+        this.configService.getConfigurationList().subscribe((res: any) => {
+          console.log("company", res);
+          veriId = res.data[0].verifier
+          this.verifyId = veriId
+          
+
+        });
+        console.log("veriId", veriId);
         this.expenseDataService.saveExpenseData(result.data.uid, result.data).subscribe((res: any) => {
 
           if (res.success) {
+            console.log("res", res);
+            
+            const newRequest = {
+              uid: result.data.uid,
+              company: result.data.company,
+              companyName: result.data.companyName,
+              location: result.data.location,
+              locationName: result.data.locationName,
+              currentStep: 1,
+              status: "in_progress",
+              approvers: [
+                { step: 1, approverId: result.data.approver_one, approverName: result.data.approver_oneName, status: "pending" },
+                { step: 2, approverId: result.data.approver_two, approverName: result.data.approver_twoName, status: "pending" },
+                { step: 3, approverId: result.data.approver_three, approverName: result.data.approver_threeName, status: "pending" }
+              ],
+              verifier: result.data.verifier,
+              verifierName: result.data.verifierName,
+              data: {
+                branch: result.data.branch,
+                branchName: result.data.branchName,
+                expenseDetails: result.data.expenseDetails
+              }
+            };
+            this.expenseDataService.approveExpense(result.data.uid, newRequest).subscribe((res: any) => { 
+              console.log("res", res);
+             // this.sendNotification(result.data.verifier, "You have a new verification request", result.data.uid);
+            });
+           
+            
             this.getTableData();
           }
         })
@@ -62,34 +165,68 @@ export class BudgetExpensesComponent implements OnInit {
     })
   }
 
-  openTransactionHistory() {
+  // sendNotification(userId: string, message: string, requestId: string): void {
+  //   // Get user FCM token from Firestore
+  //   this.firestore.collection("users").doc(userId).get().subscribe((doc) => {
+  //     const userToken = doc.data()?.fcmToken; // Assuming fcmToken is stored for each user
 
-    // Navigate to transaction history route
-    this.router.navigate([routes.transactionHistory],
-      {
-        queryParams:
-          { 
-           }
-      });
-    // console.log("routes.transactionHistory", routes.transactionHistory);
-    // this.router.navigate(['/accounting/transaction-history']);
-    // this.router.navigate([routes.transactionHistory]);
-    // Open in extra large modal size
-    // const modalRef = this.modalService.open(TransactionHistoryComponent, { size: 'xl', centered: true })
-    //  const modalRef = this.modalService.open(TransactionHistoryComponent, { size: 'xl', centered: true })
+  //     if (userToken) {
+  //       const payload = {
+  //         notification: {
+  //           title: "Approval Request",
+  //           body: message
+  //         },
+  //         data: {
+  //           requestId: requestId
+  //         },
+  //         to: userToken
+  //       };
 
-    // modalRef.result.then((result: any) => {
+  //       const headers = {
+  //         Authorization: `key=${YOUR_SERVER_KEY}` // Replace with your FCM Server Key
+  //       };
 
-    //   if (result.data) {
-    //     // this.carDataService.saveCarData(result.data.uid, result.data).subscribe((res: any) => {
+  //       // Send the notification
+  //       this.http.post("https://fcm.googleapis.com/fcm/send", payload, { headers })
+  //         .subscribe(response => {
+  //           console.log("Notification sent successfully:", response);
+  //         }, error => {
+  //           console.error("Error sending notification:", error);
+  //         });
+  //     }
+  //   });
+  // }
+  // sendNotificationToNextApprover(stepIndex: number, expenseData: any) {
+  //   if (stepIndex >= approvalWorkflow.length) return;
+  
+  //   const currentStep = approvalWorkflow[stepIndex];
+  //   const message = {
+  //     title: 'Expense Request',
+  //     body: `Please ${currentStep.role === 'verifier' ? 'verify' : 'approve'} the expense request for ${expenseData.amount}`,
+  //   };
+  
+  //   this.firebaseMessagingService.getPermission().subscribe((token: any) => {
+  //     this.firebaseMessagingService.sendNotification(token, message);
+  //     this.notificationService.sendNotification({ ...message, data: expenseData }, currentStep.id);
+  //   });
+  // }
 
-    //     //   if(res.success){
-    //     //     this.getTableData();
-    //     //   }
-    //     // })
+  sendNotificationToVerifier(token: string, expense: any) {
+    const message = {
+      title: 'Expense Request',
+      body: `Please verify the expense request for ${expense.amount}`,
+    };
 
-    //   }
-    // })
+    this.firebaseMessagingService.sendNotification(token, message);
+  }
+
+  sendNotificationToApprover(approverId: string, token: string, expense: any) {
+    const message = {
+      title: 'Expense Request Approval',
+      body: `Please approve the expense request for ${expense.amount}`,
+    };
+
+    this.firebaseMessagingService.sendNotification(token, message);
   }
 
   private getTableData(): void {

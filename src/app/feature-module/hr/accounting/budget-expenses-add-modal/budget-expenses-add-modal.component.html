@@ -7,139 +7,262 @@
   </div>
   <div class="modal-body">
     <form [formGroup]="addRevenueForm">
-      <div class="input-block mb-3 form-row">
-        <label for="" class="col-lg-12 control-label col-form-label">{{'FORM.expense_type' | translate}} <span
-            class="text-danger">*</span></label>
-        <div class="col-lg-12">
-          <mat-select name="expense_type" class="custom-mat-select"
-            [class.invalid]="addRevenueForm.get('expense_type')?.invalid && addRevenueForm.get('expense_type')?.touched"
-            id="expense_type" [placeholder]="'FORM.choose_type' | translate" formControlName="expense_type">
-            <mat-option value="salary">{{'FORM.salary' | translate}}</mat-option>
-            <mat-option value="utilities">{{'FORM.utilities' | translate}}</mat-option>
-            <mat-option value="advertising">{{'FORM.advertising' | translate}}</mat-option>
-            <mat-option value="fuel">{{'FORM.fuel' | translate}}</mat-option>
-            <mat-option value="compliance-legal">{{'FORM.compliance_legal' | translate}}</mat-option>
-            <mat-option value="employee-welfare">{{'FORM.employee_welfare' | translate}}</mat-option>
-            <mat-option value="taxes-financial-obligations">{{'FORM.taxes_financial_obligations' | translate}}</mat-option>
-            <mat-option value="travel-miscellaneous">{{'FORM.travel_miscellaneous' | translate}}</mat-option>
-            <mat-option value="other">{{'FORM.other' | translate}}</mat-option>
-          </mat-select>
-          @if (
-          addRevenueForm.get('expense_type')?.invalid && 
-          addRevenueForm.get('expense_type')?.touched
-          ) {
-          <div>
-            <small class="text-danger">
-              * {{'FORM.expense_type_required' | translate}}</small>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="input-block mb-3">
+            <h4>{{"FORM.expense_slip_no" | translate}} : <span class="badge bg-primary" style="font-size: 16px;">{{expenseSlipNo}}</span> </h4>
+           
           </div>
-          }
+
         </div>
-      </div>
-      <div class="input-block mb-3 form-row">
-        <label for="" class="col-lg-12 control-label col-form-label">{{'FORM.expense_source' | translate}} <span
-            class="text-danger">*</span></label>
-        <div class="col-lg-12 ">
-          <input class="form-control" type="text" name="expense_source" [class.invalid]="
+        <div class="col-sm-6">
+          <div class="input-block mb-3">
+            <label class="col-form-label" for="">{{"FORM.company" | translate}} <span
+                class="text-danger">*</span></label>
+            <mat-select class="select mat-cust-select custom-mat-select"
+              placeholder="{{'FORM.select_company' | translate}}" formControlName="company"
+              (selectionChange)="onCompanyChange($event)">
+              <mat-option *ngFor="let company of companyList" [value]="company.id">
+                {{ company.name }}
+              </mat-option>
+            </mat-select>
+            @if (this.addRevenueForm.get('company')?.invalid && this.addRevenueForm.get('company')?.touched) {
+            <div>
+              @if (this.addRevenueForm.get('company')?.invalid && this.addRevenueForm.get('company')?.touched) {
+              <small class="text-danger"> *Company is required</small>
+              }
+            </div>
+            }
+          </div>
+
+        </div>
+        <div class="col-sm-6">
+          <div class="input-block mb-3">
+            <label class="col-form-label" for="">{{"FORM.location" | translate}} <span
+                class="text-danger">*</span></label>
+            <mat-select formControlName="location" class="select mat-cust-select custom-mat-select"
+              placeholder="{{'FORM.select_location' | translate}}" (selectionChange)="onModelChangeLocation($event)">
+              <mat-option *ngFor="let location of selectedLocationList" [value]="location.id">
+                {{ location['name'] | dyn_translate:location['name_th'] }}
+              </mat-option>
+            </mat-select>
+
+
+            @if (this.addRevenueForm.get('location')?.invalid && this.addRevenueForm.get('location')?.touched) {
+            <div>
+              @if (this.addRevenueForm.get('location')?.invalid && this.addRevenueForm.get('location')?.touched) {
+              <small class="text-danger"> *Location is required</small>
+              }
+            </div>
+            }
+          </div>
+        </div>
+
+        <div class="col-sm-6" *ngIf="isNotVip">
+          <div class="input-block mb-3">
+            <label class="col-form-label" for="">{{"FORM.branch" | translate}} <span
+                class="text-danger">*</span></label>
+            <mat-select class="select mat-cust-select custom-mat-select"
+              placeholder="{{'FORM.select_branch' | translate}}" formControlName="branch"
+              (selectionChange)="onModelChangeBranch($event)">
+              
+
+              <mat-option *ngFor="let branch of selectedBranchList" [value]="branch.id">
+                {{ branch.name | dyn_translate:branch['name_th'] }}
+              </mat-option>
+
+            </mat-select>
+
+            @if (this.addRevenueForm.get('branch')?.invalid && this.addRevenueForm.get('branch')?.touched) {
+            <div>
+              @if (this.addRevenueForm.get('branch')?.invalid && this.addRevenueForm.get('branch')?.touched) {
+              <small class="text-danger"> *Branch is required</small>
+              }
+            </div>
+            }
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="input-block mb-3 form-row">
+            <label for="" class="col-lg-12 control-label col-form-label">{{'FORM.expense_type' | translate}} <span
+                class="text-danger">*</span></label>
+            <div class="col-lg-12">
+              <mat-select name="expense_type" class="custom-mat-select"
+                [class.invalid]="addRevenueForm.get('expense_type')?.invalid && addRevenueForm.get('expense_type')?.touched"
+                id="expense_type" [placeholder]="'FORM.choose_type' | translate" formControlName="expense_type">
+                <mat-option value="salary">{{'FORM.salary' | translate}}</mat-option>
+                <mat-option value="utilities">{{'FORM.utilities' | translate}}</mat-option>
+                <mat-option value="advertising">{{'FORM.advertising' | translate}}</mat-option>
+                <mat-option value="fuel">{{'FORM.fuel' | translate}}</mat-option>
+              
+                <mat-option value="employee-welfare">{{'FORM.employee_welfare' | translate}}</mat-option>
+                <mat-option value="taxes-financial-obligations">{{'FORM.taxes_financial_obligations' |
+                  translate}}</mat-option>
+                <mat-option value="travel-miscellaneous">{{'FORM.travel_miscellaneous' | translate}}</mat-option>
+                <mat-option value="other">{{'FORM.other' | translate}}</mat-option>
+              </mat-select>
+              @if (
+              addRevenueForm.get('expense_type')?.invalid &&
+              addRevenueForm.get('expense_type')?.touched
+              ) {
+              <div>
+                <small class="text-danger">
+                  * {{'FORM.expense_type_required' | translate}}</small>
+              </div>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="col-sm-6">
+          <div class="input-block mb-3 form-row">
+            <label for="" class="col-lg-12 control-label col-form-label">{{'FORM.expense_source' | translate}} <span
+                class="text-danger">*</span></label>
+            <div class="col-lg-12 ">
+              <input class="form-control" type="text" name="expense_source" [class.invalid]="
                 addRevenueForm.get('expense_source')?.invalid &&
               addRevenueForm.get('expense_source')?.touched
             " formControlName="expense_source" />
-        </div>
-        @if (
-        addRevenueForm.get('expense_source')?.invalid &&
-        addRevenueForm.get('expense_source')?.touched
-        ) {
-        <div>
-          @if (
-          addRevenueForm.get('expense_source')?.invalid &&
-          addRevenueForm.get('expense_source')?.touched
-          ) {
-          <small class="text-danger">
-            *Expense Source required</small>
-          }
-        </div>
-        }
-      </div>
-      <div class="input-block mb-3 form-row">
-        <label for="" class="col-lg-12 control-label col-form-label">{{'FORM.creditor_name' | translate}} <span
-            class="text-danger">*</span></label>
-        <div class="col-lg-12" >
-          <input class=" form-control" type="text"  formControlName="creditor_name"
-             name="creditor_name" [class.invalid]="
+            </div>
+            @if (
+            addRevenueForm.get('expense_source')?.invalid &&
+            addRevenueForm.get('expense_source')?.touched
+            ) {
+            <div>
+              @if (
+              addRevenueForm.get('expense_source')?.invalid &&
+              addRevenueForm.get('expense_source')?.touched
+              ) {
+              <small class="text-danger">
+                *{{'FORM.expense_source_required' | translate}}</small>
+              }
+            </div>
+            }
+          </div>
+        </div> -->
+
+        <div class="col-sm-6">
+          <div class="input-block mb-3 form-row">
+            <label for="" class="col-lg-12 control-label col-form-label">{{'FORM.creditor_name' | translate}} <span
+                class="text-danger">*</span></label>
+            <div class="col-lg-12">
+              <input class=" form-control" type="text" formControlName="creditor_name" name="creditor_name"
+                [class.invalid]="
                 addRevenueForm.get('creditor_name')?.invalid &&
               addRevenueForm.get('creditor_name')?.touched
-            "  />
-        </div>
-        @if (
-        addRevenueForm.get('creditor_name')?.invalid &&
-        addRevenueForm.get('creditor_name')?.touched
-        ) {
-        <div>
-          @if (
-          addRevenueForm.get('creditor_name')?.invalid &&
-          addRevenueForm.get('creditor_name')?.touched
-          ) {
-          <small class="text-danger">
-            *Creditor Name required</small>
-          }
-        </div>
-        }
-      </div>
-      <div class="input-block mb-3 form-row">
-        <label for="" class="col-lg-12 control-label col-form-label">{{'FORM.invoice_number' | translate}} <span
-            class="text-danger">*</span></label>
-        <div class="col-lg-12">
-          <input class="form-control" type="text"name="invoice_number" formControlName="invoice_number" [class.invalid]="
-                addRevenueForm.get('invoice_number')?.invalid &&
-              addRevenueForm.get('invoice_number')?.touched
-            "  />
-        </div>
-        @if (
-        addRevenueForm.get('invoice_number')?.invalid &&
-        addRevenueForm.get('invoice_number')?.touched
-        ) {
-        <div>
-          @if (
-          addRevenueForm.get('invoice_number')?.invalid &&
-          addRevenueForm.get('invoice_number')?.touched
-          ) {
-          <small class="text-danger">
-            *Invoice Number required</small>
-          }
-        </div>
-        }
-      </div>
-      <div class="input-block mb-3 form-row">
-        <label for="" class="col-lg-6 control-label col-form-label">{{'FORM.expense_date' | translate}} <span
-            class="text-danger">*</span></label>
-        <div class="col-lg-12 date-input">
-          <div class="cal-icon">
-            <input class="form-control" formControlName="expense_date"
-              [class.invalid]="addRevenueForm.get('expense_date')?.invalid && addRevenueForm.get('expense_date')?.touched"
-              [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', showWeekNumbers: false }" bsDatepicker
-              container=".date-input1" />
+            " />
+            </div>
+            @if (
+            addRevenueForm.get('creditor_name')?.invalid &&
+            addRevenueForm.get('creditor_name')?.touched
+            ) {
+            <div>
+              @if (
+              addRevenueForm.get('creditor_name')?.invalid &&
+              addRevenueForm.get('creditor_name')?.touched
+              ) {
+              <small class="text-danger">
+                *Creditor Name required</small>
+              }
+            </div>
+            }
           </div>
         </div>
-        @if (
-        addRevenueForm.get('expense_date')?.invalid &&
-        addRevenueForm.get('expense_date')?.touched
-        ) {
-        <div>
-          @if (
-          addRevenueForm.get('expense_date')?.invalid &&
-          addRevenueForm.get('expense_date')?.touched
-          ) {
-          <small class="text-danger">
-            *Expense Date required</small>
-          }
+        <div class="col-sm-6">
+          <div class="input-block mb-3 form-row">
+            <label for="" class="col-lg-12 control-label col-form-label">{{'FORM.invoice_number' | translate}} </label>
+            <div class="col-lg-12">
+              <input class="form-control" type="text" name="invoice_number" formControlName="invoice_number"
+                [class.invalid]="
+                addRevenueForm.get('invoice_number')?.invalid &&
+              addRevenueForm.get('invoice_number')?.touched
+            " />
+            </div>
+            
+          </div>
         </div>
-        }
-      </div>
-      <div class="input-block mb-3 form-row">
-        <label for="" class="col-lg-12 control-label col-form-label">{{'FORM.due_date' | translate}} <span class="text-danger">*</span></label>
-        <div class="col-lg-12 date-input">
-          <div class="cal-icon">
-            <!-- Set minimum date to today to prevent selecting past dates -->
-            <!-- <input
+        <div class="col-sm-6">
+          <div class="input-block mb-3 form-row">
+            <label for="" class="col-lg-12 control-label col-form-label">{{'FORM.amount' | translate}} <span
+                class="text-danger">*</span></label>
+            <div class="col-lg-12">
+              <input class="form-control" type="text" name="expense_amount" formControlName="expense_amount"
+                [class.invalid]="
+                addRevenueForm.get('expense_amount')?.invalid &&
+              addRevenueForm.get('expense_amount')?.touched
+            " />
+            </div>
+            @if (
+            addRevenueForm.get('expense_amount')?.invalid &&
+            addRevenueForm.get('expense_amount')?.touched
+            ) {
+            <div>
+              @if (
+              addRevenueForm.get('expense_amount')?.invalid &&
+              addRevenueForm.get('expense_amount')?.touched
+              ) {
+              <small class="text-danger">
+                *Expense Amount required</small>
+              }
+            </div>
+            }
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="input-block mb-3 form-row">
+            <label for="" class="col-lg-12 control-label col-form-label">{{'FORM.select_currency' | translate}} <span
+                class="text-danger">*</span></label>
+            <div class="col-lg-12">
+          
+            <mat-select name="currency_symbol" formControlName="expense_currency" class="custom-mat-select"
+              [placeholder]="'FORM.select_currency' | translate">
+              <mat-option value="baht">THB - Baht</mat-option>
+              <mat-option value="dollar">USD - US Dollar</mat-option>
+
+
+
+
+            </mat-select>
+          </div>
+        </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="input-block mb-3 form-row">
+            <label for="" class="col-lg-6 control-label col-form-label">{{'FORM.request_date' | translate}} <span
+                class="text-danger">*</span></label>
+            <div class="col-lg-12 date-input">
+              <div class="cal-icon">
+                <input class="form-control" formControlName="expense_date"
+                  [class.invalid]="addRevenueForm.get('expense_date')?.invalid && addRevenueForm.get('expense_date')?.touched"
+                  [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', showWeekNumbers: false }" bsDatepicker
+                  container=".date-input1" />
+              </div>
+            </div>
+            @if (
+            addRevenueForm.get('expense_date')?.invalid &&
+            addRevenueForm.get('expense_date')?.touched
+            ) {
+            <div>
+              @if (
+              addRevenueForm.get('expense_date')?.invalid &&
+              addRevenueForm.get('expense_date')?.touched
+              ) {
+              <small class="text-danger">
+                *Expense Date required</small>
+              }
+            </div>
+            }
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="input-block mb-3 form-row">
+            <label for="" class="col-lg-12 control-label col-form-label">{{'FORM.due_date' | translate}} <span
+                class="text-danger">*</span></label>
+            <div class="col-lg-12 date-input">
+              <div class="cal-icon">
+                <!-- Set minimum date to today to prevent selecting past dates -->
+                <!-- <input
               class="form-control" 
               formControlName="due_date"
               [min]="today"
@@ -148,11 +271,11 @@
               bsDatepicker
               container=".date-input1"
             /> -->
-            <input class="form-control" formControlName="due_date"
-              [class.invalid]="addRevenueForm.get('due_date')?.invalid && addRevenueForm.get('due_date')?.touched"
-              [bsConfig]="bsConfig" bsDatepicker container=".date-input1" />
+                <input class="form-control" formControlName="due_date"
+                  [class.invalid]="addRevenueForm.get('due_date')?.invalid && addRevenueForm.get('due_date')?.touched"
+                  [bsConfig]="bsConfig" bsDatepicker container=".date-input1" />
 
-            <!-- <input
+                <!-- <input
               class="form-control"
               formControlName="due_date" 
               [class.invalid]="addRevenueForm.get('due_date')?.invalid && addRevenueForm.get('due_date')?.touched"
@@ -160,93 +283,104 @@
               bsDatepicker
               container=".date-input1"
             /> -->
-            <!-- <div *ngIf="addRevenueForm.get('due_date')?.errors?.invalidDate && addRevenueForm.get('due_date')?.touched">
+                <!-- <div *ngIf="addRevenueForm.get('due_date')?.errors?.invalidDate && addRevenueForm.get('due_date')?.touched">
               Please select a valid date.
             </div> -->
-            
-          </div>
-        </div>
-        @if (
-        addRevenueForm.get('due_date')?.invalid &&
-        addRevenueForm.get('due_date')?.touched
-        ) {
-        <div>
-          @if (
-          addRevenueForm.get('due_date')?.invalid &&
-          addRevenueForm.get('due_date')?.touched
-          ) {
-          <small class="text-danger">
-            *Expense Date required</small>
-          }
-        </div>
-        }
-      </div>
-     
 
-      <div class="input-block mb-3 form-row row">
-        <label for="" class="col-lg-12 control-label col-form-label">{{'FORM.amount' | translate}} <span class="text-danger">*</span></label>
-        <div class="col-lg-6 p-0 mb-3 pe-lg-3 pe-0">
-          <input type="text" class="form-control" placeholder="800.00" formControlName="expense_amount" [class.invalid]="
-              addRevenueForm.get('expense_amount')?.invalid &&
-              addRevenueForm.get('expense_amount')?.touched
-            " formControlName="expense_amount" />
-          @if (
-          addRevenueForm.get('expense_amount')?.invalid &&
-          addRevenueForm.get('expense_amount')?.touched
-          ) {
-          <div>
+              </div>
+            </div>
             @if (
-            addRevenueForm.get('expense_amount')?.invalid &&
-            addRevenueForm.get('expense_amount')?.touched
+            addRevenueForm.get('due_date')?.invalid &&
+            addRevenueForm.get('due_date')?.touched
             ) {
-            <small class="text-danger">
-              *Amount required</small>
+            <div>
+              @if (
+              addRevenueForm.get('due_date')?.invalid &&
+              addRevenueForm.get('due_date')?.touched
+              ) {
+              <small class="text-danger">
+                *Expense Date required</small>
+              }
+            </div>
             }
           </div>
-          }
         </div>
-        <div class="col-lg-6">
-          <mat-select name="currency_symbol" formControlName="expense_currency" class="custom-mat-select"
-            [placeholder]="'FORM.select_currency' | translate">
-            <mat-option value="$ - AUD">THB - Baht</mat-option>
-            <mat-option value="$ - AUD">USD - US Dollar</mat-option>
 
+        
+       
+         
+        
+      
+      <div class="col-sm-6">
+        <div class="input-block mb-3 form-row">
+          <label for="" class="col-lg-12 control-label col-form-label">{{'FORM.notes' | translate}} </label>
+          <div class="col-lg-12">
+            <textarea class="form-control ta" formControlName="expense_notes"></textarea>
+          </div>
 
-
-
-          </mat-select>
         </div>
       </div>
-      <div class="input-block mb-3 form-row">
-        <label for="" class="col-lg-12 control-label col-form-label">{{'FORM.notes' | translate}} </label>
-        <div class="col-lg-12">
-          <textarea class="form-control ta" formControlName="expense_notes"></textarea>
-        </div>
 
-      </div>
-
-      <div class="input-block mb-3 form-row position-relative">
-        <label for="" class="col-lg-12 control-label col-form-label">{{'FORM.attach_file' | translate}}</label>
-        <div class="col-lg-12">
-          <input
+      <div class="col-sm-12">
+        <div class="input-block mb-3 form-row position-relative">
+          <label for="" class="col-lg-12 control-label col-form-label">{{'FORM.attach_file' | translate}}</label>
+          <div class="col-lg-12">
+            <input
             type="file"
-            class="form-control"
-            data-buttontext="Choose File"
-            data-icon="false"
-            data-classbutton="btn btn-default"
-            data-classinput="form-control inline input-s"
-            name="receipt"
+            class="custom-file-input form-control"
+            id="document-upload"
+            multiple
             (change)="onFileSelectedFiles($event)"
-            accept="image/*" 
           />
+            <!-- <input type="file" class="form-control" data-buttontext="Choose File" data-icon="false"
+              data-classbutton="btn btn-default" data-classinput="form-control inline input-s" name="receipt"
+              (change)="onFileSelectedFiles($event)" accept="image/*" /> -->
+          </div>
         </div>
       </div>
-      <div class="preview mt-3" *ngIf="previewUrl">
-        <img [src]="previewUrl" alt="File Preview" class="img-fluid" style="max-width: 100%; height: auto;" />
+      <div class="uploaded-docs" *ngIf="uploadedDocuments.length > 0">
+        <h4 class="mb-3">{{ "FORM.upload_documents" | translate }}</h4>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>{{ "FORM.document_name" | translate }}</th>
+                <th>{{ "FORM.date_uploaded" | translate }}</th>
+                <th>{{ "FORM.action" | translate }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let document of uploadedDocuments; let i = index">
+                <td>{{ document.name }}</td>
+                <td>{{ document.dateUploaded }}</td>
+                <td>
+                  <a
+                    href="javascript:void(0);"
+                    class="btn btn-sm btn-primary me-2"
+                    (click)="downloadDocument(document)"
+                  >
+                    <i class="fa fa-download"></i>
+                  </a>
+                  <a
+                    href="javascript:void(0);"
+                    class="btn btn-sm btn-danger"
+                    (click)="removeDocument(i)"
+                  >
+                    <i class="fa fa-trash"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-      <div class="submit-section">
-        <button class="btn btn-primary submit-btn" (click)="onSubmitExpense()">{{'FORM.submit' | translate}}</button>
-      </div>
-    </form>
   </div>
+  <div class="preview mt-3" *ngIf="previewUrl">
+    <img [src]="previewUrl" alt="File Preview" class="img-fluid" style="max-width: 100%; height: auto;" />
+  </div>
+  <div class="submit-section">
+    <button class="btn btn-primary submit-btn" (click)="onSubmitExpense()">{{'FORM.submit' | translate}}</button>
+  </div>
+  </form>
+</div>
 </div>

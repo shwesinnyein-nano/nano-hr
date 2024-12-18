@@ -37,6 +37,11 @@ export class UserRoleService {
             ...doc.data()
           });
         });
+        users.sort((a, b) => {
+          const dateA = new Date(a.updatedDate || a.createdDate).getTime();
+          const dateB = new Date(b.updatedDate || b.createdDate).getTime();
+          return dateB - dateA; // Descending order
+        });
         observer.next({
           data: users,
           totalData: users.length
@@ -76,6 +81,9 @@ export class UserRoleService {
     }
   }
 
+  deletUserByUid(uid: string) {
+    return from(this.firestore.collection('users').doc(uid).delete());
+  }
   getUserByUid(uid?: string): Observable<any> {
     if (uid) {
       return this.firestore.collection('users').doc(uid).valueChanges();
