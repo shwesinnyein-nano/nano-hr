@@ -33,6 +33,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'employee-info',
+        loadChildren: () =>
+          import('../feature-module/employee-info/employee-info.module').then(
+            (m) => m.EmployeeInfoModule
+          ),
+      },
+      {
         path: 'product',
         loadChildren: () =>
           import('../feature-module/product/product.module').then(

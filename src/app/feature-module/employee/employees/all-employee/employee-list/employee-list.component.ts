@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { DataService, apiResultFormat, getEmployees, routes } from 'src/app/core/core.index';
+import { DataService, GetEmployees, apiResultFormat, routes } from 'src/app/core/core.index';
 import { EmployeeModalComponent } from '../employee-modal/employee-modal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserRoleService } from 'src/app/core/services/user-role/user-role.service';
@@ -16,9 +16,9 @@ import { EmployeeService } from 'src/app/core/services/employee/employee.service
 })
 export class EmployeeListComponent implements OnInit {
   selected = 'option1';
-  public lstEmployee: Array<getEmployees> = [];
+  public lstEmployee: GetEmployees[] = [];
   public searchDataValue = '';
-  dataSource!: MatTableDataSource<getEmployees>;
+  dataSource!: MatTableDataSource<GetEmployees>;
   public routes = routes;
   // pagination variables
   public lastIndex = 0;
@@ -98,7 +98,7 @@ export class EmployeeListComponent implements OnInit {
     this.employeeService.getEmployeeList().subscribe((res: any) => {
 
       this.totalData = res.data.length
-      res.data.map((res: getEmployees, index: number) => {
+      res.data.map((res: GetEmployees, index: number) => {
         const serialNumber = index + 1;
         if (index >= this.skip && serialNumber <= this.limit) {
           res.id = serialNumber;

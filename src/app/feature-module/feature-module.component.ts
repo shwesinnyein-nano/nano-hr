@@ -106,7 +106,7 @@ export class FeatureModuleComponent {
       this.last = res;
     });
     this.settings.layoutMode.subscribe((layout) => {
-      this.layoutMode = layout;
+      this.layoutMode = 'twocolumn';
     });
     this.settings.colorScheme.subscribe((color) => {
       this.colorScheme = color;

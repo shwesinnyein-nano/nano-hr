@@ -222,12 +222,67 @@ export const locale = {
       second_approved: "อนุมัติครั้งที่สอง",
       approved: "อนุมัติ",
       rejected: "ปฏิเสธ",
-     
-     
+      nickname: "ชื่อเล่น",
+      emergency_phone_number: "เบอร์โทรศัทพ์ผู้ติดต่อกรณีฉุกเฉิน",
+      is_user: "ผู้ใช้งาน",
+      is_approver: "ผู้อนุมัติ",
+      is_verifier: "ผู้ตรวจสอบ",
+      id_type: "ประเภทเอกสาร",
+      select_id_type: "เลือกประเภทเอกสาร",
+      enter_passport_number: "กรุณากรอกหมายเลขเอกสารที่ยืนยันตัวตน",
+      enter_id_card_number: "กรุณากรอกหมายเลขพาสปอร์ต",
 
-      
+      id_number: "หมายเลขบัตรประชาชน",
+      select_disabilities_status: "เลือกสถานะความพิการ",
+      select_congenital_diseases_status: "เลือกสถานะโรคประจำตัว",
+      emergency_contact_relationship: "ความสัมพันธ์กับผู้ติดต่อกรณีฉุกเฉิน",
+      mobile_number_primary: "กรุณากรอกเบอร์โทรศัทพ์หลัก",
+      mobile_number_secondary: "กรุณากรอกเบอร์โทรศัทพ์รอง",
+      employee_info: "ข้อมูลพนักงาน",
+    
+      nick_name: "ชื่อเล่น",
+      view_profile: "ดูข้อมูลส่วนตัว",
+      view_employee: "ดูข้อมูลพนักงาน",
+     
      
     },
+    VALIDATION: {
+      email_required: "กรุณากรอกอีเมล",
+      invalid_email: "รูปแบบอีเมลไม่ถูกต้อง",
+      company_required: "กรุณากรอกบริษัท",
+      employee_id_required: "กรุณากรอกรหัสพนักงาน",
+      employee_name_required: "กรุณากรอกชื่อพนักงาน",
+      position_required: "กรุณากรอกตำแหน่ง",
+      role_required: "กรุณากรอกสิทธิ์",
+      location_required: "กรุณากรอกสถานที่",
+      branch_required: "กรุณากรอกสาขา",
+      mobile_number_required: "กรุณากรอกเบอร์โทรศัทพ์",
+      phone_number_required: "กรุณากรอกเบอร์โทรศัทพ์",
+      nickname_required: "กรุณากรอกชื่อเล่น",
+      first_name_required: "กรุณากรอกชื่อ",
+      last_name_required: "กรุณากรอกนามสกุล",
+     
+      id_card_required: "กรุณากรอกพาสปอร์ต",
+      passport_required: "กรุณากรอกเอกสารที่ยืนยันตัวตน",
+      id_card_number_required: "กรุณากรอกพาสปอร์ต",
+      passport_number_required: "กรุณากรอกเอกสารที่ยืนยันตัวตน",
+      date_of_birth_required: "กรุณากรอกวันเกิด",
+      nationality_required: "กรุณากรอกสัญชาติ",
+      id_address_required: "กรุณากรอกที่อยู่ตามบัตรประชาชน",
+      district_required: "กรุณากรอกเขต/อำเภอ",
+      sub_district_required: "กรุณากรอกแขวง/ตำบล",
+      province_required: "กรุณากรอกจังหวัด",
+      postal_code_required: "กรุณากรอกรหัสไปรษณีย์",
+      current_address_required: "กรุณากรอกที่อยู่ปัจจุบัน",
+      emergency_contact_name_required: "กรุณากรอกชื่อผู้ติดต่อกรณีฉุกเฉิน",
+      emergency_contact_phone_required: "กรุณากรอกเบอร์โทรศัทพ์ผู้ติดต่อกรณีฉุกเฉิน",
+      emergency_contact_address_required: "กรุณากรอกที่อยู่ผู้ติดต่อกรณีฉุกเฉิน",
+      relationship_required: "กรุณากรอกความสัมพันธ์",
+      bank_name_required: "กรุณากรอกชื่อธนาคาร",
+      bank_account_number_required: "กรุณากรอกหมายเลขบัญชีธนาคาร",
+      bank_branch_required: "กรุณากรอกสาขาธนาคาร",
+      account_holder_name_required: "กรุณากรอกชื่อผู้ถือบัญชี",
+    }
 
   }
 }

@@ -314,7 +314,8 @@ body .horizontalLayout {
 
 body .orangeScheme {
     .header {
-        background: #16191c;
+        // background: #16191c;
+        background: #c7a27b;
         // background: linear-gradient(to right, $primary 0%, #fc6075 100%);
 
         .header-left .logo {
@@ -358,7 +359,8 @@ body .orangeScheme {
     }
 
     .sidebar-twocol.sidebar .sidebar-left {
-        background-color: $secondary-800;
+        // background-color: $secondary-800;
+        background-color: #faf3eb;
     }
 }
 

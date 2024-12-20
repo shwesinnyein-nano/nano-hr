@@ -5,11 +5,11 @@
     margin-top: 0;
     @include position(fixed,60px,null,0,0);
     @include transition(all 0.2s ease);
-    width: 250px;
+    // width: 250px;
     z-index: 1001;
     @include respond-below(custom991) {
         margin-left: -225px;
-        width: 225px;
+        // width: 225px;
         @include transition(all 0.4s ease);
         z-index: 1041;
     }
@@ -358,7 +358,7 @@
 @include respond-above(custom992) {
     .mini-sidebar{
         .sidebar {
-            width: 60px;
+            width: 70px;
             .menu-title {
                 visibility: hidden;
                 white-space: nowrap;
@@ -439,7 +439,8 @@
         .nav-link {
             @include margin-padding(null, 5px);
             margin-bottom: 15px;
-            color: $white;
+            // color: $white;
+            color:black;
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
@@ -450,7 +451,8 @@
             -webkit-justify-content: center;
             -ms-flex-pack: center;
             &.active{
-                background: #fff;
+                // background: #fff;
+                background: #c7a27b;
                 color: #34444c;
             }
         }
@@ -460,7 +462,8 @@
             @include margin-padding(null, 10px);
         }
         .sidebar-right {
-            background: $white;
+            // background: $white;
+            background: #faf3eb;
             width: 190px;
             height: 100%;
             @include box-shadow(null, 0, 4px, 4px, null, rgba(209, 209, 209, .25));

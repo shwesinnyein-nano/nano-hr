@@ -823,21 +823,27 @@ export interface getDepartment {
   id: number;
   departmentName: string;
 }
-export interface getEmployees {
+export interface GetEmployees {
   firstName: string;
   lastName: string;
   username: string;
-  username1: string;
+  
+  nickname: string;
+  primary_number: string;
+  secondary_number: string;
+  uid: string;
   profileImage: string;
-  confirmpassword: string;
-  department: string;
+  
+  location: string;
+  locationName: string;
   position: string;
   positionName: string;
   phone: string;
   email: string;
-  pho: string;
+  
   joinDate: string;
   role: string;
+  roleName: string;
   employeeId: string;
   company: string;
   companyName: string;
@@ -1070,3 +1076,40 @@ export interface Star {
   show?: boolean;
   half?: boolean;
 }
+export interface Company {
+  id: string;
+  name: string;
+  
+}
+export interface Location {
+  id: string;
+  name: string;
+  parentId: string;
+  // ... other properties
+}
+export interface Branch {
+  id: string;
+  name: string;
+  locationId: string;
+}
+export interface Position {
+  id: string;
+  name: string;
+  branchId: string;
+}
+export interface Role {
+  id: string;
+  name: string;
+  positionId: string;
+}
+export interface UserRole {
+  id: string;
+  name: string;
+  roleId: string;
+}
+export interface Approver {
+  id: string;
+  name: string;
+  roleId: string;
+}
+

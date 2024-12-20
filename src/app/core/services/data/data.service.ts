@@ -76,6 +76,13 @@ export class DataService {
       })
     );
   }
+  public getApproverList(): Observable<apiResultFormat> {
+    return this.http.get<apiResultFormat>('assets/JSON/approver-list.json').pipe(
+      map((res: apiResultFormat) => {
+        return res;
+      })
+    );
+  }
  
   public fetchAllList(): Observable<any> {
     return forkJoin({
@@ -84,7 +91,8 @@ export class DataService {
       positionList: this.getPositionList(),
       branchList: this.getBranchList(),
       userRoleList: this.getUserRole(),
-      
+      approverList: this.getApproverList(),
+      nationalityList: this.getCountry(), 
     });
   }
   public fetchAllCarList(): Observable<any> {
@@ -603,6 +611,31 @@ export class DataService {
 
         },
 
+      ],
+    },
+    {
+      tittle: 'Employees Information',
+      icon: 'layers',
+      showAsTab: false,
+      separateRoute: false,
+      menu: [
+        {
+          menuValue: 'Employees Information',
+          route: routes.employee_info,
+          hasSubRoute: true,
+          showSubRoute: false,
+          icon: 'people',
+          base: 'employee-information',
+          dot: true,
+          materialicons: 'people',
+          subMenus: [
+            {
+              menuValue: 'Employees',
+              route: routes.employee_info_list,
+              base: 'employee-information',
+            },
+          ],
+        },
       ],
     },
     {

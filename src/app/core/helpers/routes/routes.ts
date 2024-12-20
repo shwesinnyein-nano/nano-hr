@@ -40,6 +40,19 @@ export class routes {
     return this.baseUrl + '/dashboard/employee';
   }
 
+  public static get employee_info(): string {
+    return this.baseUrl + '/employee-info/employee-info';
+  }
+  public static get employee_info_list(): string {
+    return this.baseUrl + '/employee-info/employee-info-list';
+  }
+  public static get employee_profile_info(): string {
+    return this.baseUrl + '/employee-info/employee-profile-info';
+  }
+  public static get employee_info_view(): string {
+    return this.baseUrl + '/employee-info/employee-info-view';
+  }
+
   public static get apps(): string {
     return this.baseUrl + '/apps';
   }

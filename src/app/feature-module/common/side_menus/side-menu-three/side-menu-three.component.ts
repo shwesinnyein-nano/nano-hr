@@ -78,13 +78,13 @@ export class SideMenuThreeComponent implements OnDestroy {
               };
             })
           }
-          else{
+          else {
             this.side_bar_data = this.side_bar_data.map((menuGroup: any) => {
               // const access = menuData.menuAccess.find((accessItem: any) => accessItem.menuValue === menuGroup.menuValue);
               return {
                 ...menuGroup,
-                permissions: 
-                   { read: true, write: true, create: true, delete: true }, // Default permissions
+                permissions:
+                  { read: true, write: true, create: true, delete: true }, // Default permissions
               };
             })
 
@@ -103,11 +103,18 @@ export class SideMenuThreeComponent implements OnDestroy {
       else this.showSubMenusTab = false;
     });
   }
+  public toggleSideBar(): void {
+    console.log("clicked");
+
+
+  }
 
   public showTabs(mainTittle: SideBarMenu): void {
     this.side_bar_data.map((mainMenus: SideBarMenu) => {
       if (mainTittle.menuValue === mainMenus.menuValue) {
         mainMenus.showMyTab = true;
+        // this.sideBar.expandSideBar.next(true);
+        // this.showSubMenusTab = false;
       } else {
         mainMenus.showMyTab = false;
       }
@@ -151,5 +158,5 @@ export class SideMenuThreeComponent implements OnDestroy {
   trackMainTittle(index: number, item: any): string {
     return item.menuValue; // or another unique identifier for the menu item
   }
-  
+
 }

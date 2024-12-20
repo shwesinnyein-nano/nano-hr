@@ -1,0 +1,734 @@
+<div class="content container-fluid">
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="page-title">{{"FORM.employee_profile" | translate}} </h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a [routerLink]="routes.adminDashboard">{{"FORM.dashboard" |
+                            translate}}</a></li>
+                    <li class="breadcrumb-item"><a [routerLink]="routes.employee_info_list">{{"FORM.employee_info" |
+                            translate}}</a></li>
+                    <li class="breadcrumb-item active">{{"FORM.view_employee" | translate}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <h4 class="mb-0 title">
+                {{"FORM.personal_information" | translate}}
+
+            </h4>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6 ">
+                    <div class="form-group mb-3 mt-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="title">{{ "FORM.employee_id" | translate}}</label>
+                            </div>
+                            <div class="col-md-6">
+                                <span class="badge bg-primary" style="font-size: 16px;">
+                                {{ data.uid }}
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3 mt-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="title mr-2" style="flex: 0 0 auto; color: #6d6d6d;">{{
+                                    "FORM.company" |
+                                    translate }} :</label>
+                            </div>
+                            <div class="col-md-6">
+                                {{data.companyName}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3 mt-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="title mr-2" style="flex: 0 0 auto; color: #6d6d6d;">{{
+                                    "FORM.location" |
+                                    translate }} :</label>
+                            </div>
+                            <div class="col-md-6">
+                                {{data.locationName}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="title mr-2" style="flex: 0 0 auto; color: #6d6d6d;">{{
+                                    "FORM.branch" |
+                                    translate }} :</label>
+                            </div>
+                            <div class="col-md-6">
+                                {{data.branchName}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="title mr-2" style="flex: 0 0 auto; color: #6d6d6d;">{{
+                                    "FORM.position" |
+                                    translate }} :</label>
+                            </div>
+                            <div class="col-md-6">
+                                {{data.positionName}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="title mr-2" style="flex: 0 0 auto; color: #6d6d6d;">{{
+                                    "FORM.role" |
+                                    translate }} :</label>
+                            </div>
+                            <div class="col-md-6">
+                                {{data.roleName}}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                
+                <div class="col-md-6">
+
+                    <div class="profile-img-edit mb-4 d-flex justify-content-center">
+                        <div
+                            class="profile-image-container d-flex flex-column align-items-center justify-content-center">
+                            <div class="image-frame">
+                                <img [src]="data.imageUrl" *ngIf="data.imageUrl; else defaultImage" alt="Profile Image"
+                                    class="profile-img img-thumbnail" style="max-width: 150px; max-height: 120px;" />
+                                <ng-template #defaultImage>
+                                    <div class="default-placeholder">
+                                        <i class="pi pi-user" style="font-size: 3rem;"></i>
+                                    </div>
+                                </ng-template>
+                            </div>
+
+
+
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="title">{{ "FORM.join_date" | translate
+                                }}</label>
+                        </div>
+                        <div class="col-md-6">
+                            {{data.joinDate | date:"dd MMM yyyy"}}
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="col-md-6">
+
+                </div>
+            </div>
+
+
+            <div class="row mt-3">
+                <div class="col-md-6" *ngIf="data.isApprover">
+                    <div class="form-group mb-3">
+                        <label class="title">{{ "FORM.approver" | translate
+                            }}</label>
+                        {{data.approverName}}
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="title">{{ "FORM.first_name" | translate }}</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="title">{{ "FORM.first_name" | translate }}</label>
+                           
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="title">{{ "FORM.last_name" | translate }}</label>
+                        </div>
+                        <div class="col-md-6">
+                            {{data.lastName}}
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="title">{{ "FORM.nickname" | translate }}</label>
+                        </div>
+                        <div class="col-md-6">
+                            {{data.nickname}}
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+
+
+                <div class="col-md-6">
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="title">
+                                {{ "FORM.email" | translate }} <span class="text-danger" *ngIf="data.isUser">*</span>
+                            </label>
+                        </div>
+                        <div class="col-md-6">
+                            {{data.email}}
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="title">{{ "FORM.mobile_number_primary" |
+                                translate }} </label>
+                        </div>
+                        <div class="col-md-6">
+                            {{data.primary_number}}
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="title">{{ "FORM.mobile_number_secondary" |
+                                translate }}</label>
+                        </div>
+                        <div class="col-md-6">
+                            {{data.secondary_number}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="title">{{ "FORM.gender" | translate }}</label>
+                        </div>
+                        <div class="col-md-6">
+                            {{data.gender}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="title">{{ "FORM.date_of_birth" | translate}} </label>
+                        </div>
+                        <div class="col-md-6">
+                            
+                                {{data.dateOfBirth | date:"dd MMM yyyy"}}
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="title">{{ "FORM.nationality" | translate }} <span
+                                    class="text-danger">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            {{data.nationality}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="title">{{ "FORM.marital_status" | translate
+                                }}</label>
+                        </div>
+                        <div class="col-md-6">
+                            {{data.maritalStatus}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="title">{{ "FORM.id_type" | translate }} <span
+                                    class="text-danger">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            {{data.idType}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="title">{{ "FORM.id_card_number" | translate }} <span
+                                    class="text-danger">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            {{data.idCardNumber}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="title">{{ "FORM.id_address" | translate }} <span
+                                    class="text-danger">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            {{data.idAddress}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="title">{{ "FORM.district" | translate }} <span
+                                    class="text-danger">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            {{data.district}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="title">{{ "FORM.sub_district" | translate }} <span
+                                    class="text-danger">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            {{data.subDistrict}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="title">{{ "FORM.province" | translate }} <span
+                                    class="text-danger">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            {{data.province}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="title">{{ "FORM.postal_code" | translate }} <span
+                                    class="text-danger">*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            {{data.postalCode}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6"></div>
+                <div class="col-md-6">
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="title">{{ "FORM.same_as_id_address" |
+                                translate }}</label>
+                        </div>
+                        <div class="col-md-6">
+                            {{data.sameAsIdAddress}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6"></div>
+                <div class="col-md-6">
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="title">{{ "FORM.address" | translate
+                                }}</label>
+                        </div>
+                        <div class="col-md-6">
+                            {{data.currentAddress}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="title">{{ "FORM.district" | translate
+                                }}</label>
+                        </div>
+                        <div class="col-md-6">
+                            {{data.district}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label class="title">{{ "FORM.sub_district" | translate
+                                }}</label>
+                        </div>
+                        <div class="col-md-6">
+                            {{data.subDistrict}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                                <label class="title">{{ "FORM.province" | translate
+                                    }}</label>
+                            </div>
+                            <div class="col-md-6">
+                                {{data.province}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label class="title">{{ "FORM.postal_code" | translate
+                                        }}</label>
+                                </div>
+                                <div class="col-md-6">
+                                    {{data.postalCode}}
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <!-- <div class="row mt-3">
+        <div class="col-xl-12">
+            <div class="accordion accordion-solid-primary" id="accordionEmergencyContact">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingEmergencyContactOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#accordionEmergencyContactOne" aria-expanded="true"
+                            aria-controls="accordionEmergencyContactOne">
+                            {{"FORM.emergency_contact" | translate}}
+                        </button>
+                    </h2>
+                    <div id="accordionEmergencyContactOne" class="accordion-collapse collapse show"
+                        aria-labelledby="headingPrimarySolidOne" data-bs-parent="#accordionEmergencyContact">
+                        <div class="card-body" style="padding: 24px;">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label class="title">{{ "FORM.emergency_contact_name" | translate }} <span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" formControlName="emgContactName"
+                                            name="emgContactName" id="emgContactName">
+                                        @if (this.addEmployeeForm.get('emgContactName')?.invalid &&
+                                        this.addEmployeeForm.get('emgContactName')?.touched) {
+                                        <div>
+                                            @if (this.addEmployeeForm.get('emgContactName')?.invalid &&
+                                            this.addEmployeeForm.get('emgContactName')?.touched) {
+                                            <small class="text-danger"> *{{"VALIDATION.emergency_contact_name_required"
+                                                |
+                                                translate}}</small>
+                                            }
+                                        </div>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label class="title">{{ "FORM.relationship" | translate }} <span
+                                                class="text-danger">*</span></label>
+
+                                        <mat-select class="select mat-cust-select custom-mat-select"
+                                            [placeholder]="'FORM.select_relationship' | translate"
+                                            formControlName="emgRelationship">
+                                            <mat-option value="spouse">{{"FORM.spouse" | translate}}</mat-option>
+                                            <mat-option value="parent">{{"FORM.parent" | translate}}</mat-option>
+                                            <mat-option value="sibling">{{"FORM.sibling" | translate}}</mat-option>
+                                            <mat-option value="child">{{"FORM.child" | translate}}</mat-option>
+                                            <mat-option value="relative">{{"FORM.relative" |
+                                                translate}}</mat-option>
+                                            <mat-option value="friend">{{"FORM.friend" | translate}}</mat-option>
+
+                                            <mat-option value="other">{{"FORM.other" | translate}}</mat-option>
+
+                                        </mat-select>
+                                        @if (this.addEmployeeForm.get('emgRelationship')?.invalid &&
+                                        this.addEmployeeForm.get('emgRelationship')?.touched) {
+                                        <div>
+                                            @if (this.addEmployeeForm.get('emgRelationship')?.invalid &&
+                                            this.addEmployeeForm.get('emgRelationship')?.touched) {
+                                            <small class="text-danger"> *{{"VALIDATION.relationship_required" |
+                                                translate}}</small>
+                                            }
+                                        </div>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label class="title">{{ "FORM.emergency_phone_number" | translate }} <span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" formControlName="emgMobileNumber"
+                                            name="emgMobileNumber" mask="000 000 0000" id="emgMobileNumber">
+                                        @if (this.addEmployeeForm.get('emgMobileNumber')?.invalid &&
+                                        this.addEmployeeForm.get('emgMobileNumber')?.touched) {
+                                        <div>
+                                            @if (this.addEmployeeForm.get('emgMobileNumber')?.invalid &&
+                                            this.addEmployeeForm.get('emgMobileNumber')?.touched) {
+                                            <small class="text-danger"> *{{"VALIDATION.emergency_phone_number_required"
+                                                |
+                                                translate}}</small>
+                                            }
+                                        </div>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label class="title">{{ "FORM.address" | translate }} </label>
+                                        <textarea class="form-control" formControlName="emgAddress" name="emgAddress"
+                                            id="emgAddress"></textarea>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row mt-3">
+        <div class="col-xl-12">
+            <h2>
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#accordionBankInformationOne" aria-expanded="true"
+                    aria-controls="accordionBankInformationOne">
+                    {{"FORM.bank_information" | translate}}
+                </button>
+            </h2>
+
+            <div class="card-body" style="padding: 24px;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label class="title">{{ "FORM.bank_name" | translate }}</label>
+                            <mat-select class="select mat-cust-select custom-mat-select"
+                                [placeholder]="'FORM.select_bank' | translate" formControlName="bankName">
+                                <mat-option value="BBL">Bangkok Bank (BBL) – ธนาคารกรุงเทพ</mat-option>
+                                <mat-option value="KBank">Kasikorn Bank (KBank) –
+                                    ธนาคารกสิกรไทย</mat-option>
+                                <mat-option value="SCB">Siam Commercial Bank (SCB) –
+                                    ธนาคารไทยพาณิชย์</mat-option>
+                                <mat-option value="KTB">Krung Thai Bank (KTB) –
+                                    ธนาคารกรุงไทย</mat-option>
+                                <mat-option value="Krungsri">Bank of Ayudhya (Krungsri) –
+                                    ธนาคารกรุงศรีอยุธยา</mat-option>
+                                <mat-option value="TTB">TMBThanachart Bank (TTB) –
+                                    ธนาคารทหารไทยธนชาต</mat-option>
+                                <mat-option value="GSB">Government Savings Bank (GSB) –
+                                    ธนาคารออมสิน</mat-option>
+                                <mat-option value="EXIM">Export-Import Bank of Thailand (EXIM) –
+                                    ธนาคารเพื่อการส่งออกและนำเข้าแห่งประเทศไทย</mat-option>
+                                <mat-option value="iBank">Islamic Bank of Thailand (iBank) –
+                                    ธนาคารอิสลามแห่งประเทศไทย</mat-option>
+                                <mat-option value="KKP">Kiatnakin Phatra Bank (KKP) –
+                                    ธนาคารเกียรตินาคินภัทร</mat-option>
+                                <mat-option value="CIMBT">CIMB Thai Bank (CIMBT) –
+                                    ธนาคารซีไอเอ็มบีไทย</mat-option>
+                                <mat-option value="UOB">UOB Bank (United Overseas Bank) –
+                                    ธนาคารยูโอบี</mat-option>
+
+                            </mat-select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label class="title">{{ "FORM.bank_account_number" | translate }}</label>
+                            <input type="text" class="form-control" formControlName="bankAccountNumber"
+                                name="bankAccountNumber" id="bankAccountNumber" mask="000 0 00000 0">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <label class="title">{{ "FORM.account_holder_name" | translate }}</label>
+                            <input type="text" class="form-control" formControlName="bankHolderName"
+                                name="bankHolderName" id="bankHolderName">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+
+
+
+                            <!-- <div class="row mt-3">
+    <div class="col-xl-12">
+        <div class="accordion accordion-solid-primary" id="accordionHealthInformation">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="accordionHealthInformation">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#accordionHealthInformationOne" aria-expanded="true"
+                        aria-controls="accordionHealthInformationOne">
+                        {{"FORM.health_information" | translate}}
+                    </button>
+                </h2>
+                <div id="accordionHealthInformationOne" class="accordion-collapse collapse show"
+                    aria-labelledby="headingPrimarySolidOne" data-bs-parent="#accordionHealthInformation">
+                    <div class="card-body" style="padding: 24px;">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="title">{{ "FORM.blood_type" | translate }}</label>
+                                    <mat-select class="select mat-cust-select custom-mat-select"
+                                        [placeholder]="'FORM.select_blood_type' | translate"
+                                        formControlName="bloodType">
+                                        <mat-option value="A+">A+</mat-option>
+                                        <mat-option value="A-">A-</mat-option>
+                                        <mat-option value="B+">B+</mat-option>
+                                        <mat-option value="B-">B-</mat-option>
+                                        <mat-option value="AB+">AB+</mat-option>
+                                        <mat-option value="AB-">AB-</mat-option>
+                                        <mat-option value="O+">O+</mat-option>
+                                        <mat-option value="O-">O-</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="title">{{ "FORM.allergies" | translate }}</label>
+                                    <mat-select class="select mat-cust-select custom-mat-select"
+                                        [placeholder]="'FORM.select_allergies_status' | translate"
+                                        (selectionChange)="onAllergiesChange($event)" formControlName="allergies">
+                                        <mat-option value="Yes">{{"FORM.yes" | translate}}</mat-option>
+                                        <mat-option value="No">{{"FORM.no" | translate}}</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+                            <div class="col-md-6" *ngIf="isAllergies">
+                                <div class="form-group mb-3">
+                                    <label class="title">{{ "FORM.details" | translate }}</label>
+                                    <input type="text" class="form-control" formControlName="allergiesDetails"
+                                        name="allergiesDetails" id="allergiesDetails">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="title">{{ "FORM.vaccinations_status" | translate }}</label>
+                                    <mat-select class="select mat-cust-select custom-mat-select"
+                                        [placeholder]="'FORM.select_vaccinations_status' | translate"
+                                        formControlName="vaccinationsStatus">
+                                        <mat-option value="Yes">{{"FORM.yes" | translate}}</mat-option>
+                                        <mat-option value="No">{{"FORM.no" | translate}}</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="title">{{ "FORM.disabilities" | translate }}</label>
+                                    <mat-select class="select mat-cust-select custom-mat-select"
+                                        [placeholder]="'FORM.select_disabilities_status' | translate"
+                                        formControlName="disabilitiesStatus"
+                                        (selectionChange)="onDisabilitiesChange($event)">
+                                        <mat-option value="Yes">{{"FORM.yes" | translate}}</mat-option>
+                                        <mat-option value="No">{{"FORM.no" | translate}}</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+                            <div class="col-md-6" *ngIf="isDisabilities">
+                                <div class="form-group mb-3">
+                                    <label class="title">{{ "FORM.details" | translate }}</label>
+                                    <input type="text" class="form-control" formControlName="disabilitiesDetails"
+                                        name="disabilitiesDetails" id="disabilitiesDetails">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label class="title">{{ "FORM.congenital_diseases" | translate }}</label>
+                                    <mat-select class="select mat-cust-select custom-mat-select"
+                                        [placeholder]="'FORM.select_congenital_diseases_status' | translate"
+                                        formControlName="congenitalDiseases"
+                                        (selectionChange)="onCongenitalDiseasesChange($event)">
+                                        <mat-option value="Yes">{{"FORM.yes" | translate}}</mat-option>
+                                        <mat-option value="No">{{"FORM.no" | translate}}</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+                            <div class="col-md-6" *ngIf="isCongenitalDiseases">
+                                <div class="form-group mb-3">
+                                    <label class="title">{{ "FORM.details" | translate }}</label>
+                                    <input type="text" class="form-control" formControlName="congenitalDetails"
+                                        name="congenitalDetails" id="congenitalDetails">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row ">
+    <div class="col-md-12">
+        <div class="submit-section" style="display: flex; justify-content: center;">
+
+            <button class="btn btn-secondary submit-btn" (click)="cancelUpdate()"
+                style="margin-right: 10px;">{{"FORM.cancel" | translate}}</button>
+            <button class="btn btn-primary submit-btn" (click)="submitEmployee()">{{"FORM.submit" |
+                translate}}</button>
+        </div>
+    </div>
+</div> -->
+                        </div>
+                    </div>

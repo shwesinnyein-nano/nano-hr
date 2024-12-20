@@ -9,7 +9,7 @@
     top: 20px;
 }
 .form-control:focus {
-    border-color: #ff9b44;
+    border-color: #c7a27b;
     box-shadow: none;
 }
 .btn:first-child:active, :not(.btn-check)+.btn:active {
@@ -257,10 +257,10 @@ ul {
     }
 }
 .btn-soft-secondary {
-    background: rgba($secondary,0.4);
+    background: #e6d9c9;
     color: $secondary;
     &:hover {
-        background: $secondary;
+        background: #e6d9c9;
         color: $white;
     }
 }

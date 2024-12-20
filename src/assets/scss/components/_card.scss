@@ -13,14 +13,16 @@
         font-size: $__font__size__18;
         font-weight: $font-weight-bold;
         text-transform: capitalize;
+        color: #212529db;
     }
     .card-header {
         border-color: $secondary-500;
         position: relative;
-        background: transparent;
+        background: #E7D8C9 !important;
         padding: 1rem 1.25rem 1rem;
         .card-title {
             margin-bottom: 0rem;
+            color: #212529db;
         }
         .subtitle {
             padding-top: 0.3125rem;
@@ -49,7 +51,7 @@
   width: 100%;
   .card-header {
     padding: 1rem 1.25rem;
-    background-color: transparent !important;
+    background-color: #E7D8C9 !important;
     border-block-end: 1px solid #dbe0e6;
     display: flex;
     align-items: center;
@@ -61,6 +63,7 @@
     }
     .card-title {
       position: relative;
+      color: #212529db;
       margin-block-end: 0;
       font-size: 0.9375rem;
       font-weight: $font-weight-bold;
@@ -391,6 +394,7 @@
     height: 2.313rem;
     font-size: .95rem;
     flex-shrink: 0;
+    padding: 6px;
 }
 .btn-wave {
     display: inline-block !important;

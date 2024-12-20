@@ -1,0 +1,907 @@
+<div class="content container-fluid">
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="page-title">{{"FORM.employee_profile" | translate}} </h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a [routerLink]="routes.adminDashboard">{{"FORM.dashboard" |
+                            translate}}</a></li>
+                    <li class="breadcrumb-item"><a [routerLink]="routes.employee_info_list">{{"FORM.employee_info" |
+                            translate}}</a></li>
+                    <li class="breadcrumb-item active">{{"FORM.profile" | translate}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <form [formGroup]="addEmployeeForm">
+
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="accordion accordion-solid-primary" id="accordionPrimarySolidExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingPrimarySolidOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapsePrimarySolidOne" aria-expanded="true"
+                                aria-controls="collapsePrimarySolidOne">
+                                {{"FORM.personal_information" | translate}}
+                            </button>
+                        </h2>
+                        <div id="collapsePrimarySolidOne" class="accordion-collapse collapse show"
+                            aria-labelledby="headingPrimarySolidOne" data-bs-parent="#accordionPrimarySolidExample">
+                            <div class="card-body" style="padding: 24px;">
+                                <div class="row">
+                                    <div class="col-md-6 d-flex flex-column justify-content-between">
+
+
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h4 style="color: #212529db;">
+                                                {{"FORM.employee_id" | translate}}:
+                                                <span class="badge bg-primary"
+                                                    style="font-size: 16px; margin-left: 30px;">
+                                                    {{ employeeID }}
+                                                </span>
+                                                <!-- <input type="text" class="form-control" formControlName="uid" name="uid" id="uid" > -->
+                                            </h4>
+
+                                            <div class="list-group-item d-flex align-items-center">
+                                                {{"FORM.is_user" | translate}}
+                                                <div class="status-toggle ml-3" style="margin-left: 10px;">
+                                                    <input type="checkbox" id="holidays_module" class="check"
+                                                        formControlName="isUser" (change)="onIsUserChange($event)">
+                                                    <label for="holidays_module" class="checktoggle">checkbox</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- Company -->
+                                        <div class="form-group mb-3">
+                                            <div class="d-flex flex-wrap align-items-center">
+                                                <label class="title mr-2" style="flex: 0 0 auto; color: #6d6d6d;">{{
+                                                    "FORM.company" |
+                                                    translate }} <span class="text-danger">*</span> </label>
+                                                <mat-select class="select mat-cust-select custom-mat-select"
+                                                    placeholder="{{'FORM.select_company' | translate}}"
+                                                    formControlName="company"
+                                                    (selectionChange)="onCompanyChange($event)" style="flex: 1 1 auto;">
+                                                    <mat-option *ngFor="let company of companyList()"
+                                                        [value]="company.id">
+                                                        {{ company.name }}
+                                                    </mat-option>
+                                                </mat-select>
+                                                @if (this.addEmployeeForm.get('company')?.invalid &&
+                                                this.addEmployeeForm.get('company')?.touched) {
+                                                <div>
+                                                    @if (this.addEmployeeForm.get('company')?.invalid &&
+                                                    this.addEmployeeForm.get('company')?.touched) {
+                                                    <small class="text-danger"> *{{"VALIDATION.company_required" | translate}}</small>
+                                                    }
+                                                </div>
+                                                }
+                                            </div>
+                                        </div>
+
+
+                                        <!-- Location -->
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.location" | translate
+                                                }} <span class="text-danger">*</span></label>
+                                            <mat-select class="select mat-cust-select custom-mat-select"
+                                                placeholder="{{'FORM.select_location' | translate}}"
+                                                formControlName="location" (selectionChange)="onLocationChange($event)">
+                                                <mat-option *ngFor="let location of locationList()"
+                                                    [value]="location.id">
+                                                    {{ location.name }}
+                                                </mat-option>
+                                            </mat-select>
+                                            @if (this.addEmployeeForm.get('location')?.invalid &&
+                                            this.addEmployeeForm.get('location')?.touched) {
+                                            <div>
+                                                @if (this.addEmployeeForm.get('location')?.invalid &&
+                                                this.addEmployeeForm.get('location')?.touched) {
+                                                <small class="text-danger"> *{{"VALIDATION.location_required" | translate}}</small>
+                                                }
+                                            </div>
+                                            }
+                                        </div>
+
+                                        <!-- Branch -->
+                                        <div class="form-group mb-3" >
+                                            <label class="title">{{ "FORM.branch" | translate
+                                                }}</label>
+                                            <mat-select class="select mat-cust-select custom-mat-select"
+                                                placeholder="{{'FORM.select_branch' | translate}}"
+                                                formControlName="branch" (selectionChange)="onBranchChange($event)">
+                                                <mat-option *ngFor="let branch of branchList()" [value]="branch.id">
+                                                    {{ branch.name }}
+                                                </mat-option>
+                                            </mat-select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Right Column -->
+                                    <div class="col-md-6">
+
+                                        <div class="profile-img-edit mb-4 d-flex justify-content-center">
+                                            <div
+                                                class="profile-image-container d-flex flex-column align-items-center justify-content-center">
+                                                <div class="image-frame">
+                                                    <img [src]="imageUrl" *ngIf="imageUrl; else defaultImage"
+                                                        alt="Profile Image" class="profile-img img-thumbnail"
+                                                        style="max-width: 150px; max-height: 120px;" />
+                                                    <ng-template #defaultImage>
+                                                        <div class="default-placeholder">
+                                                            <i class="pi pi-user" style="font-size: 3rem;"></i>
+                                                        </div>
+                                                    </ng-template>
+                                                </div>
+
+
+                                                <button class="btn btn-outline-primary mt-3" (click)="fileInput.click()"
+                                                    style="border-color: #d1b07d; color: black; background-color: #c7a27b;">
+
+                                                    <i _ngcontent-ng-c2827243714="" data-bs-toggle="tooltip"
+                                                        title="feather icon-camera" class="feather icon-camera"></i>
+                                                </button>
+
+                                                <input type="file" class="d-none" #fileInput
+                                                    (change)="onFileSelected($event)" accept="image/*" />
+                                            </div>
+                                        </div>
+
+
+
+                                        <!-- Upload Progress -->
+                                        <div *ngIf="uploadProgress >= 0" class="mt-2">
+                                            <p>Upload Progress: {{ uploadProgress }}%</p>
+                                        </div>
+
+                                        <!-- Position Field -->
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.position" | translate
+                                                }} <span class="text-danger">*</span></label>
+                                            <mat-select class="select mat-cust-select custom-mat-select" 
+                                                placeholder="{{'FORM.select_position' | translate}}"
+                                                formControlName="position" (selectionChange)="onPositionChange($event)">
+                                                <mat-option *ngFor="let position of positionList()"
+                                                    [value]="position.id">
+                                                    {{ position.name }}
+                                                </mat-option>
+                                            </mat-select>
+                                            @if (this.addEmployeeForm.get('position')?.invalid &&
+                                            this.addEmployeeForm.get('position')?.touched) {
+                                            <div>
+                                                @if (this.addEmployeeForm.get('position')?.invalid &&
+                                                this.addEmployeeForm.get('position')?.touched) {
+                                                <small class="text-danger"> * {{"VALIDATION.position_required" | translate}}</small>
+                                                }
+                                            </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.role" | translate }} <span
+                                                    class="text-danger">*</span></label>
+                                            <mat-select class="select mat-cust-select custom-mat-select"
+                                                placeholder="{{'FORM.select_role' | translate}}" formControlName="role"
+                                                (selectionChange)="onRoleChange($event)">
+                                                <mat-option *ngFor="let role of roleList()" [value]="role.id">
+                                                    {{ role.name }}
+                                                </mat-option>
+                                            </mat-select>
+                                            @if (this.addEmployeeForm.get('role')?.invalid &&
+                                            this.addEmployeeForm.get('role')?.touched) {
+                                            <div>
+                                                @if (this.addEmployeeForm.get('role')?.invalid &&
+                                                this.addEmployeeForm.get('role')?.touched) {
+                                                <small class="text-danger"> *{{"VALIDATION.role_required" | translate}}</small>
+                                                }
+                                            </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.join_date" | translate
+                                                }}</label>
+                                            <div class="cal-icon">
+                                                <input class="form-control" formControlName="joinDate"
+                                                    [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', showWeekNumbers: false }"
+                                                    bsDatepicker container=".date-input1" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" *ngIf="isApprover">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.approver" | translate
+                                                }}</label>
+                                            <mat-select class="select mat-cust-select custom-mat-select"
+                                                placeholder="{{'FORM.select_approver' | translate}}"
+                                                formControlName="approver">
+                                                <mat-option *ngFor="let approver of approverList()"
+                                                    [value]="approver.id">
+                                                    {{ approver.name }}
+                                                </mat-option>
+                                            </mat-select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.first_name" | translate }} <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" formControlName="firstName"
+                                                name="firstName" id="firstName">
+                                            @if (this.addEmployeeForm.get('firstName')?.invalid &&
+                                            this.addEmployeeForm.get('firstName')?.touched) {
+                                            <div>
+                                                @if (this.addEmployeeForm.get('firstName')?.invalid &&
+                                                this.addEmployeeForm.get('firstName')?.touched) {
+                                                <small class="text-danger"> *{{"VALIDATION.first_name_required" | translate}}</small>
+                                                }
+                                            </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.last_name" | translate }} <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" formControlName="lastName"
+                                                name="lastName" id="lastName">
+                                            @if (this.addEmployeeForm.get('lastName')?.invalid &&
+                                            this.addEmployeeForm.get('lastName')?.touched) {
+                                            <div>
+                                                @if (this.addEmployeeForm.get('lastName')?.invalid &&
+                                                this.addEmployeeForm.get('lastName')?.touched) {
+                                                <small class="text-danger"> *{{"VALIDATION.last_name_required" | translate}}</small>
+                                                }
+                                            </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.nickname" | translate }} <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" formControlName="nickname"
+                                                name="nickname" id="nickname">
+                                            @if (this.addEmployeeForm.get('nickname')?.invalid &&
+                                            this.addEmployeeForm.get('nickname')?.touched) {
+                                            <div>
+                                                @if (this.addEmployeeForm.get('nickname')?.invalid &&
+                                                this.addEmployeeForm.get('nickname')?.touched) {
+                                                <small class="text-danger"> *{{"VALIDATION.nickname_required" | translate}}</small>
+                                                }
+                                            </div>
+                                            }
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">
+                                                {{ "FORM.email" | translate }} <span class="text-danger"
+                                                    *ngIf="isUser">*</span>
+                                            </label>
+                                            <input type="text" class="form-control" formControlName="email" name="email"
+                                                id="email" />
+
+                                          
+                                            <div *ngIf="email?.invalid && (email?.dirty || email?.touched) && isUser"
+                                                class="text-danger">
+                                                <small *ngIf="email?.errors?.['required']">
+                                                    {{ "VALIDATION.email_required" | translate }}
+                                                </small>
+                                                <small *ngIf="email?.errors?.['email']">
+                                                    {{ "VALIDATION.invalid_email" | translate }}
+                                                </small>
+                                            </div>
+                                           
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.mobile_number_primary" |
+                                                translate }} <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" formControlName="primary_number"
+                                                name="primary_number" mask="000 000 0000" id="primary_number">
+                                            @if (this.addEmployeeForm.get('primary_number')?.invalid &&
+                                            this.addEmployeeForm.get('primary_number')?.touched) {
+                                            <div>
+                                                @if (this.addEmployeeForm.get('primary_number')?.invalid &&
+                                                this.addEmployeeForm.get('primary_number')?.touched) {
+                                                <small class="text-danger"> *{{"VALIDATION.primary_number_required" | translate}}</small>
+                                                }
+                                            </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.mobile_number_secondary" |
+                                                translate }}</label>
+                                            <input type="text" class="form-control" formControlName="secondary_number"
+                                                mask="000 000 0000" name="secondary_number" id="secondary_number">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.gender" | translate }} <span
+                                                    class="text-danger">*</span></label>
+                                            <mat-select class="select mat-cust-select custom-mat-select"
+                                                placeholder="{{'FORM.select_gender' | translate}}"
+                                                formControlName="gender">
+                                                <mat-option value="Male">{{"FORM.male" |
+                                                    translate}}</mat-option>
+                                                <mat-option value="Female">{{"FORM.female" |
+                                                    translate}}</mat-option>
+                                                <!-- <mat-option value="Other">{{"FORM.other" | translate}}</mat-option> -->
+                                            </mat-select>
+                                            @if (this.addEmployeeForm.get('gender')?.invalid &&
+                                            this.addEmployeeForm.get('gender')?.touched) {
+                                            <div>
+                                                @if (this.addEmployeeForm.get('gender')?.invalid &&
+                                                this.addEmployeeForm.get('gender')?.touched) {
+                                                <small class="text-danger"> *{{"VALIDATION.gender_required" | translate}}</small>
+                                                }
+                                            </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.date_of_birth" | translate
+                                                }} <span class="text-danger">*</span></label>
+                                            <div class="cal-icon">
+                                                <input class="form-control" formControlName="dateOfBirth"
+                                                    [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD', showWeekNumbers: false }"
+                                                    bsDatepicker container=".date-input1" />
+                                            </div>
+                                            @if (this.addEmployeeForm.get('dateOfBirth')?.invalid &&
+                                            this.addEmployeeForm.get('dateOfBirth')?.touched) {
+                                            <div>
+                                                @if (this.addEmployeeForm.get('dateOfBirth')?.invalid &&
+                                                this.addEmployeeForm.get('dateOfBirth')?.touched) {
+                                                <small class="text-danger"> *{{"VALIDATION.date_of_birth_required" | translate}}</small>
+                                                }
+                                            </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.nationality" | translate }} <span
+                                                    class="text-danger">*</span></label>
+                                            <mat-select class="select mat-cust-select custom-mat-select"
+                                                [placeholder]="'FORM.select_nationality' | translate"
+                                                formControlName="nationality">
+                                                <mat-option *ngFor="let item of nationalityList()"
+                                                    [value]="item.nationality">{{item.nationality}}</mat-option>
+                                            </mat-select>
+                                            @if (this.addEmployeeForm.get('nationality')?.invalid &&
+                                            this.addEmployeeForm.get('nationality')?.touched) {
+                                            <div>
+                                                @if (this.addEmployeeForm.get('nationality')?.invalid &&
+                                                this.addEmployeeForm.get('nationality')?.touched) {
+                                                <small class="text-danger"> *{{"VALIDATION.nationality_required" | translate}}</small>
+                                                }
+                                            </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.marital_status" | translate
+                                                }}</label>
+                                            <mat-select class="select mat-cust-select custom-mat-select"
+                                                [placeholder]="'FORM.select_marital_status' | translate"
+                                                formControlName="maritalStatus">
+                                                <mat-option value="Single">{{"FORM.single" |
+                                                    translate}}</mat-option>
+                                                <mat-option value="Married">{{"FORM.married" |
+                                                    translate}}</mat-option>
+                                                <mat-option value="Divorced">{{"FORM.divorced" |
+                                                    translate}}</mat-option>
+                                                <!-- <mat-option value="Other">{{"FORM.other" | translate}}</mat-option> -->
+                                            </mat-select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.id_type" | translate }} <span
+                                                    class="text-danger">*</span></label>
+                                            <mat-select class="select mat-cust-select custom-mat-select"
+                                                [placeholder]="'FORM.select_id_type' | translate"
+                                                formControlName="idType"
+                                                (selectionChange)="onIdTypeChange($event.value)">
+                                                <mat-option value="id_card">{{ "FORM.id_card" | translate
+                                                    }}</mat-option>
+                                                <mat-option value="passport">{{ "FORM.passport" | translate
+                                                    }}</mat-option>
+                                            </mat-select>
+                                            @if (this.addEmployeeForm.get('idType')?.invalid &&
+                                            this.addEmployeeForm.get('idType')?.touched) {
+                                            <div>
+                                                @if (this.addEmployeeForm.get('idType')?.invalid &&
+                                                this.addEmployeeForm.get('idType')?.touched) {
+                                                <small class="text-danger"> *{{"VALIDATION.id_type_required" | translate}}</small>
+                                                }
+                                            </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.id_number" | translate }} <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="tel" class="form-control" formControlName="idCardNumber"
+                                                name="idCardNumber" id="idCardNumber" (input)="validateIdCard($event)"
+                                                [attr.placeholder]="isCard ? ('FORM.enter_id_card_number' | translate) : ('FORM.enter_passport_number' | translate)">
+                                            @if (this.addEmployeeForm.get('idCardNumber')?.invalid &&
+                                            this.addEmployeeForm.get('idCardNumber')?.touched) {
+                                            <div>
+                                                @if (this.addEmployeeForm.get('idCardNumber')?.invalid &&
+                                                this.addEmployeeForm.get('idCardNumber')?.touched) {
+                                                <small class="text-danger"> *{{"VALIDATION.id_number_required" | translate}}</small>
+                                                }
+                                            </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.id_address" | translate }} <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" formControlName="idAddress"
+                                                name="idAddress" id="idAddress">
+                                            @if (this.addEmployeeForm.get('idAddress')?.invalid &&
+                                            this.addEmployeeForm.get('idAddress')?.touched) {
+                                            <div>
+                                                @if (this.addEmployeeForm.get('idAddress')?.invalid &&
+                                                this.addEmployeeForm.get('idAddress')?.touched) {
+                                                <small class="text-danger"> *{{"VALIDATION.id_address_required" | translate}}</small>
+                                                }
+                                            </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.district" | translate }} <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" formControlName="district"
+                                                name="district" id="district">
+                                            @if (this.addEmployeeForm.get('district')?.invalid &&
+                                            this.addEmployeeForm.get('district')?.touched) {
+                                            <div>
+                                                @if (this.addEmployeeForm.get('district')?.invalid &&
+                                                this.addEmployeeForm.get('district')?.touched) {
+                                                <small class="text-danger"> *{{"VALIDATION.district_required" | translate}}</small>
+                                                }
+                                            </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.sub_district" | translate }} <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" formControlName="subDistrict"
+                                                name="subDistrict" id="subDistrict">
+                                            @if (this.addEmployeeForm.get('subDistrict')?.invalid &&
+                                            this.addEmployeeForm.get('subDistrict')?.touched) {
+                                            <div>
+                                                @if (this.addEmployeeForm.get('subDistrict')?.invalid &&
+                                                this.addEmployeeForm.get('subDistrict')?.touched) {
+                                                <small class="text-danger"> *{{"VALIDATION.sub_district_required" | translate}}</small>
+                                                }
+                                            </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.province" | translate }} <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" formControlName="province"
+                                                name="province" id="province">
+                                            @if (this.addEmployeeForm.get('province')?.invalid &&
+                                            this.addEmployeeForm.get('province')?.touched) {
+                                            <div>
+                                                @if (this.addEmployeeForm.get('province')?.invalid &&
+                                                this.addEmployeeForm.get('province')?.touched) {
+                                                <small class="text-danger"> *{{"VALIDATION.province_required" | translate}}</small>
+                                                }
+                                            </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.postal_code" | translate }} <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" maxlength="5" (keypress)="restrictToDigits($event)"
+                                                class="form-control" formControlName="postalCode" name="postalCode"
+                                                id="postalCode">
+                                            @if (this.addEmployeeForm.get('postalCode')?.invalid &&
+                                            this.addEmployeeForm.get('postalCode')?.touched) {
+                                            <div>
+                                                @if (this.addEmployeeForm.get('postalCode')?.invalid &&
+                                                this.addEmployeeForm.get('postalCode')?.touched) {
+                                                <small class="text-danger"> *{{"VALIDATION.postal_code_required" | translate}}</small>
+                                                }
+                                            </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6"> </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.same_as_id_address" |
+                                                translate }}</label>
+                                            <input type="checkbox" class="form-check-input ms-2"
+                                                (change)="onSameAsIdAddressChange($event)"
+                                                style="border:1.5px solid black;font-size: 1.2rem;"
+                                                formControlName="sameAsIdAddress" name="sameAsIdAddress">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6"> </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.address" | translate
+                                                }}</label>
+                                            <input type="text" class="form-control" formControlName="currentAddress"
+                                                name="currentAddress" id="currentAddress">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.district" | translate
+                                                }}</label>
+                                            <input type="text" class="form-control" formControlName="currentDistrict"
+                                                name="currentDistrict" id="currentDistrict">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.sub_district" | translate
+                                                }}</label>
+                                            <input type="text" class="form-control" formControlName="currentSubDistrict"
+                                                name="currentSubDistrict" id="currentSubDistrict">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.province" | translate
+                                                }}</label>
+                                            <input type="text" class="form-control" formControlName="currentProvince"
+                                                name="currentProvince" id="currentProvince">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.postal_code" | translate
+                                                }}</label>
+                                            <input type="text" class="form-control" formControlName="currentPostalCode"
+                                                name="currentPostalCode" id="currentPostalCode">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <div class="row mt-3">
+            <div class="col-xl-12">
+                <div class="accordion accordion-solid-primary" id="accordionEmergencyContact">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingEmergencyContactOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#accordionEmergencyContactOne" aria-expanded="true"
+                                aria-controls="accordionEmergencyContactOne">
+                                {{"FORM.emergency_contact" | translate}}
+                            </button>
+                        </h2>
+                        <div id="accordionEmergencyContactOne" class="accordion-collapse collapse show"
+                            aria-labelledby="headingPrimarySolidOne" data-bs-parent="#accordionEmergencyContact">
+                            <div class="card-body" style="padding: 24px;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.emergency_contact_name" | translate }} <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" formControlName="emgContactName"
+                                                name="emgContactName" id="emgContactName">
+                                            @if (this.addEmployeeForm.get('emgContactName')?.invalid &&
+                                            this.addEmployeeForm.get('emgContactName')?.touched) {
+                                            <div>
+                                                @if (this.addEmployeeForm.get('emgContactName')?.invalid &&
+                                                this.addEmployeeForm.get('emgContactName')?.touched) {
+                                                <small class="text-danger"> *{{"VALIDATION.emergency_contact_name_required" | translate}}</small>
+                                                }
+                                            </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.relationship" | translate }} <span
+                                                    class="text-danger">*</span></label>
+
+                                            <mat-select class="select mat-cust-select custom-mat-select"
+                                                [placeholder]="'FORM.select_relationship' | translate"
+                                                formControlName="emgRelationship">
+                                                <mat-option value="spouse">{{"FORM.spouse" | translate}}</mat-option>
+                                                <mat-option value="parent">{{"FORM.parent" | translate}}</mat-option>
+                                                <mat-option value="sibling">{{"FORM.sibling" | translate}}</mat-option>
+                                                <mat-option value="child">{{"FORM.child" | translate}}</mat-option>
+                                                <mat-option value="relative">{{"FORM.relative" |
+                                                    translate}}</mat-option>
+                                                <mat-option value="friend">{{"FORM.friend" | translate}}</mat-option>
+
+                                                <mat-option value="other">{{"FORM.other" | translate}}</mat-option>
+
+                                            </mat-select>
+                                            @if (this.addEmployeeForm.get('emgRelationship')?.invalid &&
+                                            this.addEmployeeForm.get('emgRelationship')?.touched) {
+                                            <div>
+                                                @if (this.addEmployeeForm.get('emgRelationship')?.invalid &&
+                                                this.addEmployeeForm.get('emgRelationship')?.touched) {
+                                                <small class="text-danger"> *{{"VALIDATION.relationship_required" | translate}}</small>
+                                                }
+                                            </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.emergency_phone_number" | translate }} <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" formControlName="emgMobileNumber"
+                                                name="emgMobileNumber" mask="000 000 0000" id="emgMobileNumber">
+                                            @if (this.addEmployeeForm.get('emgMobileNumber')?.invalid &&
+                                            this.addEmployeeForm.get('emgMobileNumber')?.touched) {
+                                            <div>
+                                                @if (this.addEmployeeForm.get('emgMobileNumber')?.invalid &&
+                                                this.addEmployeeForm.get('emgMobileNumber')?.touched) {
+                                                <small class="text-danger"> *{{"VALIDATION.emergency_phone_number_required" | translate}}</small>
+                                                }
+                                            </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.address" | translate }} </label>
+                                            <textarea class="form-control" formControlName="emgAddress"
+                                                name="emgAddress" id="emgAddress"></textarea>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row mt-3">
+            <div class="col-xl-12">
+                <div class="accordion accordion-solid-primary" id="accordionBankInformation">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="accordionBankInformation">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#accordionBankInformationOne" aria-expanded="true"
+                                aria-controls="accordionBankInformationOne">
+                                {{"FORM.bank_information" | translate}}
+                            </button>
+                        </h2>
+                        <div id="accordionBankInformationOne" class="accordion-collapse collapse show"
+                            aria-labelledby="headingPrimarySolidOne" data-bs-parent="#accordionBankInformation">
+                            <div class="card-body" style="padding: 24px;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.bank_name" | translate }}</label>
+                                            <mat-select class="select mat-cust-select custom-mat-select"
+                                                [placeholder]="'FORM.select_bank' | translate"
+                                                formControlName="bankName">
+                                                <mat-option value="BBL">Bangkok Bank (BBL) – ธนาคารกรุงเทพ</mat-option>
+                                                <mat-option value="KBank">Kasikorn Bank (KBank) –
+                                                    ธนาคารกสิกรไทย</mat-option>
+                                                <mat-option value="SCB">Siam Commercial Bank (SCB) –
+                                                    ธนาคารไทยพาณิชย์</mat-option>
+                                                <mat-option value="KTB">Krung Thai Bank (KTB) –
+                                                    ธนาคารกรุงไทย</mat-option>
+                                                <mat-option value="Krungsri">Bank of Ayudhya (Krungsri) –
+                                                    ธนาคารกรุงศรีอยุธยา</mat-option>
+                                                <mat-option value="TTB">TMBThanachart Bank (TTB) –
+                                                    ธนาคารทหารไทยธนชาต</mat-option>
+                                                <mat-option value="GSB">Government Savings Bank (GSB) –
+                                                    ธนาคารออมสิน</mat-option>
+                                                <mat-option value="EXIM">Export-Import Bank of Thailand (EXIM) –
+                                                    ธนาคารเพื่อการส่งออกและนำเข้าแห่งประเทศไทย</mat-option>
+                                                <mat-option value="iBank">Islamic Bank of Thailand (iBank) –
+                                                    ธนาคารอิสลามแห่งประเทศไทย</mat-option>
+                                                <mat-option value="KKP">Kiatnakin Phatra Bank (KKP) –
+                                                    ธนาคารเกียรตินาคินภัทร</mat-option>
+                                                <mat-option value="CIMBT">CIMB Thai Bank (CIMBT) –
+                                                    ธนาคารซีไอเอ็มบีไทย</mat-option>
+                                                <mat-option value="UOB">UOB Bank (United Overseas Bank) –
+                                                    ธนาคารยูโอบี</mat-option>
+
+                                            </mat-select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.bank_account_number" | translate }}</label>
+                                            <input type="text" class="form-control" formControlName="bankAccountNumber"
+                                                name="bankAccountNumber" id="bankAccountNumber" mask="000 0 00000 0">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.account_holder_name" | translate }}</label>
+                                            <input type="text" class="form-control" formControlName="bankHolderName"
+                                                name="bankHolderName" id="bankHolderName">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="row mt-3">
+            <div class="col-xl-12">
+                <div class="accordion accordion-solid-primary" id="accordionHealthInformation">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="accordionHealthInformation">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#accordionHealthInformationOne" aria-expanded="true"
+                                aria-controls="accordionHealthInformationOne">
+                                {{"FORM.health_information" | translate}}
+                            </button>
+                        </h2>
+                        <div id="accordionHealthInformationOne" class="accordion-collapse collapse show"
+                            aria-labelledby="headingPrimarySolidOne" data-bs-parent="#accordionHealthInformation">
+                            <div class="card-body" style="padding: 24px;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.blood_type" | translate }}</label>
+                                            <mat-select class="select mat-cust-select custom-mat-select"
+                                                [placeholder]="'FORM.select_blood_type' | translate"
+                                                formControlName="bloodType">
+                                                <mat-option value="A+">A+</mat-option>
+                                                <mat-option value="A-">A-</mat-option>
+                                                <mat-option value="B+">B+</mat-option>
+                                                <mat-option value="B-">B-</mat-option>
+                                                <mat-option value="AB+">AB+</mat-option>
+                                                <mat-option value="AB-">AB-</mat-option>
+                                                <mat-option value="O+">O+</mat-option>
+                                                <mat-option value="O-">O-</mat-option>
+                                            </mat-select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.allergies" | translate }}</label>
+                                            <mat-select class="select mat-cust-select custom-mat-select"
+                                                [placeholder]="'FORM.select_allergies_status' | translate"
+                                                (selectionChange)="onAllergiesChange($event)"
+                                                formControlName="allergies">
+                                                <mat-option value="Yes">{{"FORM.yes" | translate}}</mat-option>
+                                                <mat-option value="No">{{"FORM.no" | translate}}</mat-option>
+                                            </mat-select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" *ngIf="isAllergies">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.details" | translate }}</label>
+                                            <input type="text" class="form-control" formControlName="allergiesDetails"
+                                                name="allergiesDetails" id="allergiesDetails">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.vaccinations_status" | translate }}</label>
+                                            <mat-select class="select mat-cust-select custom-mat-select"
+                                                [placeholder]="'FORM.select_vaccinations_status' | translate"
+                                                formControlName="vaccinationsStatus">
+                                                <mat-option value="Yes">{{"FORM.yes" | translate}}</mat-option>
+                                                <mat-option value="No">{{"FORM.no" | translate}}</mat-option>
+                                            </mat-select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.disabilities" | translate }}</label>
+                                            <mat-select class="select mat-cust-select custom-mat-select"
+                                                [placeholder]="'FORM.select_disabilities_status' | translate"
+                                                formControlName="disabilitiesStatus"
+                                                (selectionChange)="onDisabilitiesChange($event)">
+                                                <mat-option value="Yes">{{"FORM.yes" | translate}}</mat-option>
+                                                <mat-option value="No">{{"FORM.no" | translate}}</mat-option>
+                                            </mat-select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" *ngIf="isDisabilities">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.details" | translate }}</label>
+                                            <input type="text" class="form-control"
+                                                formControlName="disabilitiesDetails" name="disabilitiesDetails"
+                                                id="disabilitiesDetails">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.congenital_diseases" | translate }}</label>
+                                            <mat-select class="select mat-cust-select custom-mat-select"
+                                                [placeholder]="'FORM.select_congenital_diseases_status' | translate"
+                                                formControlName="congenitalDiseases"
+                                                (selectionChange)="onCongenitalDiseasesChange($event)">
+                                                <mat-option value="Yes">{{"FORM.yes" | translate}}</mat-option>
+                                                <mat-option value="No">{{"FORM.no" | translate}}</mat-option>
+                                            </mat-select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" *ngIf="isCongenitalDiseases">
+                                        <div class="form-group mb-3">
+                                            <label class="title">{{ "FORM.details" | translate }}</label>
+                                            <input type="text" class="form-control" formControlName="congenitalDetails"
+                                                name="congenitalDetails" id="congenitalDetails">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<div class="row ">
+    <div class="col-md-12">
+        <div class="submit-section" style="display: flex; justify-content: center;">
+
+            <button class="btn btn-secondary submit-btn" (click)="cancelUpdate()"
+                style="margin-right: 10px;">{{"FORM.cancel" | translate}}</button>
+            <button class="btn btn-primary submit-btn" (click)="submitEmployee()">{{"FORM.submit" |
+                translate}}</button>
+        </div>
+    </div>
+</div>
+
+</form>
+</div>

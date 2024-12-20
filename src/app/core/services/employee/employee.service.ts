@@ -13,6 +13,22 @@ export class EmployeeService {
 
   constructor(private firestore: AngularFirestore) { }
 
+
+  getLastEmployeeNo(): Observable < number > {
+    return this.firestore
+      .collection('employee-config')
+      .doc('employeeID')
+      .valueChanges()
+      .pipe(map((config: any) => config?.lastNumber || 0));
+  }
+  updateLastEmployeeNo(newNumber: number): Observable < void> {
+    return from(
+      this.firestore
+        .collection('employee-config')
+        .doc('employeeID')
+        .set({ lastNumber: newNumber }, { merge: true })
+    );
+  }
   saveEmployeeData(uid: string, data: any) {
     return from(this.firestore.collection('employees').doc(uid).set({
       uid,

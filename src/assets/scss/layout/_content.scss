@@ -7,14 +7,16 @@
         @include margin-padding(0,60px 0 0);
     }
     .content {
+        background-color: #faf3eb;
         @include margin-padding(null, 24px);
         @include respond-below(custom767) {
             @include margin-padding(null, 15px);
         }
+
         .page-header {
             margin-bottom: 1.875rem;
             .page-title {
-                color: $secondary;
+                color: #212529db;
                 font-size: $font-size-26;
                 font-weight: $font-weight-medium;
                 margin-bottom: 5px;
@@ -29,7 +31,7 @@
     .breadcrumb {
         .breadcrumb-item {
             &.active {
-                color: $sub-title;
+                color: #212529db;
             }
         }
     }
@@ -304,7 +306,7 @@ input[type=file].form-control {
         @include margin-padding(0, 0);
         &:checked{
             & + .checktoggle {
-                background-color: $success;
+                background-color: $primary;
                 &:after {
                     left: 100%;
                     transform: translate(calc(-100% - 5px), -50%);
@@ -314,7 +316,7 @@ input[type=file].form-control {
        
     }
     .checktoggle {
-        background-color: $danger;
+        background-color: #4d5154;
         cursor: pointer;
         display: block;
         font-size: 0;

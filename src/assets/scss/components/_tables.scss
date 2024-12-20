@@ -9,6 +9,7 @@
         white-space: nowrap;
         border-top: 1px solid $secondary-100;
         @include margin-padding(null, 1rem 0.75rem);
+        background-color: #e6d9c9;
     }
     td{
         border-top: 1px solid $secondary-100;
@@ -88,6 +89,7 @@
         @include margin-padding(null, 9px);
     }
 }
+
 .card-table {
     .card-header {
         border-bottom: 0;

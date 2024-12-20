@@ -59,6 +59,7 @@
             &:focus {
                 box-shadow: none;
                 outline: 0;
+                background-color: #e6d9c9;
             }
         }
 
@@ -82,6 +83,7 @@
             &:focus {
                 box-shadow: none;
                 outline: 0;
+                background-color: #e6d9c9;
             }
         }
 
@@ -91,20 +93,21 @@
             background-color: $primary;
             color: $white;
             &:after { 
-                background-color: $white;
+                background-color:$primary;
                 color: #212529;
             }
             &.collapsed {
-                background-color: $white;
+                background-color: #e6d9c9;
                 color: #212529;
                 &:after { 
-                    background-color: #f7f8f9;
+                    background-color: #e6d9c9;
                     color: #212529;
                 }
             }
             &:focus {
                 box-shadow: none;
                 outline: 0;
+                // background-color: #e6d9c9;
             }
         }
 
@@ -128,6 +131,7 @@
             &:focus {
                 box-shadow: none;
                 outline: 0;
+                background-color: #e6d9c9;
             }
         }
 

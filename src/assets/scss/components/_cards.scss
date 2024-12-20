@@ -233,13 +233,15 @@
       font-size: $font-size-20;
       font-weight: $font-weight-medium;
       margin-bottom: 20px;
+      color: #212529db;
     }
     .card-header {
         padding: 20px;
+        background: #E7D8C9;
         border-bottom: 0;
-        background: transparent;
+        // background: transparent;
         .card-title {
-          color: $secondary;
+          color: #212529db;
           font-size: $font-size-20;
           font-weight: $font-weight-medium;
           margin-bottom: 0;
@@ -280,7 +282,7 @@
   width: 100%;
   .card-header {
     padding: 1rem 1.25rem;
-    background-color: transparent !important;
+    background-color: #E7D8C9 !important;
     border-block-end: 1px solid #dbe0e6;
     display: flex;
     align-items: center;
@@ -621,6 +623,7 @@
     height: 2.313rem;
     font-size: .95rem;
     flex-shrink: 0;
+    padding: 6px;
 }
 .btn-wave {
     display: inline-block !important;

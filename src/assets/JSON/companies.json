@@ -3,13 +3,7 @@
     {
       "id": "nano-vip",
       "name": "NANO-VIP",
-      "phone": "+1 875455453",
-      "email": "robertson",
-      "static": "example.com",
-      "tags": "Promotion",
-      "location": "Germany",
-      "rating": "4.2",
-      "owner": "Hendry",
+     
       "status": "Active",
       "img": "assets/img/icons/company-icon-01.svg",
       "isRating": "true"
@@ -17,13 +11,7 @@
     {
       "id": "nano-store",
       "name": "NANO-STORE",
-      "phone": "+1 989757485",
-      "email": "sharon",
-      "static": "example.com",
-      "tags": "Rated",
-      "location": "USA",
-      "rating": "5.0",
-      "owner": "Guillory",
+      
       "status": "Active",
       "img": "assets/img/icons/company-icon-02.svg",
       "isRating": "false"
@@ -31,13 +19,7 @@
     {
       "id": "nano-entertainment",
       "name": "NANO-ENTERTAINMENT",
-      "phone": "+1 546555455",
-      "email": "vaughan12",
-      "static": "example.com",
-      "tags": "Promotion",
-      "location": "Canada",
-      "rating": "3.5",
-      "owner": "Jami",
+     
       "status": "Inactive",
       "img": "assets/img/icons/company-icon-03.svg",
       "isRating": "true"

@@ -1,6 +1,5 @@
 <!-- Two Col Sidebar -->
-<div class="two-col-bar" id="two-col-bar" (mouseover)="miniSideBarMouseHover('over')"
-  (mouseout)="miniSideBarMouseHover('out')" (focus)="miniSideBarFocus('over')" (blur)="miniSideBarBlur('out')">
+<div class="two-col-bar" id="two-col-bar">
   <div class="sidebar sidebar-twocol">
     <div class="sidebar-left slimscroll">
       <ng-scrollbar>
@@ -23,7 +22,7 @@
        
         <ng-container *ngFor="let mainTittle of side_bar_data; trackBy: trackMainTittle">
           <div *ngIf="mainTittle.showMyTab === true">
-            <p>{{ mainTittle.menuValue }}</p>
+            <p (click)="toggleSideBar()" >{{ mainTittle.menuValue }}</p>
             <ul>
              
               <ng-container *ngIf="mainTittle.hasSubRoute && mainTittle.permissions?.read">
